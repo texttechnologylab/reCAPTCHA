@@ -10,11 +10,10 @@ client.onopen = function() {
 
     function sendNumber() {
         if (client.readyState === client.OPEN) {
-            var number = 22466;
-            //  client.send(number.toString());
 
-            client.send(JSON.stringify({cmd: "session", session}));
-            client.send(JSON.stringify({cmd: 'open_cas', data: {casId: 22466}}));
+
+            client.send(JSON.stringify({cmd: 'session', data: {session: session}}));
+        //    client.send(JSON.stringify({cmd: 'open_cas', data: {casId: 22466}}));
 
 
 
