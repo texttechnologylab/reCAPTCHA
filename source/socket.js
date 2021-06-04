@@ -8,18 +8,14 @@ let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
 client.onopen = function() {
     console.log('WebSocket Client Connected');
 
-    function sendNumber() {
+    function sendMessage() {
         if (client.readyState === client.OPEN) {
-
-
             client.send(JSON.stringify({cmd: 'session', data: {session: session}}));
         //    client.send(JSON.stringify({cmd: 'open_cas', data: {casId: 22466}}));
 
-
-
         }
     }
-    sendNumber();
+    sendMessage();
 };
 
 client.onmessage = function(e) {
