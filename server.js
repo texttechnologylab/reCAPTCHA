@@ -16,6 +16,5 @@ app.get('/', (req, res) => {
 // start the express web server listening on 8080
 app.listen(808, () => {
     console.log('listening on 808');
-  //  tools.addButton("text");
 });
 
