@@ -12,6 +12,8 @@ client.onopen = function() {
         if (client.readyState === client.OPEN) {
             client.send(JSON.stringify({cmd: 'session', data: {session: session}}));
             client.send(JSON.stringify({cmd: 'open_cas', data: {casId: "28450"}}));
+            client.send(JSON.stringify({cmd: 'open_view',
+                data: {casId: "28450", "view": "soko", "force": true}}));
 
         }
     }
@@ -28,8 +30,15 @@ client.onmessage = function(msg) {
             break;
         }
         case "open_cas": {
-            console.log(response.data.text);
-            console.log(typeof response);
+        //    console.log(response.data);
+            break;
+        }
+        case "open_view": {
+            console.log(response);
+            break;
+        }
+        case "open_tool": {
+            console.log(response);
             break;
         }
     }
