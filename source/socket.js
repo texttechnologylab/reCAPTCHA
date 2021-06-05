@@ -8,20 +8,32 @@ let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
 client.onopen = function() {
     console.log('WebSocket Client Connected');
 
-    function sendMessage() {
+    function connect() {
         if (client.readyState === client.OPEN) {
             client.send(JSON.stringify({cmd: 'session', data: {session: session}}));
-        //    client.send(JSON.stringify({cmd: 'open_cas', data: {casId: 22466}}));
+            client.send(JSON.stringify({cmd: 'open_cas', data: {casId: "28450"}}));
 
         }
     }
-    sendMessage();
+    connect();
 };
 
-client.onmessage = function(e) {
-    if (typeof e.data === 'string') {
-        console.log("Received: " + e.data);
+client.onmessage = function(msg) {
+     var response = JSON.parse(msg.data);
+
+    //response.cmd gibt an welche Art von Nachricht empfangen worden ist.
+    switch (response.cmd){
+        case "session": {
+            console.log("Session successfully ");
+            break;
+        }
+        case "open_cas": {
+            console.log(response.data.text);
+            console.log(typeof response);
+            break;
+        }
     }
+
 };
 
 client.onerror = function() {
@@ -33,6 +45,7 @@ client.onclose = function() {
 };
 
 //sleep(10000)
+
 
 
 function sleep(miliseconds) {
