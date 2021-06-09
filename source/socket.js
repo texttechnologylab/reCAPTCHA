@@ -9,7 +9,7 @@ let tool = "quickpanel";
 function initSocket() {
 
     client.onopen = function () {
-        console.log('WebSocket Client Connected');
+        console.log("WebSocket Client Connected");
 
         function connect() {
             if (client.readyState === client.OPEN) {
@@ -38,11 +38,11 @@ function initSocket() {
             case "open_cas": {
              //   console.log(response.data);
                 let cas = response.data.text;
-                console.log(typeof cas);
+                console.log(cas);
                 break;
             }
             case "open_view": {
-                console.log(response);
+             //   console.log(response);
 
                 client.send(JSON.stringify({
                     cmd: 'open_tool',
@@ -60,11 +60,11 @@ function initSocket() {
     };
 
     client.onerror = function () {
-        console.log('Connection Error');
+        console.log("Connection Error");
     };
 
     client.onclose = function () {
-        console.log('Client Closed');
+        console.log("Client Closed");
     };
 
 }
