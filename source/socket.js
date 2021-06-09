@@ -2,6 +2,8 @@ const url = "ws://" +"textannotator.texttechnologylab.org" + "/uima";
 var W3CWebSocket = require('websocket').w3cwebsocket;
 var client = new W3CWebSocket(url);
 
+// Sind erstmal zum testen nötig
+let casId = "28450"
 let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
 let view = "https://authority.hucompute.org/user/316810";
 let tool = "quickpanel";
@@ -14,10 +16,10 @@ function initSocket() {
         function connect() {
             if (client.readyState === client.OPEN) {
                 client.send(JSON.stringify({cmd: 'session', data: {session: session}}));
-                client.send(JSON.stringify({cmd: 'open_cas', data: {casId: "28450"}}));
+                client.send(JSON.stringify({cmd: 'open_cas', data: {casId: casId}}));
                 client.send(JSON.stringify({
                     cmd: 'open_view',
-                    data: {casId: "28450", "view": view, "force": true}
+                    data: {casId: casId, "view": view, "force": true}
                 }));
 
             }
