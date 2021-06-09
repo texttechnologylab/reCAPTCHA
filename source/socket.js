@@ -1,4 +1,3 @@
-
 const url = "ws://" +"textannotator.texttechnologylab.org" + "/uima";
 const WebSocket = require('ws');
 const client = new WebSocket(url);
@@ -21,10 +20,6 @@ function initSocket() {
                     cmd: 'open_view',
                     data: {casId: casId, view: view, force: true}
                 }));
-                client.send(JSON.stringify({
-                    cmd: 'open_tool',
-                    data: {casId: casId, view: view, toolName: tool}
-                }));
             }
         }
         connect();
@@ -44,12 +39,12 @@ function initSocket() {
             case "open_cas": {
                 //   console.log(response.data);
                 let cas = response.data.text;
-                console.log(cas);
+      //          console.log(cas);
                 break;
             }
 
             case "open_view": {
-                console.log(response.data);
+        //        console.log(response.data);
 
                 client.send(JSON.stringify({
                     cmd: 'open_tool',
