@@ -2,8 +2,6 @@ console.log('Server-side code running');
 const express = require('express');
 const app = express();
 
-//var tools = require("./helper.js");
-
 
 // Serves files from the resources directory
 app.use("/resources",express.static(__dirname + '/resources'));

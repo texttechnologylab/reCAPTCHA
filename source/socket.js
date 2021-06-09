@@ -19,11 +19,6 @@ function initSocket() {
                     cmd: 'open_view',
                     data: {casId: "28450", "view": view, "force": true}
                 }));
-                client.send(JSON.stringify({
-                    cmd: 'open_tool',
-                    data: {casId: "28450", view: view, toolName: tool}
-                }));
-
 
             }
         }
@@ -41,15 +36,23 @@ function initSocket() {
                 break;
             }
             case "open_cas": {
-                //    console.log(response.data);
+             //   console.log(response.data);
+                let cas = response.data.text;
+                console.log(typeof cas);
                 break;
             }
             case "open_view": {
                 console.log(response);
+
+                client.send(JSON.stringify({
+                    cmd: 'open_tool',
+                    data: {casId: response.data.casId, view: response.data.view, toolName: tool}
+                }));
+
                 break;
             }
             case "open_tool": {
-                console.log(response);
+                console.log(msg);
                 break;
             }
         }
