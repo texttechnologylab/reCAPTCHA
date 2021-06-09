@@ -5,7 +5,7 @@ var client = new W3CWebSocket(url);
 // Sind erstmal zum testen nötig
 let casId = "28450"
 let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
-let view = "https://authority.hucompute.org/user/316810";
+let view = "https://authority.hucompute.org/user/316809";
 let tool = "quickpanel";
 
 function initSocket() {
@@ -33,16 +33,19 @@ function initSocket() {
 
         //response.cmd gibt an welche Art von Nachricht empfangen worden ist.
         switch (response.cmd) {
+
             case "session": {
                 console.log("Session successfully ");
                 break;
             }
+
             case "open_cas": {
              //   console.log(response.data);
                 let cas = response.data.text;
                 console.log(cas);
                 break;
             }
+
             case "open_view": {
              //   console.log(response);
 
@@ -53,6 +56,7 @@ function initSocket() {
 
                 break;
             }
+
             case "open_tool": {
                 console.log(msg);
                 break;
