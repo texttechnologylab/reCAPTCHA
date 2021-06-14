@@ -10,6 +10,8 @@ function startConnection() {
 
 
     client.onopen = function () {
+        alert('WebSocket Client Connected');
+
         if (client.readyState === client.OPEN) {
             client.send(JSON.stringify({cmd: 'session', data: {session: session}}));
             client.send(JSON.stringify({cmd: 'open_cas', data: {casId: casId}}));
@@ -19,7 +21,6 @@ function startConnection() {
 
     client.onmessage = (msg) => {
         var response = JSON.parse(msg.data);
-        alert('WebSocket Client Connected');
 
         //response.cmd gibt an welche Art von Nachricht empfangen worden ist.
         switch (response.cmd) {
