@@ -35,8 +35,6 @@ function socketAnno() {
                     break;
                 }
                 case "open_cas": {
-                    //  alert('WebSocket Client Connected');
-
                     casText = response.data.text;
 
                     client.send(JSON.stringify({
@@ -58,17 +56,14 @@ function socketAnno() {
                     let toolElements = response.data.toolElements;
                     displayText(casId, casText, toolElements);
 
-
-                    for (let tool in toolElements) {
-                        console.log(tool);
-                    }
-
-
+            //        for (let tool in toolElements) {
+            //            console.log(tool);
+            //        }
                     break;
                 }
 
                 case "msg": {
-                    //  console.log(response);
+                    //console.log(response);
                     break;
                 }
             }
@@ -80,7 +75,7 @@ function socketAnno() {
         };
 
         client.onerror = (error) => {
-            alert("Error");
+            console.log("Error");
         };
 
     }
@@ -99,7 +94,8 @@ function socketAnno() {
 
     /**
      * Nimmt aus den quickpanel Tool die Lemma Werte jedes Tokens und speichert damit jeden Token
-     * des Satzes in eine Liste ein.
+     * des Satzes in eine Liste ein. Mit der Liste gibt sie jeden Tokon als Button aus und die Id jedes Button
+     * ist durch sein lemmaStart gekennzeichnet
      * @param casId
      * @param casText
      * @param toolElements
