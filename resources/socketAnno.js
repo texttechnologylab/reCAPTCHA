@@ -1,5 +1,6 @@
 function socketAnno() {
     let lemmaStartList = [];
+    let selectedButton = [];
     let casText;
 
 
@@ -120,20 +121,6 @@ function socketAnno() {
         colorButton(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
         colorButton(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
 
-
-
-        /**
-         * Hilfsfunktion
-         * @param tool
-         */
-        function colorButton(tool, color) {
-            for (let element in tool) {
-                var start = tool[element]["features"]["begin"];
-                document.getElementById("lemmaStart"+start).style.background=color;
-
-            }
-
-        }
         /**
          * Hilfsfunktion
          * @param textAsList
@@ -149,6 +136,7 @@ function socketAnno() {
                 // Erstelle ein Button mit dem Wort und gib ihm eine id
                 var newButton = document.createElement("Button");
                 newButton.id = "lemmaStart" + lemmaStartList[i];
+                newButton.setAttribute("onclick", "tokenClicked(id)");
 
                 var newContent = document.createTextNode(word);
                 newButton.appendChild(newContent); // fügt den Text zum Button hinzu
@@ -158,6 +146,19 @@ function socketAnno() {
             }
         }
 
+        /**
+         * Hilfsfunktion
+         * @param tool
+         */
+        function colorButton(tool, color) {
+            for (let element in tool) {
+                var start = tool[element]["features"]["begin"];
+                document.getElementById("lemmaStart"+start).style.background=color;
+
+            }
+
+        }
+
     }
 
     var text1 = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
@@ -165,4 +166,8 @@ function socketAnno() {
     var text3 = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V";
     var text4 = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
 
+}
+
+function alertSelectedButton(buttonId){
+    alert(buttonId );
 }

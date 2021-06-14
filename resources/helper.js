@@ -1,24 +1,33 @@
-function addButton(text)
-{
+// Speichert die ids aller Token die angeklickt worden sind.
+let selectedButtonId = [];
 
-    let textAsList = text.split(" ");
+/**
+ * Falls ein Token angegklickt worden ist dann Token färben und die id in Liste speichern.
+ * Falls ein angeklickter Token angegklickt wird dann Token wieder standarf Färben und die id aus
+ * der Liste entfernen.
+ * @param buttonId
+ */
+function tokenClicked(buttonId) {
+    var selectedColor = "#EBCA35";
+    var selectedColorRGB = "rgb(235, 202, 53)";
+    var button = document.getElementById(buttonId);
 
-    for (i = 0; i < textAsList.length; i++) {
-        let word = textAsList[i];
+    if (button.style.background == selectedColorRGB){
+        button.style.background = "#e9ecef"; // Standard Button Farbe
+        // Element mit value aus Array entfernen: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
+        const index = selectedButtonId.indexOf(buttonId);
+        if (index > -1) {
+           selectedButtonId.splice(index, 1);
+        }
 
-        // Erstelle ein Button mit dem Wort und gib ihm eine id
-        var newButton = document.createElement("Button");
-        newButton.id = "word" + i;
-
-        var newContent = document.createTextNode(word);
-        newButton.appendChild(newContent); // fügt den Text zum Button hinzu
-
-        // füge das neu erstellte Element und seinen Inhalt ins DOM ein
-        var currentDiv = document.getElementById("buttonHolder");
-        document.body.appendChild(newButton, currentDiv);
     }
-}
+    // Falls Button noch nicht ausgewählt
+    else {
+        button.style.background = selectedColor;
+        selectedButtonId.push(buttonId);
+    }
 
-function plus(){
-    console.log(10);
+}
+function alertSelectedButton(){
+    alert(selectedButtonId);
 }
