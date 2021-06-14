@@ -1,10 +1,3 @@
-let beispielText = "Sowohl Freisprechanlage als auch Handy beeinflussten den Fahrstil und zeigten keinen\n" +
-    "Unterschied im Grad der Ablenkung. «Das stellt besonders die Auflagen in Frage, die das\n" +
-    "Telefonieren mit Handys verbieten, es aber über Freisprechanlage erlauben.» Verglichen\n" +
-    "mit konzentrierten Fahrern steuerten die telefonierenden Insassen ihr Gefährt in der Simulation etwas langsamer, bremsten später und benötigen mehr Zeit führ die Anfahrt danach."
-addButton(beispielText);
-connect();
-
 function addButton(text)
 {
 
