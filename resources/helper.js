@@ -2,9 +2,12 @@ let beispielText = "Sowohl Freisprechanlage als auch Handy beeinflussten den Fah
     "Unterschied im Grad der Ablenkung. «Das stellt besonders die Auflagen in Frage, die das\n" +
     "Telefonieren mit Handys verbieten, es aber über Freisprechanlage erlauben.» Verglichen\n" +
     "mit konzentrierten Fahrern steuerten die telefonierenden Insassen ihr Gefährt in der Simulation etwas langsamer, bremsten später und benötigen mehr Zeit führ die Anfahrt danach."
-document.body.onload = addButton(beispielText);
+addButton(beispielText);
+connect();
+
 function addButton(text)
 {
+
     let textAsList = text.split(" ");
 
     for (i = 0; i < textAsList.length; i++) {
@@ -21,4 +24,8 @@ function addButton(text)
         var currentDiv = document.getElementById("buttonHolder");
         document.body.appendChild(newButton, currentDiv);
     }
+}
+
+function plus(){
+    console.log(10);
 }
