@@ -28,6 +28,20 @@ function tokenClicked(buttonId) {
     }
 
 }
+
 function alertSelectedButton(){
     alert(selectedButtonId);
+}
+
+function test(){
+    var curDiv = document.getElementById("was");
+    var newButton = document.createElement("Button");
+    newButton.id = "lemmaStart"
+    newButton.setAttribute("onclick", "tokenClicked(id)");
+
+    var newContent = document.createTextNode("SOKSOSKOS");
+    newButton.appendChild(newContent); // fügt den Text zum Button hinzu
+
+    curDiv.appendChild(newButton);
+
 }

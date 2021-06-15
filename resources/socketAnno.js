@@ -1,4 +1,5 @@
-function socketAnno() {
+//socketAnno("s");
+function socketAnno(task) {
     let lemmaStartList = [];
     let selectedButton = [];
     let casText;
@@ -55,11 +56,17 @@ function socketAnno() {
 
                 case "open_tool": {
                     let toolElements = response.data.toolElements;
-                    displayText(casId, casText, toolElements);
 
-            //        for (let tool in toolElements) {
-            //            console.log(tool);
-            //        }
+                    // Bestimm was angezigt wird
+                    if (task == "displayTextAsButton") {
+                        displayTextAsButtons(casId, casText, toolElements);
+                    }
+                    else if (task = "displaySentence"){
+                        displaySentence(casId, casText, toolElements);
+                    }
+             //       for (let tool in toolElements) {
+             //           console.log(tool);
+             //       }
                     break;
                 }
 
@@ -82,8 +89,8 @@ function socketAnno() {
     }
 
     function task1(casId, toolElements) {
-        let text;
-        let lemmas = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma"];
+        var text;
+        var lemmas = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma"];
         for (let lemma in lemmas) {
             var word = lemmas[lemma]["features"]["begin"];
 
@@ -91,6 +98,20 @@ function socketAnno() {
             console.log(word)
         }
         // console.log(text);
+    }
+
+
+    function displaySentence(casId, casText, toolElements){
+        var sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
+        for (let sentence in sentences) {
+            var start = sentences[sentence]["features"]["begin"];
+            var end = sentences[sentence]["features"]["end"];
+            var textSentence = casText.slice(start, end);
+            //  text = text + " " + word;
+            document.getElementById("sentenceHolder").innerHTML = textSentence;
+            return;
+            console.log(textSentence);
+        }
     }
 
     /**
@@ -101,7 +122,7 @@ function socketAnno() {
      * @param casText
      * @param toolElements
      */
-    function displayText(casId, casText, toolElements) {
+    function displayTextAsButtons(casId, casText, toolElements) {
         let textAsList = [];
         // let lemmas = toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"];
         let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
@@ -126,23 +147,24 @@ function socketAnno() {
          * @param textAsList
          */
         function addButton(textAsList) {
-
-            // let textAsList = text.split(" ");
+            // Div in dem die Buttons eingefügt werden
+            var currentDiv = document.getElementById("sentenceHolder");
+            currentDiv.innerText = "";
 
             for (i = 0; i < textAsList.length; i++) {
                 let word = textAsList[i];
 
-                var currentDiv = document.getElementById("text");
                 // Erstelle ein Button mit dem Wort und gib ihm eine id
                 var newButton = document.createElement("Button");
                 newButton.id = "lemmaStart" + lemmaStartList[i];
                 newButton.setAttribute("onclick", "tokenClicked(id)");
 
+                // Setzt den Text des Buttons
                 var newContent = document.createTextNode(word);
-                newButton.appendChild(newContent); // fügt den Text zum Button hinzu
+                newButton.appendChild(newContent);
 
                 // füge das neu erstellte Element und seinen Inhalt ins DOM ein
-                document.body.appendChild(newButton, currentDiv);
+                currentDiv.appendChild(newButton);
             }
         }
 
@@ -169,5 +191,5 @@ function socketAnno() {
 }
 
 function alertSelectedButton(buttonId){
-    alert(buttonId );
+    alert(buttonId);
 }
