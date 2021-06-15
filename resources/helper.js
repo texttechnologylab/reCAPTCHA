@@ -34,6 +34,7 @@ function alertSelectedButton(){
 }
 
 function test(){
+    return;
     var curDiv = document.getElementById("was");
     var newButton = document.createElement("Button");
     newButton.id = "lemmaStart"
