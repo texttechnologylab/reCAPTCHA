@@ -65,9 +65,7 @@ function socketAnno(task) {
                     else if (task = "displaySentence"){
                         displaySentence(casId, casText, toolElements);
                     }
-             //       for (let tool in toolElements) {
-             //           console.log(tool);
-             //       }
+
                     break;
                 }
 
@@ -100,7 +98,6 @@ function socketAnno(task) {
             //  text = text + " " + word;
             document.getElementById("sentenceHolder").innerHTML = textSentence;
             return;
-            console.log(textSentence);
         }
 
         function dislpaySentiment(){
@@ -135,6 +132,8 @@ function socketAnno(task) {
         colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
         colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
         colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
+        colorToken(toolElements["org.texttechnologylab.annotation.type.Food"], "#A569BD");
+
 
         /**
          * Hilfsfunktion

@@ -76,6 +76,9 @@ function checkInput(toolString){
 
     // Zum testen
     alert("Number of correct: " + numberOfCorrect + " Number of false: " + numberOfFalse);
+    if(numberOfFalse == 0 && foodsLemmaStart.length == 0){
+        alert("Alle Korrekt ausgewählt");
+    }
 
 }
 
@@ -91,11 +94,15 @@ function checkInputAdjectives(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
     checkInput(toolString);
 }
+function checkInputFood(){
+    var toolString = "org.texttechnologylab.annotation.type.Food";
+    checkInput(toolString);
+}
 
 let task1 = function () {
+    var tests = toolElementsGlobal["org.texttechnologylab.annotation.type.QuickTreeNode"];
     var text;
-    for (let lemma in lemmas) {
-        var word = lemmas[lemma]["features"]["begin"];
-        alert(word)
+    for (let test in tests) {
+        alert(tests[test]);
     }
 }
