@@ -1,3 +1,4 @@
+let toolElementsGlobal;
 //socketAnno("s");
 function socketAnno(task) {
     let lemmaStartList = [];
@@ -56,7 +57,7 @@ function socketAnno(task) {
 
                 case "open_tool": {
                     let toolElements = response.data.toolElements;
-
+                    toolElementsGlobal = toolElements;
                     // Bestimm was angezigt wird
                     if (task == "displayTextAsButton") {
                         displayTextAsButtons(casId, casText, toolElements);
@@ -88,17 +89,6 @@ function socketAnno(task) {
 
     }
 
-    function task1(casId, toolElements) {
-        var text;
-        var lemmas = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma"];
-        for (let lemma in lemmas) {
-            var word = lemmas[lemma]["features"]["begin"];
-
-            //  text = text + " " + word;
-            console.log(word)
-        }
-        // console.log(text);
-    }
 
 
     function displaySentence(casId, casText, toolElements){
@@ -111,6 +101,10 @@ function socketAnno(task) {
             document.getElementById("sentenceHolder").innerHTML = textSentence;
             return;
             console.log(textSentence);
+        }
+
+        function dislpaySentiment(){
+
         }
     }
 
@@ -136,20 +130,20 @@ function socketAnno(task) {
 
         }
         // Es wird jedes Token als Button angezeigt
-        addButton(textAsList);
+        addToken(textAsList);
         // Die Button bekommen Färbungen je nach Annotations
-        colorButton(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
-        colorButton(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
-        colorButton(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
+        colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
+        colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
+        colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
 
         /**
          * Hilfsfunktion
          * @param textAsList
          */
-        function addButton(textAsList) {
+        function addToken(textAsList) {
             // Div in dem die Buttons eingefügt werden
             var currentDiv = document.getElementById("sentenceHolder");
-            currentDiv.innerText = "";
+            currentDiv.innerHTML = "";
 
             for (i = 0; i < textAsList.length; i++) {
                 let word = textAsList[i];
@@ -172,10 +166,11 @@ function socketAnno(task) {
          * Hilfsfunktion
          * @param tool
          */
-        function colorButton(tool, color) {
+        function colorToken(tool, color) {
             for (let element in tool) {
                 var start = tool[element]["features"]["begin"];
                 document.getElementById("lemmaStart"+start).style.background=color;
+                document.getElementById("lemmaStart"+start).className = color;
 
             }
 
