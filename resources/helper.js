@@ -75,7 +75,7 @@ function checkInput(toolString){
     var numberOfCorrect = foodsLemmaStartOriginalLength - foodsLemmaStart.length;
 
     // Zum testen
-    alert("Number of correct: " + numberOfCorrect + " Number of false: " + numberOfFalse);
+    alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
     if(numberOfFalse == 0 && foodsLemmaStart.length == 0){
         alert("Alle Korrekt ausgewählt");
     }
@@ -87,9 +87,9 @@ function checkSentiment(selection, toolString) {
 
     //abchecken ob richtig
     if (result == sentiment) {
-        alert("Correct");
+        alert("Richtig");
     } else {
-        alert("Wrong sentiment");
+        alert("Falsch");
     }
 
 }
