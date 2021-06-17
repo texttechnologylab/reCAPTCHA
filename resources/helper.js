@@ -79,6 +79,18 @@ function checkInput(toolString){
     if(numberOfFalse == 0 && foodsLemmaStart.length == 0){
         alert("Alle Korrekt ausgewählt");
     }
+}
+
+function checkSentiment(selection, toolString) {
+    var result = selection;
+    var sentiment = toolElementsGlobal[toolString];
+
+    //abchecken ob richtig
+    if (result == sentiment) {
+        alert("Correct");
+    } else {
+        alert("Wrong sentiment");
+    }
 
 }
 
@@ -98,6 +110,13 @@ function checkInputFood(){
     var toolString = "org.texttechnologylab.annotation.type.Food";
     checkInput(toolString);
 }
+
+//
+function checkInputSentiment(selection) {
+    var toolString = "org.texttechnologylab.annotation.type.Sentiment";
+    checkSentiment(toolString, selection);
+}
+
 
 let task1 = function () {
     var tests = toolElementsGlobal["org.texttechnologylab.annotation.type.QuickTreeNode"];

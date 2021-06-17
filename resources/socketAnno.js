@@ -62,8 +62,9 @@ function socketAnno(task) {
                     if (task == "displayTextAsButton") {
                         displayTextAsButtons(casId, casText, toolElements);
                     }
-                    else if (task = "displaySentence"){
+                    else if (task == "displaySentence"){
                         displaySentence(casId, casText, toolElements);
+                        createSentimentButtons();
                     }
 
                     break;
@@ -98,10 +99,6 @@ function socketAnno(task) {
             //  text = text + " " + word;
             document.getElementById("sentenceHolder").innerHTML = textSentence;
             return;
-        }
-
-        function dislpaySentiment(){
-
         }
     }
 
@@ -187,3 +184,43 @@ function socketAnno(task) {
 function alertSelectedButton(buttonId){
     alert(buttonId);
 }
+
+    //Function to check the right sentiment
+    function createSentimentButtons() {
+        //var sent = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.Sentiment"
+        //window.alert(sent);
+        let positiveButton = document.createElement('button');
+        positiveButton.id = "posButton";
+        let posText = document.createTextNode('\u263A' + '\n' + "positiv");
+        positiveButton.appendChild(posText);
+        positiveButton.addEventListener("click", function () {
+            checkInputSentiment("pos")
+        }, false);
+
+
+        let negativeButton = document.createElement('button');
+        negativeButton.id = "negButton";
+        //Farbe und Bild hinzufügen
+        let negText = document.createTextNode('\u2639' + " " + "negativ");
+        negativeButton.appendChild(negText);
+        negativeButton.addEventListener("click", function () {
+            checkInputSentiment("neg")
+        }, false);
+
+        let neutralButton = document.createElement('button');
+        neutralButton.id = "neutButton";
+        let neutText = document.createTextNode('\u2639' + " " + "neutral")
+        neutralButton.append(neutText);
+        neutralButton.addEventListener("click", function () {
+            checkInputSentiment("neutral")
+        }, false);
+
+        let currentdiv = document.getElementById("sentimentButtonHolder");
+        currentdiv.innerHTML = "";
+        currentdiv.appendChild(positiveButton);
+        document.getElementById("posButton").style.backgroundColor = 'lime';
+        currentdiv.appendChild(negativeButton);
+        document.getElementById("negButton").style.backgroundColor = 'red';
+        currentdiv.appendChild(neutralButton);
+        document.getElementById("neutButton").style.backgroundColor = 'grey';
+    }
