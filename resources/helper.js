@@ -132,6 +132,7 @@ function test1(){
     }
     else{
         document.getElementById("sentenceHolder").innerHTML = allSentencesGlobal[sentenceCounterGlobal];
+        sentenceCounterGlobal++;
     }
 
 }
