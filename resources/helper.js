@@ -48,35 +48,35 @@ function tokenClicked(buttonId) {
  */
 function checkInput(toolString){
     var numberOfFalse = 0;
-    foodsLemmaStart = [];
+    AllLemmaStart = [];
 
     // Nötige Information
     var foods = toolElementsGlobal[toolString];
 
     // Speichert von jedem annotierten Token seinen lemmaStart in die Liste
     for (let food in foods) {
-        foodsLemmaStart.push(foods[food]["features"]["begin"])
+        AllLemmaStart.push(foods[food]["features"]["begin"])
     }
-    var foodsLemmaStartOriginalLength = foodsLemmaStart.length;
+    var AllLemmaStartOriginalLength = AllLemmaStart.length;
 
     // Vergleicht beide Listen miteinander und speichert egebnis in numberOfFalse und numberOfCorrect
     for (let word in selectedWordsId){
         var lemmaStart = selectedWordsId[word].split("lemmaStart")[1];
 
-        var index = foodsLemmaStart.indexOf(parseInt(lemmaStart, 10));
+        var index = AllLemmaStart.indexOf(parseInt(lemmaStart, 10));
         if (index > -1) {
-            foodsLemmaStart.splice(index, 1);
+            AllLemmaStart.splice(index, 1);
         }
         else {
             numberOfFalse++;
         }
 
     }
-    var numberOfCorrect = foodsLemmaStartOriginalLength - foodsLemmaStart.length;
+    var numberOfCorrect = AllLemmaStartOriginalLength - AllLemmaStart.length;
 
     // Zum testen
     alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
-    if(numberOfFalse == 0 && foodsLemmaStart.length == 0){
+    if(numberOfFalse == 0 && AllLemmaStart.length == 0){
         alert("Alle Korrekt ausgewählt");
     }
 }
@@ -113,10 +113,15 @@ function checkInputFood(){
 
 //
 function checkInputSentiment(selection) {
-    var toolString = "org.texttechnologylab.annotation.type.Sentiment";
-    checkSentiment(toolString, selection);
+    //var toolString = "org.texttechnologylab.annotation.type.Sentiment";
+    //checkSentiment(toolString, selection);
+    saveSentiment(selection);
 }
 
+function saveSentiment(selection) {
+    var sentiment = selection
+    return sentiment;
+}
 
 let task1 = function () {
     var tests = toolElementsGlobal["org.texttechnologylab.annotation.type.QuickTreeNode"];

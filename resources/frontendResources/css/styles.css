@@ -48,6 +48,11 @@
     scroll-behavior: smooth;
   }
 }
+i {
+  font-size: 20px;
+  font-weight: bold;
+
+}
 
 header {
   color: #9b9a9a;
@@ -62,8 +67,8 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  background-color: #2954c1;
+  color: #625b5b;
+  background-color: #3c3cd0;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
