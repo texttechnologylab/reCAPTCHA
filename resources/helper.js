@@ -1,6 +1,9 @@
 // Speichert die ids aller Token die angeklickt worden sind.
 let selectedWordsId = [];
 
+let sentenceCounterGlobal = 0;
+let allSentencesGlobal = [];
+
 /**
  * Falls ein Token angegklickt worden ist dann Token färben und die id in Liste speichern.
  * Falls ein angeklickter Token angegklickt wird dann Token wieder standarf Färben und die id aus
@@ -48,36 +51,36 @@ function tokenClicked(buttonId) {
  */
 function checkInput(toolString){
     var numberOfFalse = 0;
-    AllLemmaStart = [];
+    allLemmaStart = [];
 
     // Nötige Information
-    var foods = toolElementsGlobal[toolString];
+    var tool = toolElementsGlobal[toolString];
 
     // Speichert von jedem annotierten Token seinen lemmaStart in die Liste
-    for (let food in foods) {
-        AllLemmaStart.push(foods[food]["features"]["begin"])
+    for (let toolKey in tool) {
+        allLemmaStart.push(tool[toolKey]["features"]["begin"])
     }
-    var AllLemmaStartOriginalLength = AllLemmaStart.length;
+    var allLemmaStartOriginalLength = allLemmaStart.length;
 
     // Vergleicht beide Listen miteinander und speichert egebnis in numberOfFalse und numberOfCorrect
     for (let word in selectedWordsId){
         var lemmaStart = selectedWordsId[word].split("lemmaStart")[1];
 
-        var index = AllLemmaStart.indexOf(parseInt(lemmaStart, 10));
+        var index = allLemmaStart.indexOf(parseInt(lemmaStart, 10));
         if (index > -1) {
-            AllLemmaStart.splice(index, 1);
+            allLemmaStart.splice(index, 1);
         }
         else {
             numberOfFalse++;
         }
 
     }
-    var numberOfCorrect = AllLemmaStartOriginalLength - AllLemmaStart.length;
+    var numberOfCorrect = allLemmaStartOriginalLength - allLemmaStart.length;
 
     // Zum testen
     alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
-    if(numberOfFalse == 0 && AllLemmaStart.length == 0){
-        alert("Alle Korrekt ausgewählt");
+    if(numberOfFalse == 0 && allLemmaStart.length == 0){
+        alert("Alles Korrekt ausgewählt");
     }
 }
 
@@ -123,10 +126,12 @@ function saveSentiment(selection) {
     return sentiment;
 }
 
-let task1 = function () {
-    var tests = toolElementsGlobal["org.texttechnologylab.annotation.type.QuickTreeNode"];
-    var text;
-    for (let test in tests) {
-        alert(tests[test]);
+function test1(){
+    if (sentenceCounterGlobal == 0) {
+        socketAnno('loadSentences');
     }
+    else{
+        document.getElementById("sentenceHolder").innerHTML = allSentencesGlobal[sentenceCounterGlobal];
+    }
+
 }

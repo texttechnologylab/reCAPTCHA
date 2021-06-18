@@ -62,8 +62,8 @@ function socketAnno(task) {
                     if (task == "displayTextAsButton") {
                         displayTextAsButtons(casId, casText, toolElements);
                     }
-                    else if (task == "displaySentence"){
-                        displaySentence(casId, casText, toolElements);
+                    else if (task == "loadSentences"){
+                        loadSentences(casId, casText, toolElements);
                         createSentimentButtons();
                     }
 
@@ -90,15 +90,20 @@ function socketAnno(task) {
 
 
 
-    function displaySentence(casId, casText, toolElements){
+    function loadSentences(casId, casText, toolElements){
         var sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
         for (let sentence in sentences) {
             var start = sentences[sentence]["features"]["begin"];
             var end = sentences[sentence]["features"]["end"];
             var textSentence = casText.slice(start, end);
+
+            // Ersten Satz anzeigen.
+            if (sentenceCounterGlobal == 0){
+                document.getElementById("sentenceHolder").innerHTML = textSentence
+                sentenceCounterGlobal++;
+            }
             //  text = text + " " + word;
-            document.getElementById("sentenceHolder").innerHTML = textSentence;
-            return;
+            allSentencesGlobal.push(textSentence);
         }
     }
 
