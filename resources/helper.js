@@ -1,5 +1,5 @@
 // Speichert die ids aller Token die angeklickt worden sind.
-let selectedWordsId = [];
+let selectedTokensId = [];
 
 let sentenceCounterGlobal = 0;
 let allSentencesGlobal = [];
@@ -29,16 +29,16 @@ function tokenClicked(buttonId) {
         }
 
         // Element mit value aus Array entfernen: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
-        const index = selectedWordsId.indexOf(buttonId);
+        const index = selectedTokensId.indexOf(buttonId);
         if (index > -1) {
-           selectedWordsId.splice(index, 1);
+           selectedTokensId.splice(index, 1);
         }
 
     }
     // Falls der Token noch nicht ausgewählt ist
     else {
         button.style.background = selectedColor;
-        selectedWordsId.push(buttonId);
+        selectedTokensId.push(buttonId);
     }
 
 }
@@ -63,8 +63,8 @@ function checkInput(toolString){
     var allLemmaStartOriginalLength = allLemmaStart.length;
 
     // Vergleicht beide Listen miteinander und speichert egebnis in numberOfFalse und numberOfCorrect
-    for (let word in selectedWordsId){
-        var lemmaStart = selectedWordsId[word].split("lemmaStart")[1];
+    for (let word in selectedTokensId){
+        var lemmaStart = selectedTokensId[word].split("lemmaStart")[1];
 
         var index = allLemmaStart.indexOf(parseInt(lemmaStart, 10));
         if (index > -1) {
@@ -126,7 +126,7 @@ function saveSentiment(selection) {
     return sentiment;
 }
 
-function test1(){
+function displaySentence(){
     if (sentenceCounterGlobal == 0) {
         socketAnno('loadSentences');
     }

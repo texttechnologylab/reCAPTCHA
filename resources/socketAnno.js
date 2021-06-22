@@ -1,6 +1,18 @@
 let toolElementsGlobal;
+let webSocketGlobal;
+
 //socketAnno("s");
 function socketAnno(task) {
+    const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
+  //  const WebSocket = require('ws');
+    const webSocket = new WebSocket(url);
+
+    let casId = "28450";
+    let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
+    let view = "https://authority.hucompute.org/user/316809";
+    let tool = "quickpanel";
+
+
     let lemmaStartList = [];
     let selectedButton = [];
     let casText;
@@ -9,26 +21,17 @@ function socketAnno(task) {
     startConnection();
 
     function startConnection() {
-        const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
-      //  const WebSocket = require('ws');
-        const client = new WebSocket(url);
 
-        let casId = "28450";
-        let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
-        let view = "https://authority.hucompute.org/user/316809";
-        let tool = "quickpanel";
+        webSocket.onopen = function () {
 
-
-        client.onopen = function () {
-
-            if (client.readyState === client.OPEN) {
-                client.send(JSON.stringify({cmd: 'session', data: {session: session}}));
-                client.send(JSON.stringify({cmd: 'open_cas', data: {casId: casId}}));
+            if (webSocket.readyState === webSocket.OPEN) {
+                webSocket.send(JSON.stringify({cmd: 'session', data: {session: session}}));
+                webSocket.send(JSON.stringify({cmd: 'open_cas', data: {casId: casId}}));
 
             }
         };
 
-        client.onmessage = (msg) => {
+        webSocket.onmessage = (msg) => {
             var response = JSON.parse(msg.data);
 
             //response.cmd gibt an welche Art von Nachricht empfangen worden ist.
@@ -40,7 +43,7 @@ function socketAnno(task) {
                 case "open_cas": {
                     casText = response.data.text;
 
-                    client.send(JSON.stringify({
+                    webSocket.send(JSON.stringify({
                         cmd: 'open_view',
                         data: {casId: casId, view: view, force: true}
                     }));
@@ -48,7 +51,7 @@ function socketAnno(task) {
                 }
 
                 case "open_view": {
-                    client.send(JSON.stringify({
+                    webSocket.send(JSON.stringify({
                         cmd: 'open_tool',
                         data: {casId: response.data.casId, view: response.data.view, toolName: tool}
                     }));
@@ -58,6 +61,8 @@ function socketAnno(task) {
                 case "open_tool": {
                     let toolElements = response.data.toolElements;
                     toolElementsGlobal = toolElements;
+                    webSocketGlobal = webSocket;
+
                     // Bestimm was angezigt wird
                     if (task == "displayTextAsButton") {
                         displayTextAsButtons(casId, casText, toolElements);
@@ -67,9 +72,9 @@ function socketAnno(task) {
                         createSentimentButtons();
                     }
 
+
                     break;
                 }
-
                 case "msg": {
                     //console.log(response);
                     break;
@@ -78,16 +83,15 @@ function socketAnno(task) {
 
         };
 
-        client.onclose = function () {
+        webSocket.onclose = function () {
             console.log('WebSocket Client Closed');
         };
 
-        client.onerror = (error) => {
+        webSocket.onerror = (error) => {
             console.log("Error");
         };
 
     }
-
 
 
     function loadSentences(casId, casText, toolElements){
@@ -179,53 +183,83 @@ function socketAnno(task) {
 
     }
 
-    var text1 = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
-    var text2 = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_VERB";
-    var text3 = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V";
-    var text4 = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
-
 }
 
 function alertSelectedButton(buttonId){
     alert(buttonId);
 }
 
-    //Function to check the right sentiment
-    function createSentimentButtons() {
-        //var sent = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.Sentiment"
-        //window.alert(sent);
-        let positiveButton = document.createElement('button');
-        positiveButton.id = "posButton";
-        let posText = document.createTextNode('\u263A' + '\n' + "positiv");
-        positiveButton.appendChild(posText);
-        positiveButton.addEventListener("click", function () {
-            checkInputSentiment("pos")
-        }, false);
+//Function to check the right sentiment
+function createSentimentButtons() {
+    //var sent = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.Sentiment"
+    //window.alert(sent);
+    let positiveButton = document.createElement('button');
+    positiveButton.id = "posButton";
+    let posText = document.createTextNode('\u263A' + '\n' + "positiv");
+    positiveButton.appendChild(posText);
+    positiveButton.addEventListener("click", function () {
+        checkInputSentiment("pos")
+    }, false);
 
 
-        let negativeButton = document.createElement('button');
-        negativeButton.id = "negButton";
-        //Farbe und Bild hinzufügen
-        let negText = document.createTextNode('\u2639' + " " + "negativ");
-        negativeButton.appendChild(negText);
-        negativeButton.addEventListener("click", function () {
-            checkInputSentiment("neg")
-        }, false);
+    let negativeButton = document.createElement('button');
+    negativeButton.id = "negButton";
+    //Farbe und Bild hinzufügen
+    let negText = document.createTextNode('\u2639' + " " + "negativ");
+    negativeButton.appendChild(negText);
+    negativeButton.addEventListener("click", function () {
+        checkInputSentiment("neg")
+    }, false);
 
-        let neutralButton = document.createElement('button');
-        neutralButton.id = "neutButton";
-        let neutText = document.createTextNode('\u2639' + " " + "neutral")
-        neutralButton.append(neutText);
-        neutralButton.addEventListener("click", function () {
-            checkInputSentiment("neutral")
-        }, false);
+    let neutralButton = document.createElement('button');
+    neutralButton.id = "neutButton";
+    let neutText = document.createTextNode('\u2639' + " " + "neutral")
+    neutralButton.append(neutText);
+    neutralButton.addEventListener("click", function () {
+        checkInputSentiment("neutral")
+    }, false);
 
-        let currentdiv = document.getElementById("sentimentButtonHolder");
-        currentdiv.innerHTML = "";
-        currentdiv.appendChild(positiveButton);
-        document.getElementById("posButton").style.backgroundColor = 'lime';
-        currentdiv.appendChild(negativeButton);
-        document.getElementById("negButton").style.backgroundColor = 'red';
-        currentdiv.appendChild(neutralButton);
-        document.getElementById("neutButton").style.backgroundColor = 'grey';
+    let currentdiv = document.getElementById("sentimentButtonHolder");
+    currentdiv.innerHTML = "";
+    currentdiv.appendChild(positiveButton);
+    document.getElementById("posButton").style.backgroundColor = 'lime';
+    currentdiv.appendChild(negativeButton);
+    document.getElementById("negButton").style.backgroundColor = 'red';
+    currentdiv.appendChild(neutralButton);
+    document.getElementById("neutButton").style.backgroundColor = 'grey';
+}
+
+function makeAnnotation(){
+    var type = "org.texttechnologylab.annotation.type.Food";
+
+
+    // Bleiben fest erstmal
+    var casId = "28450";
+    var view = "https://authority.hucompute.org/user/316809";
+    var tool = "quickpanel";
+    var bPrivate = false;
+    var batchIdentifier = "_b1_";
+    var cmdQueue = [];
+
+    for (let element in selectedTokensId){
+        var selectedTokenId = selectedTokensId[element];
+        var begin = selectedTokenId.split("lemmaStart")[1];
+        var text = document.getElementById(selectedTokenId).innerHTML;
+        var end = (parseInt(begin, 10) + text.length).toString();
+        var features = {begin: begin, end: end, metaphor: false, metonym: false ,specific: false};
+        cmdQueue.push({cmd: 'create', data: {bid: batchIdentifier, _type: type, features: features}});
+
+
     }
+    console.log(cmdQueue);
+
+    var cmd = JSON.stringify({
+        cmd: 'work_batch',
+        data: {
+            casId: casId, toolName: tool, view: view,
+            queue: cmdQueue, options: [{privateSession: bPrivate}]
+        }
+    });
+    webSocketGlobal.send(cmd);
+
+}
