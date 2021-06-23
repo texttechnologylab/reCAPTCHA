@@ -121,7 +121,6 @@ function socketAnno(task) {
      */
     function displayTextAsButtons(casId, casText, toolElements) {
         let textAsList = [];
-        // let lemmas = toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"];
         let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
         let i = 0;
         for (let lemma in lemmas) {
@@ -185,9 +184,6 @@ function socketAnno(task) {
 
 }
 
-function alertSelectedButton(buttonId){
-    alert(buttonId);
-}
 
 //Function to check the right sentiment
 function createSentimentButtons() {
@@ -227,39 +223,4 @@ function createSentimentButtons() {
     document.getElementById("negButton").style.backgroundColor = 'red';
     currentdiv.appendChild(neutralButton);
     document.getElementById("neutButton").style.backgroundColor = 'grey';
-}
-
-function makeAnnotation(){
-    var type = "org.texttechnologylab.annotation.type.Food";
-
-
-    // Bleiben fest erstmal
-    var casId = "28450";
-    var view = "https://authority.hucompute.org/user/316809";
-    var tool = "quickpanel";
-    var bPrivate = false;
-    var batchIdentifier = "_b1_";
-    var cmdQueue = [];
-
-    for (let element in selectedTokensId){
-        var selectedTokenId = selectedTokensId[element];
-        var begin = selectedTokenId.split("lemmaStart")[1];
-        var text = document.getElementById(selectedTokenId).innerHTML;
-        var end = (parseInt(begin, 10) + text.length).toString();
-        var features = {begin: begin, end: end, metaphor: false, metonym: false ,specific: false};
-        cmdQueue.push({cmd: 'create', data: {bid: batchIdentifier, _type: type, features: features}});
-
-
-    }
-    console.log(cmdQueue);
-
-    var cmd = JSON.stringify({
-        cmd: 'work_batch',
-        data: {
-            casId: casId, toolName: tool, view: view,
-            queue: cmdQueue, options: [{privateSession: bPrivate}]
-        }
-    });
-    webSocketGlobal.send(cmd);
-
 }
