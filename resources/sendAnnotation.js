@@ -39,7 +39,7 @@ function sendAnnotationHelper(type){
 
     webSocketGlobal.send(JSON.stringify({
         cmd: 'save_cas',
-        data: {casId: doc.get('id')}
+        data: {casId: casId}
     }));
 }
 

@@ -43,6 +43,29 @@ function tokenClicked(buttonId) {
 
 }
 
+/**
+ * Fügt die zwei Buttons hinzu um Tokens selber zu annotieren oder Tokens auszuwählen zur Überprüfung
+ */
+function addInputButtons(){
+    currentDiv = document.getElementById("testText");
+    var newDiv = document.createElement("div");
+    newDiv.className = "card-body";
+
+    var buttonCheck = document.createElement("button");
+    var buttonAnnotation = document.createElement("button");
+
+    buttonCheck.setAttribute("onclick", "checkInputFood()");
+    buttonCheck.innerHTML = "Kontrollier Essen";
+    buttonAnnotation.setAttribute("onclick", "sendAnnotationFood()");
+    buttonAnnotation.innerHTML = "Annotier Essen"
+
+    newDiv.appendChild(buttonAnnotation);
+    newDiv.appendChild(buttonCheck);
+
+    currentDiv.appendChild(newDiv);
+
+}
+
 
 function checkSentiment(selection, toolString) {
     var result = selection;

@@ -12,14 +12,11 @@ function socketAnno(task) {
     let view = "https://authority.hucompute.org/user/316809";
     let tool = "quickpanel";
 
-
     let lemmaStartList = [];
     let selectedButton = [];
     let casText;
 
-
     startConnection();
-
     function startConnection() {
 
         webSocket.onopen = function () {
@@ -72,9 +69,9 @@ function socketAnno(task) {
                         createSentimentButtons();
                     }
 
-
                     break;
                 }
+
                 case "msg": {
                     //console.log(response);
                     break;
@@ -133,6 +130,7 @@ function socketAnno(task) {
         }
         // Es wird jedes Token als Button angezeigt
         addToken(textAsList);
+
         // Die Button bekommen Färbungen je nach Annotations
         colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
         colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
@@ -146,8 +144,11 @@ function socketAnno(task) {
          */
         function addToken(textAsList) {
             // Div in dem die Buttons eingefügt werden
-            var currentDiv = document.getElementById("sentenceHolder");
-            currentDiv.innerHTML = "";
+            var currentDiv = document.getElementById("testText");
+            var newDiv = document.createElement("div");
+            newDiv.className = "card-body";
+            newDiv.innerHTML = "";
+            currentDiv.appendChild(newDiv);
 
             for (i = 0; i < textAsList.length; i++) {
                 let word = textAsList[i];
@@ -162,7 +163,7 @@ function socketAnno(task) {
                 newButton.appendChild(newContent);
 
                 // füge das neu erstellte Element und seinen Inhalt ins DOM ein
-                currentDiv.appendChild(newButton);
+                newDiv.appendChild(newButton);
             }
         }
 
@@ -181,6 +182,10 @@ function socketAnno(task) {
         }
 
     }
+
+}
+
+function taskNouns(){
 
 }
 
