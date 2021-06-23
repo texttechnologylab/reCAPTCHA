@@ -56,8 +56,13 @@ function addInputButtons(){
 
     buttonCheck.setAttribute("onclick", "checkInputFood()");
     buttonCheck.innerHTML = "Kontrollier Essen";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
+
     buttonAnnotation.setAttribute("onclick", "sendAnnotationFood()");
-    buttonAnnotation.innerHTML = "Annotier Essen"
+    buttonAnnotation.innerHTML = "Annotier Essen";
+    buttonAnnotation.className = "btn btn-secondary btn-lg btn-block";
+    buttonAnnotation.role
+
 
     newDiv.appendChild(buttonAnnotation);
     newDiv.appendChild(buttonCheck);

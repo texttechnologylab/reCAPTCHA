@@ -137,6 +137,8 @@ function socketAnno(task) {
         colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
         colorToken(toolElements["org.texttechnologylab.annotation.type.Food"], "#A569BD");
 
+        addInputButtons();
+
 
         /**
          * Hilfsfunktion
@@ -182,10 +184,6 @@ function socketAnno(task) {
         }
 
     }
-
-}
-
-function taskNouns(){
 
 }
 
