@@ -12,7 +12,12 @@ function checkInputAdjectives(){
 }
 function checkInputFood(){
     var toolString = "org.texttechnologylab.annotation.type.Food";
-    checkInputHelper(toolString);
+    taskStatus();
+    if (checkInputHelper(toolString) == true) {
+        document.getElementById("fifthTaskLight").style.backgroundColor = 'lime';
+    } else {
+        document.getElementById("fifthTaskLight").style.backgroundColor = 'red';
+    }
 }
 
 /**
@@ -69,10 +74,14 @@ function checkInputHelper(toolString){
     // Zum testen
     alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
     if(numberOfFalse == 0 && allLemmaStart.length == 0){
-        alert("Alles Korrekt ausgewählt");
+        let correct = true;
+        alert("Alles korrekt ausgewählt");
+        return correct;
+    } else {
+        let correct = false;
+        return correct;
     }
 }
-
 
 
 /**

@@ -96,6 +96,13 @@ function addAdjectiveButton() {
     currentDiv.appendChild(checkA);
 }
 
+function addFoodButton() {
+    let currentDiv = document.getElementById("testText");
+    let checkF = document.createElement("Button");
+    checkF.id = "checkF";
+    checkF.setAttribute("onclick", "checkInput")
+}
+
 /** funktioniert noch nicht
  * Überprüft ob Auswahl passt oder nicht
  * @param selection

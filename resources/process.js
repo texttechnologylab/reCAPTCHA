@@ -1,10 +1,7 @@
 
-//Prozessablauf, Start Beginnen,
+//Prozessablauf, Start Beginnen, Buttons erzeugen
 
 function taskCreator() {
-    //socketAnno('displayTextAsButton');
-    //addNounButton();
-
     let currentDiv = document.getElementById("taskArea");
     currentDiv.innerHTML = "";
     let buttonDiv = document.getElementById("playArea");
@@ -46,11 +43,10 @@ function taskCreator() {
     fifthTaskButton.id = "fifthTaskLight";
     let five = document.createTextNode("Aufgabe 5");
     fifthTaskButton.appendChild(five);
+    fifthTaskButton.setAttribute("onclick", "taskFive()");
     fifthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(fifthTaskButton);
-
     addNounButton();
-
 }
 
 function taskOne() {
@@ -85,6 +81,44 @@ function taskFour() {
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
     socketAnno('loadSentences');
+}
 
+function taskFive() {
+    let currentdiv = document.getElementById("playArea");
+    currentdiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    socketAnno('displayTextAsButton');
+    addFoodButton();
+}
+
+function addFoodButton() {
+    let currentDiv = document.getElementById("testText");
+    var buttonCheck = document.createElement("button");
+    buttonCheck.setAttribute("onclick", "checkInputFood()");
+    buttonCheck.innerHTML = "Check Food";
+    currentDiv.appendChild(buttonCheck);
+}
+
+function addInputButtons(){
+    let currentDiv = document.getElementById("testText");
+    var newDiv = document.createElement("div");
+    newDiv.className = "card-body";
+
+    var buttonCheck = document.createElement("button");
+    var buttonAnnotation = document.createElement("button");
+
+    buttonCheck.setAttribute("onclick", "checkInputFood()");
+    buttonCheck.innerHTML = "Kontrolliere Essen";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
+
+    buttonAnnotation.setAttribute("onclick", "sendAnnotationFood()");
+    buttonAnnotation.innerHTML = "Annotiere Essen";
+    buttonAnnotation.className = "btn btn-secondary btn-lg btn-block";
+    buttonAnnotation.role
+
+    newDiv.appendChild(buttonAnnotation);
+    newDiv.appendChild(buttonCheck);
+    currentDiv.appendChild(newDiv);
 }
 
