@@ -4,18 +4,32 @@
  * der ToolElements aus dem Textannotater. Vergleiche werden durch lemmaStart vorgenommen.
  * @param toolString
  */
-function checkInput(toolString){
+function checkInputHelper(toolString){
     var numberOfFalse = 0;
-    allLemmaStart = [];
+    var allLemmaStartFromTool = [];
+    var allLemmaStartDisplayedTokens = getAllLemmaStartDisplayedTokens();
+    var allLemmaStart = [];
 
-    // Nötige Information
+
+    // Nötige Information über die Token sind in tool gespeichert
     var tool = toolElementsGlobal[toolString];
 
     // Speichert von jedem annotierten Token seinen lemmaStart in die Liste
     for (let toolKey in tool) {
-        allLemmaStart.push(tool[toolKey]["features"]["begin"])
+        allLemmaStartFromTool.push(tool[toolKey]["features"]["begin"])
     }
-    var allLemmaStartOriginalLength = allLemmaStart.length;
+
+    // allLemmaStart = allLemmaStartFromTool *UND-Operator* allLemmaStartDisplayedTokens
+    for (let element in allLemmaStartDisplayedTokens){
+        var displayedTokenLemmaStart = allLemmaStartDisplayedTokens[element];
+        if (allLemmaStartFromTool.includes(displayedTokenLemmaStart)){
+            allLemmaStart.push(displayedTokenLemmaStart);
+        }
+    }
+
+
+
+    var allLemmaStartOriginalLength = allLemmaStart.length; // Originalgröße wird gespeichert
 
     // Vergleicht beide Listen miteinander und speichert egebnis in numberOfFalse und numberOfCorrect
     for (let word in selectedTokensId){
@@ -30,6 +44,8 @@ function checkInput(toolString){
         }
 
     }
+
+
     var numberOfCorrect = allLemmaStartOriginalLength - allLemmaStart.length;
 
     // Zum testen
@@ -41,17 +57,39 @@ function checkInput(toolString){
 
 function checkInputNouns(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN";
-    checkInput(toolString);
+    checkInputHelper(toolString);
 }
 function checkInputVerbs(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V";
-    checkInput(toolString);
+    checkInputHelper(toolString);
 }
 function checkInputAdjectives(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
-    checkInput(toolString);
+    checkInputHelper(toolString);
 }
 function checkInputFood(){
     var toolString = "org.texttechnologylab.annotation.type.Food";
-    checkInput(toolString);
+    checkInputHelper(toolString);
 }
+
+/**
+ * Speichert alle ids von den Token die auf der Seite angezeigt werden in eine Liste und gibt diese zurück
+ * @returns {number[]}
+ */
+function getAllLemmaStartDisplayedTokens(){
+    var displayedTokensId = [];
+    var allLemmaStartDisplayedTokens = [];
+
+    var childDivs = document.getElementById('testText').getElementsByTagName('button');
+    for (var i = 0; i < childDivs.length; i++) {
+        displayedTokensId.push(childDivs[i].id);
+    }
+
+    for (let element in displayedTokensId){
+        if ((displayedTokensId[element]).includes("lemmaStart")){
+            allLemmaStartDisplayedTokens.push(parseInt((displayedTokensId[element]).split("lemmaStart")[1]), 10);
+        }
+    }
+    return allLemmaStartDisplayedTokens;
+}
+

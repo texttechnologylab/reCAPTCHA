@@ -119,13 +119,25 @@ function socketAnno(task) {
     function displayTextAsButtons(casId, casText, toolElements) {
         let textAsList = [];
         let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
-        let i = 0;
+        var i = 0;
+        const NUMBEROFTOKENS = 1000;
         for (let lemma in lemmas) {
             var start = lemmas[lemma]["features"]["begin"];
             var end = lemmas[lemma]["features"]["end"];
 
+            // Damit Token nicht doppelt vorkommen in verschiedenen Versionen
+            if (lemmaStartList.includes(start)){
+                continue;
+            }
+
             lemmaStartList.push(start);
             textAsList.push(casText.slice(start, end));
+
+            if (i == NUMBEROFTOKENS){
+                break;
+            }
+
+            i++;
 
         }
         // Es wird jedes Token als Button angezeigt
@@ -176,6 +188,10 @@ function socketAnno(task) {
         function colorToken(tool, color) {
             for (let element in tool) {
                 var start = tool[element]["features"]["begin"];
+                if (document.getElementById("lemmaStart"+start) == null){
+                   continue;
+                }
+
                 document.getElementById("lemmaStart"+start).style.background=color;
                 document.getElementById("lemmaStart"+start).className = color;
 

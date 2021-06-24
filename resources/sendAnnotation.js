@@ -6,8 +6,6 @@
 function sendAnnotationHelper(type){
   //  var type = "org.texttechnologylab.annotation.type.Food";
   //  var selectedTokensId = selectedTokensId; // Globale Variable in Funktion local speichern
-    console.log(selectedTokensId);
-
 
     // Bleiben fest erstmal
     var casId = "28450";
