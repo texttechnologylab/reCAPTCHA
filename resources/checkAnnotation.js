@@ -83,7 +83,7 @@ function getAllLemmaStartDisplayedTokens(){
     var displayedTokensId = [];
     var allLemmaStartDisplayedTokens = [];
 
-    var childDivs = document.getElementById('testText').getElementsByTagName('button');
+    var childDivs = document.getElementById('playArea').getElementsByTagName('button');
     for (var i = 0; i < childDivs.length; i++) {
         displayedTokensId.push(childDivs[i].id);
     }

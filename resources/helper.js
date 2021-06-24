@@ -6,7 +6,7 @@ let allSentencesGlobal = [];
 
 /**
  * Falls ein Token angegklickt worden ist dann Token färben und die id in Liste speichern.
- * Falls ein angeklickter Token angegklickt wird dann Token wieder standarf Färben und die id aus
+ * Falls ein angeklickter Token angeklickt wird dann Token wieder standard färben und die id aus
  * der Liste entfernen.
  * @param buttonId
  */
@@ -47,7 +47,7 @@ function tokenClicked(buttonId) {
  * Fügt die zwei Buttons hinzu um Tokens selber zu annotieren oder Tokens auszuwählen zur Überprüfung
  */
 function addInputButtons(){
-    currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("testText");
     var newDiv = document.createElement("div");
     newDiv.className = "card-body";
 
@@ -55,23 +55,52 @@ function addInputButtons(){
     var buttonAnnotation = document.createElement("button");
 
     buttonCheck.setAttribute("onclick", "checkInputFood()");
-    buttonCheck.innerHTML = "Kontrollier Essen";
+    buttonCheck.innerHTML = "Kontrolliere Essen";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
 
     buttonAnnotation.setAttribute("onclick", "sendAnnotationFood()");
-    buttonAnnotation.innerHTML = "Annotier Essen";
+    buttonAnnotation.innerHTML = "Annotiere Essen";
     buttonAnnotation.className = "btn btn-secondary btn-lg btn-block";
     buttonAnnotation.role
 
-
     newDiv.appendChild(buttonAnnotation);
     newDiv.appendChild(buttonCheck);
-
     currentDiv.appendChild(newDiv);
-
 }
 
+function addNounButton() {
+    let currentDiv = document.getElementById("testText");
+    let checkN = document.createElement("Button");
+    checkN.id = "checkN";
+    checkN.setAttribute("onclick", "checkInputNouns()");
+    checkN.innerHTML = "Check Nomen";
+    currentDiv.appendChild(checkN);
+}
 
+function addVerbButton() {
+    let currentDiv = document.getElementById("testText");
+    let checkV = document.createElement("Button");
+    checkV.id = "checkV";
+    checkV.setAttribute("onclick", "checkInputVerbs()");
+    checkV.innerHTML = "Check Verben";
+    currentDiv.innerHTML = "";
+    currentDiv.appendChild(checkV);
+}
+
+function addAdjectiveButton() {
+    let currentDiv = document.getElementById("testText");
+    let checkA = document.createElement("Button");
+    checkA.id = "checkA";
+    checkA.setAttribute("onclick", "checkInputAdjectives()");
+    checkA.innerHTML = "Check Adjektive";
+    currentDiv.appendChild(checkA);
+}
+
+/** funktioniert noch nicht
+ * Überprüft ob Auswahl passt oder nicht
+ * @param selection
+ * @param toolString
+ */
 function checkSentiment(selection, toolString) {
     var result = selection;
     var sentiment = toolElementsGlobal[toolString];
@@ -88,8 +117,6 @@ function checkSentiment(selection, toolString) {
 
 //
 function checkInputSentiment(selection) {
-    //var toolString = "org.texttechnologylab.annotation.type.Sentiment";
-    //checkSentiment(toolString, selection);
     saveSentiment(selection);
 }
 

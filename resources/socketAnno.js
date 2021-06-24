@@ -60,7 +60,7 @@ function socketAnno(task) {
                     toolElementsGlobal = toolElements;
                     webSocketGlobal = webSocket;
 
-                    // Bestimm was angezigt wird
+                    // Bestimmung der Angezeige
                     if (task == "displayTextAsButton") {
                         displayTextAsButtons(casId, casText, toolElements);
                     }
@@ -100,7 +100,7 @@ function socketAnno(task) {
 
             // Ersten Satz anzeigen.
             if (sentenceCounterGlobal == 0){
-                document.getElementById("sentenceHolder").innerHTML = textSentence
+                document.getElementById("playArea").innerHTML = textSentence
                 sentenceCounterGlobal++;
             }
             //  text = text + " " + word;
@@ -149,7 +149,7 @@ function socketAnno(task) {
         colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
         colorToken(toolElements["org.texttechnologylab.annotation.type.Food"], "#A569BD");
 
-        addInputButtons();
+        //addInputButtons();
 
 
         /**
@@ -158,7 +158,7 @@ function socketAnno(task) {
          */
         function addToken(textAsList) {
             // Div in dem die Buttons eingefügt werden
-            var currentDiv = document.getElementById("testText");
+            var currentDiv = document.getElementById("playArea");
             var newDiv = document.createElement("div");
             newDiv.className = "card-body";
             newDiv.innerHTML = "";
@@ -206,21 +206,18 @@ function socketAnno(task) {
 
 //Function to check the right sentiment
 function createSentimentButtons() {
-    //var sent = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.Sentiment"
-    //window.alert(sent);
     let positiveButton = document.createElement('button');
     positiveButton.id = "posButton";
-    let posText = document.createTextNode('\u263A' + '\n' + "positiv");
+    let posText = document.createTextNode('😀' + '\n' + "positiv"); //\u263A
     positiveButton.appendChild(posText);
     positiveButton.addEventListener("click", function () {
         checkInputSentiment("pos")
     }, false);
 
-
     let negativeButton = document.createElement('button');
     negativeButton.id = "negButton";
     //Farbe und Bild hinzufügen
-    let negText = document.createTextNode('\u2639' + " " + "negativ");
+    let negText = document.createTextNode('🙁' + " " + "negativ"); //\u2639'
     negativeButton.appendChild(negText);
     negativeButton.addEventListener("click", function () {
         checkInputSentiment("neg")
@@ -228,13 +225,21 @@ function createSentimentButtons() {
 
     let neutralButton = document.createElement('button');
     neutralButton.id = "neutButton";
-    let neutText = document.createTextNode('\u2639' + " " + "neutral")
+    let neutText = document.createTextNode('😐' + " " + "neutral")
     neutralButton.append(neutText);
     neutralButton.addEventListener("click", function () {
         checkInputSentiment("neutral")
     }, false);
 
-    let currentdiv = document.getElementById("sentimentButtonHolder");
+    let nosentButton = document.createElement('button');
+    nosentButton.id = "nosentButton";
+    let nosentText = document.createTextNode("Kein Sentiment");
+    nosentButton.append(nosentText);
+    nosentButton.addEventListener("click", function () {
+        checkInputSentiment("keinSentiment");
+    })
+
+    let currentdiv = document.getElementById("testText");
     currentdiv.innerHTML = "";
     currentdiv.appendChild(positiveButton);
     document.getElementById("posButton").style.backgroundColor = 'lime';
