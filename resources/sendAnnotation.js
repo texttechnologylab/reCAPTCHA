@@ -1,6 +1,6 @@
 /**
- * Hilfsfunktion: Funktion, die dem Textannotator die Annotationen übersendet.
- * Der parameter ist das Toolelement
+ * Hilfsfunktion:
+ * Funktion, die dem Textannotator die Annotationen übersendet. Der parameter ist das Toolelement
  * @param type z.B "org.texttechnologylab.annotation.type.Food"
  */
 function sendAnnotationHelper(type){

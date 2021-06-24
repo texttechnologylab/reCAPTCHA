@@ -1,11 +1,29 @@
+function checkInputNouns(){
+    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN";
+    checkInputHelper(toolString);
+}
+function checkInputVerbs(){
+    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V";
+    checkInputHelper(toolString);
+}
+function checkInputAdjectives(){
+    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
+    checkInputHelper(toolString);
+}
+function checkInputFood(){
+    var toolString = "org.texttechnologylab.annotation.type.Food";
+    checkInputHelper(toolString);
+}
+
 /**
  * Hilsfunktion
- * Kontrolliert die Eingabe des Users. Vergleicht die Liste der ausgewählten Token und vergleicht sie mit der Liste
+ * Kontrolliert die Eingabe des Users. Vergleicht dafür die Liste der ausgewählten Token des Users mit der Liste
  * der ToolElements aus dem Textannotater. Vergleiche werden durch lemmaStart vorgenommen.
  * @param toolString
  */
 function checkInputHelper(toolString){
     var numberOfFalse = 0;
+
     var allLemmaStartFromTool = [];
     var allLemmaStartDisplayedTokens = getAllLemmaStartDisplayedTokens();
     var allLemmaStart = [];
@@ -55,22 +73,7 @@ function checkInputHelper(toolString){
     }
 }
 
-function checkInputNouns(){
-    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN";
-    checkInputHelper(toolString);
-}
-function checkInputVerbs(){
-    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V";
-    checkInputHelper(toolString);
-}
-function checkInputAdjectives(){
-    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
-    checkInputHelper(toolString);
-}
-function checkInputFood(){
-    var toolString = "org.texttechnologylab.annotation.type.Food";
-    checkInputHelper(toolString);
-}
+
 
 /**
  * Speichert alle ids von den Token die auf der Seite angezeigt werden in eine Liste und gibt diese zurück
