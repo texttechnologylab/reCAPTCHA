@@ -64,6 +64,7 @@ function taskOne() {
     currentdiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
+    socketAnno('displayTextAsButton');
     addNounButton();
 }
 
