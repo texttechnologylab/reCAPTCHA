@@ -1,15 +1,30 @@
 function checkInputNouns(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN";
-    checkInputHelper(toolString);
-    
+    //checkInputHelper(toolString);
+    if (checkInputHelper(toolString) == true) {
+        document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
+    } else {
+        document.getElementById("firstTaskLight").style.backgroundColor = 'red';
+    }
+
 }
 function checkInputVerbs(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V";
-    checkInputHelper(toolString);
+    //checkInputHelper(toolString);
+    if (checkInputHelper(toolString) == true) {
+        document.getElementById("secondTaskLight").style.backgroundColor = 'lime';
+    } else {
+        document.getElementById("secondTaskLight").style.backgroundColor = 'red';
+    }
 }
 function checkInputAdjectives(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
-    checkInputHelper(toolString);
+    if (checkInputHelper(toolString) == true) {
+        document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
+    } else {
+        document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
+    }
+    //checkInputHelper(toolString);
 }
 function checkInputFood(){
     var toolString = "org.texttechnologylab.annotation.type.Food";
