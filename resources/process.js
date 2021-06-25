@@ -47,6 +47,15 @@ function taskCreator() {
     fifthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(fifthTaskButton);
     addNounButton();
+
+    let sixTaskButton = document.createElement("Button");
+    sixTaskButton.id = "sixTaskLight";
+    let six = document.createTextNode("Aufgabe 6");
+    sixTaskButton.appendChild(six);
+    sixTaskButton.setAttribute("onclick", "taskSix()");
+    sixTaskButton.style.backgroundColor = 'red';
+    currentDiv.appendChild(sixTaskButton);
+    addAnnoButton();
 }
 
 function taskOne() {
@@ -92,14 +101,43 @@ function taskFive() {
     addFoodButton();
 }
 
-function addFoodButton() {
-    let currentDiv = document.getElementById("testText");
-    var buttonCheck = document.createElement("button");
-    buttonCheck.setAttribute("onclick", "checkInputFood()");
-    buttonCheck.innerHTML = "Check Food";
-    currentDiv.appendChild(buttonCheck);
+function taskSix() {
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    socketAnno('displayTextAsButton');
+    addAnnoFoodButton();
 }
 
+function taskSeven() {
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    socketAnno('displayTextAsButton');
+    addAnnoNounsButton();
+}
+
+function taskEight() {
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    socketAnno('displayTextAsButton');
+    addAnnoVerbsButton();
+}
+
+function taskNine() {
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    socketAnno('displayTextAsButton');
+    addAnnoAdjectiveButton();
+}
+
+//kann weg
 function addInputButtons(){
     let currentDiv = document.getElementById("testText");
     var newDiv = document.createElement("div");

@@ -12,7 +12,6 @@ function checkInputAdjectives(){
 }
 function checkInputFood(){
     var toolString = "org.texttechnologylab.annotation.type.Food";
-    taskStatus();
     if (checkInputHelper(toolString) == true) {
         document.getElementById("fifthTaskLight").style.backgroundColor = 'lime';
     } else {
@@ -28,11 +27,9 @@ function checkInputFood(){
  */
 function checkInputHelper(toolString){
     var numberOfFalse = 0;
-
     var allLemmaStartFromTool = [];
     var allLemmaStartDisplayedTokens = getAllLemmaStartDisplayedTokens();
     var allLemmaStart = [];
-
 
     // Nötige Information über die Token sind in tool gespeichert
     var tool = toolElementsGlobal[toolString];
@@ -51,7 +48,6 @@ function checkInputHelper(toolString){
     }
 
 
-
     var allLemmaStartOriginalLength = allLemmaStart.length; // Originalgröße wird gespeichert
 
     // Vergleicht beide Listen miteinander und speichert egebnis in numberOfFalse und numberOfCorrect
@@ -67,7 +63,6 @@ function checkInputHelper(toolString){
         }
 
     }
-
 
     var numberOfCorrect = allLemmaStartOriginalLength - allLemmaStart.length;
 

@@ -98,9 +98,42 @@ function addAdjectiveButton() {
 
 function addFoodButton() {
     let currentDiv = document.getElementById("testText");
-    let checkF = document.createElement("Button");
-    checkF.id = "checkF";
-    checkF.setAttribute("onclick", "checkInput")
+    var buttonCheck = document.createElement("button");
+    buttonCheck.setAttribute("onclick", "checkInputFood()");
+    buttonCheck.innerHTML = "Check Food";
+    currentDiv.appendChild(buttonCheck);
+}
+
+function addAnnoFoodButton() {
+    let currentDiv = document.getElementById("testText");
+    var buttonCheck = document.createElement("button");
+    buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
+    buttonCheck.innerHTML = "Annotate Food";
+    currentDiv.appendChild(buttonCheck);
+}
+
+function addAnnoNounsButton() {
+    let currentDiv = document.getElementById("testText");
+    var buttonCheck = document.createElement("button");
+    buttonCheck.setAttribute("onclick", "sendAnnotationNouns()");
+    buttonCheck.innerHTML = "Annotiere Nomen";
+    currentDiv.appendChild(buttonCheck);
+}
+
+function addAnnoVerbsButton() {
+    let currentDiv = document.getElementById("testText");
+    var buttonCheck = document.createElement("button");
+    buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
+    buttonCheck.innerHTML = "Annotiere Verben";
+    currentDiv.appendChild(buttonCheck);
+}
+
+function addAnnoAdjectiveButton() {
+    let currentDiv = document.getElementById("testText");
+    var buttonCheck = document.createElement("button");
+    buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
+    buttonCheck.innerHTML = "Annotiere Adjektive";
+    currentDiv.appendChild(buttonCheck);
 }
 
 /** funktioniert noch nicht

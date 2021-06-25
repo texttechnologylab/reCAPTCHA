@@ -236,9 +236,9 @@ function createSentimentButtons() {
     let nosentText = document.createTextNode("Kein Sentiment");
     nosentButton.append(nosentText);
     nosentButton.addEventListener("click", function () {
-        checkInputSentiment("keinSentiment");
-    })
-    //sentiment dazufügen
+        checkInputSentiment("keinSentiment")
+    }, false);
+    //sentiment hinzufügen
 
     let currentdiv = document.getElementById("testText");
     currentdiv.innerHTML = "";
