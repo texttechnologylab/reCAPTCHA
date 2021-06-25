@@ -135,7 +135,7 @@ function addAnnoVerbsButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoV";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationVerbs();changeButtonLight(buttonCheck.id)");
+    buttonCheck.setAttribute("onclick", "sendAnnotationVerbs()");
     //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Annotiere Verben";
     currentDiv.appendChild(buttonCheck);
@@ -147,7 +147,6 @@ function addAnnoAdjectiveButton() {
     buttonCheck.id = "annoA";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives()");
-    document.getElementById("sixthTaskLight").style.backgroundColor = 'lime';
     buttonCheck.innerHTML = "Annotiere Adjektive";
     currentDiv.appendChild(buttonCheck);
 }

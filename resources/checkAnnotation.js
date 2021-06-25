@@ -24,8 +24,8 @@ function checkInputAdjectives(){
     } else {
         document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
     }
-    //checkInputHelper(toolString);
 }
+
 function checkInputFood(){
     var toolString = "org.texttechnologylab.annotation.type.Food";
     if (checkInputHelper(toolString) == true) {
