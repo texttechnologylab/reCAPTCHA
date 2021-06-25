@@ -21,7 +21,7 @@ function tokenClicked(buttonId) {
     if (button.style.background == selectedColorRGB) {
         // Färb Token wieder zurück. In classname ist Farbe gespeichert
         if (button.classList.contains(button.className)){
-           button.style.background = button.className;
+            button.style.background = button.className;
         }
         else {
             button.style.background = greyColor;
@@ -31,7 +31,7 @@ function tokenClicked(buttonId) {
         // Element mit value aus Array entfernen: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
         const index = selectedTokensId.indexOf(buttonId);
         if (index > -1) {
-           selectedTokensId.splice(index, 1);
+            selectedTokensId.splice(index, 1);
         }
 
     }
@@ -43,7 +43,7 @@ function tokenClicked(buttonId) {
 
 }
 
-/**
+/** KANN WEG
  * Fügt die zwei Buttons hinzu um Tokens selber zu annotieren oder Tokens auszuwählen zur Überprüfung
  */
 function addInputButtons(){
@@ -72,6 +72,7 @@ function addNounButton() {
     let currentDiv = document.getElementById("testText");
     let checkN = document.createElement("Button");
     checkN.id = "checkN";
+    checkN.className = "btn btn-secondary btn-lg btn-block";
     checkN.setAttribute("onclick", "checkInputNouns()");
     checkN.innerHTML = "Check Nomen";
     currentDiv.appendChild(checkN);
@@ -81,6 +82,7 @@ function addVerbButton() {
     let currentDiv = document.getElementById("testText");
     let checkV = document.createElement("Button");
     checkV.id = "checkV";
+    checkV.className = "btn btn-secondary btn-lg btn-block";
     checkV.setAttribute("onclick", "checkInputVerbs()");
     checkV.innerHTML = "Check Verben";
     currentDiv.innerHTML = "";
@@ -91,6 +93,7 @@ function addAdjectiveButton() {
     let currentDiv = document.getElementById("testText");
     let checkA = document.createElement("Button");
     checkA.id = "checkA";
+    checkA.className = "btn btn-secondary btn-lg btn-block";
     checkA.setAttribute("onclick", "checkInputAdjectives()");
     checkA.innerHTML = "Check Adjektive";
     currentDiv.appendChild(checkA);
@@ -99,6 +102,8 @@ function addAdjectiveButton() {
 function addFoodButton() {
     let currentDiv = document.getElementById("testText");
     var buttonCheck = document.createElement("button");
+    buttonCheck.id ="checkF";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "checkInputFood()");
     buttonCheck.innerHTML = "Check Food";
     currentDiv.appendChild(buttonCheck);
@@ -107,14 +112,18 @@ function addFoodButton() {
 function addAnnoFoodButton() {
     let currentDiv = document.getElementById("testText");
     var buttonCheck = document.createElement("button");
+    buttonCheck.id = "annoF";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
-    buttonCheck.innerHTML = "Annotate Food";
+    buttonCheck.innerHTML = "Annotiere Food";
     currentDiv.appendChild(buttonCheck);
 }
 
 function addAnnoNounsButton() {
     let currentDiv = document.getElementById("testText");
     var buttonCheck = document.createElement("button");
+    buttonCheck.id = "annoN";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationNouns()");
     buttonCheck.innerHTML = "Annotiere Nomen";
     currentDiv.appendChild(buttonCheck);
@@ -123,7 +132,9 @@ function addAnnoNounsButton() {
 function addAnnoVerbsButton() {
     let currentDiv = document.getElementById("testText");
     var buttonCheck = document.createElement("button");
-    buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
+    buttonCheck.id = "annoV";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
+    buttonCheck.setAttribute("onclick", "sendAnnotationVerbs()");
     buttonCheck.innerHTML = "Annotiere Verben";
     currentDiv.appendChild(buttonCheck);
 }
@@ -131,7 +142,9 @@ function addAnnoVerbsButton() {
 function addAnnoAdjectiveButton() {
     let currentDiv = document.getElementById("testText");
     var buttonCheck = document.createElement("button");
-    buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
+    buttonCheck.id = "annoA";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
+    buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives()");
     buttonCheck.innerHTML = "Annotiere Adjektive";
     currentDiv.appendChild(buttonCheck);
 }

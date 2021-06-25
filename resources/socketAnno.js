@@ -4,7 +4,7 @@ let webSocketGlobal;
 //socketAnno("s");
 function socketAnno(task) {
     const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
-  //  const WebSocket = require('ws');
+    //  const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
 
     let casId = "28450";
@@ -189,7 +189,7 @@ function socketAnno(task) {
             for (let element in tool) {
                 var start = tool[element]["features"]["begin"];
                 if (document.getElementById("lemmaStart"+start) == null){
-                   continue;
+                    continue;
                 }
 
                 document.getElementById("lemmaStart"+start).style.background=color;

@@ -4,8 +4,8 @@
  * @param type z.B "org.texttechnologylab.annotation.type.Food"
  */
 function sendAnnotationHelper(type){
-  //  var type = "org.texttechnologylab.annotation.type.Food";
-  //  var selectedTokensId = selectedTokensId; // Globale Variable in Funktion local speichern
+    //  var type = "org.texttechnologylab.annotation.type.Food";
+    //  var selectedTokensId = selectedTokensId; // Globale Variable in Funktion local speichern
 
     // Bleiben fest erstmal
     var casId = "28450";
