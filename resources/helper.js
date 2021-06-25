@@ -125,8 +125,7 @@ function addAnnoNounsButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoN";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationNouns();changeButtonLight(buttonCheck.id)");
-    //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
+    buttonCheck.setAttribute("onclick", "sendAnnotationNouns();changeButtonLight()");
     buttonCheck.innerHTML = "Annotiere Nomen";
     currentDiv.appendChild(buttonCheck);
 }
@@ -147,8 +146,8 @@ function addAnnoAdjectiveButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoA";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives();changeButtonLight(buttonCheck.id)");
-    //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
+    buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives()");
+    document.getElementById("sixthTaskLight").style.backgroundColor = 'lime';
     buttonCheck.innerHTML = "Annotiere Adjektive";
     currentDiv.appendChild(buttonCheck);
 }
@@ -193,9 +192,7 @@ function displaySentence(){
 
 }
 
-function changeButtonLight(buttonId) {
-    if (buttonId == "annoF") {document.getElementById("sixthTaskLight").style.backgroundColor = 'lime';}
-    if (buttonId == "annoN") {document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';}
-    if (buttonId == "annoV") {document.getElementById("eighthTaskLight").style.backgroundColor = 'lime';}
-    if (buttonId == "annoA") {document.getElementById("ninthTaskLight").style.backgroundColor = 'lime';}
+function changeButtonLight() {
+
+    document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';
 }
