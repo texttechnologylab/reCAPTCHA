@@ -59,6 +59,7 @@ function taskCreator() {
 }
 
 function taskOne() {
+    selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
@@ -67,6 +68,7 @@ function taskOne() {
 }
 
 function taskTwo() {
+    selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
@@ -76,6 +78,7 @@ function taskTwo() {
 }
 
 function taskThree() {
+    selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
@@ -85,6 +88,7 @@ function taskThree() {
 }
 
 function taskFour() {
+    selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
@@ -93,6 +97,7 @@ function taskFour() {
 }
 
 function taskFive() {
+    selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
@@ -102,6 +107,7 @@ function taskFive() {
 }
 
 function taskSix() {
+    selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
@@ -111,6 +117,7 @@ function taskSix() {
 }
 
 function taskSeven() {
+    selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
@@ -120,6 +127,7 @@ function taskSeven() {
 }
 
 function taskEight() {
+    selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
@@ -129,6 +137,7 @@ function taskEight() {
 }
 
 function taskNine() {
+    selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
