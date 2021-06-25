@@ -114,7 +114,8 @@ function addAnnoFoodButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoF";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
+    buttonCheck.setAttribute("onclick", "sendAnnotationFood();changeButtonLight(buttonCheck.id)");
+    //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Annotiere Food";
     currentDiv.appendChild(buttonCheck);
 }
@@ -124,7 +125,8 @@ function addAnnoNounsButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoN";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationNouns()");
+    buttonCheck.setAttribute("onclick", "sendAnnotationNouns();changeButtonLight(buttonCheck.id)");
+    //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Annotiere Nomen";
     currentDiv.appendChild(buttonCheck);
 }
@@ -134,7 +136,8 @@ function addAnnoVerbsButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoV";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationVerbs()");
+    buttonCheck.setAttribute("onclick", "sendAnnotationVerbs();changeButtonLight(buttonCheck.id)");
+    //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Annotiere Verben";
     currentDiv.appendChild(buttonCheck);
 }
@@ -144,7 +147,8 @@ function addAnnoAdjectiveButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoA";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives()");
+    buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives();changeButtonLight(buttonCheck.id)");
+    //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Annotiere Adjektive";
     currentDiv.appendChild(buttonCheck);
 }
@@ -187,4 +191,11 @@ function displaySentence(){
         sentenceCounterGlobal++;
     }
 
+}
+
+function changeButtonLight(buttonId) {
+    if (buttonId == "annoF") {document.getElementById("sixthTaskLight").style.backgroundColor = 'lime';}
+    if (buttonId == "annoN") {document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';}
+    if (buttonId == "annoV") {document.getElementById("eighthTaskLight").style.backgroundColor = 'lime';}
+    if (buttonId == "annoA") {document.getElementById("ninthTaskLight").style.backgroundColor = 'lime';}
 }

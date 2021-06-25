@@ -127,12 +127,12 @@ function taskFour() {
 }
 
 function taskFive() {
-    let currentdiv = document.getElementById("playArea");
-    currentdiv.innerHTML = "";
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Essen");
-    currentdiv.appendChild(text);
+    currentDiv.appendChild(text);
     socketAnno('displayTextAsButton');
     addFoodButton();
 }
@@ -143,7 +143,7 @@ function taskSix() {
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Essen");
-    currentdiv.appendChild(text);
+    currentDiv.appendChild(text);
     socketAnno('displayTextAsButton');
     addAnnoFoodButton();
 }
@@ -154,7 +154,7 @@ function taskSeven() {
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Nomen");
-    currentdiv.appendChild(text);
+    currentDiv.appendChild(text);
     socketAnno('displayTextAsButton');
     addAnnoNounsButton();
 }
@@ -179,28 +179,5 @@ function taskNine() {
     currentDiv.appendChild(text);
     socketAnno('displayTextAsButton');
     addAnnoAdjectiveButton();
-}
-
-//kann weg
-function addInputButtons(){
-    let currentDiv = document.getElementById("testText");
-    var newDiv = document.createElement("div");
-    newDiv.className = "card-body";
-
-    var buttonCheck = document.createElement("button");
-    var buttonAnnotation = document.createElement("button");
-
-    buttonCheck.setAttribute("onclick", "checkInputFood()");
-    buttonCheck.innerHTML = "Kontrolliere Essen";
-    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-
-    buttonAnnotation.setAttribute("onclick", "sendAnnotationFood()");
-    buttonAnnotation.innerHTML = "Annotiere Essen";
-    buttonAnnotation.className = "btn btn-secondary btn-lg btn-block";
-    buttonAnnotation.role
-
-    newDiv.appendChild(buttonAnnotation);
-    newDiv.appendChild(buttonCheck);
-    currentDiv.appendChild(newDiv);
 }
 
