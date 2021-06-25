@@ -120,7 +120,7 @@ function socketAnno(task) {
         let textAsList = [];
         let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
         var i = 0;
-        const NUMBEROFTOKENS = 1000;
+        const NUMBEROFTOKENS = 100;
         for (let lemma in lemmas) {
             var start = lemmas[lemma]["features"]["begin"];
             var end = lemmas[lemma]["features"]["end"];

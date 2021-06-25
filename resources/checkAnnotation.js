@@ -1,6 +1,7 @@
 function checkInputNouns(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN";
     checkInputHelper(toolString);
+    
 }
 function checkInputVerbs(){
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V";
