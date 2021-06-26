@@ -80,6 +80,14 @@ function taskCreator() {
     ninthTaskButton.setAttribute("onclick", "taskNine()");
     ninthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(ninthTaskButton);
+
+    let tenTaskButton = document.createElement("Button");
+    tenTaskButton.id = "tenTaskLight";
+    let ten = document.createTextNode("10");
+    tenTaskButton.appendChild(ten);
+    tenTaskButton.setAttribute("onclick", "taskTen()");
+    tenTaskButton.style.backgroundColor = 'red';
+    currentDiv.appendChild(tenTaskButton);
 }
 
 function taskOne() {
@@ -188,5 +196,17 @@ function taskNine() {
     currentDiv.appendChild(text);
     socketAnno('displayTextAsButton');
     addAnnoAdjectiveButton();
+}
+
+function taskTen() {
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Klicke 2 Token die in Beziehung zueinander stehen");
+    currentDiv.appendChild(text);
+    socketAnno('displayTextAsButton');
+    addTestButton();
 }
 

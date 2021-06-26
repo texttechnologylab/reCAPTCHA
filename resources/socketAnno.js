@@ -1,19 +1,20 @@
 let toolElementsGlobal;
 let webSocketGlobal;
 
-//socketAnno("s");
+// socketAnno("s");
 function socketAnno(task) {
     const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
-    //  const WebSocket = require('ws');
+   // const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
 
     let casId = "28450";
     let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
     let view = "https://authority.hucompute.org/user/316809";
-    let tool = "quickpanel";
+  //  let tool = "quickpanel"; proppanel
+    let tool = "proppanel";
 
-    let lemmaStartList = [];
-    let selectedButton = [];
+  //  let lemmaStartList = [];
+    let allAddresses = [];
     let casText;
 
     startConnection();
@@ -62,11 +63,17 @@ function socketAnno(task) {
 
                     // Bestimmung der Angezeige
                     if (task == "displayTextAsButton") {
-                        displayTextAsButtons(casId, casText, toolElements);
+                        displayTextAsButtons(casId, casText);
                     }
                     else if (task == "loadSentences"){
-                        loadSentences(casId, casText, toolElements);
+                        loadSentences(casId, casText);
                         createSentimentButtons();
+                    }
+                    else {
+                     var x = toolElements["org.texttechnologylab.annotation.semaf.semafsr.SrLink"]; // Argument
+                     var test = [];
+
+                     console.log(x);
                     }
 
                     break;
@@ -91,8 +98,8 @@ function socketAnno(task) {
     }
 
 
-    function loadSentences(casId, casText, toolElements){
-        var sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
+    function loadSentences(casId, casText){
+        var sentences = toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
         for (let sentence in sentences) {
             var start = sentences[sentence]["features"]["begin"];
             var end = sentences[sentence]["features"]["end"];
@@ -114,23 +121,24 @@ function socketAnno(task) {
      * ist durch sein lemmaStart gekennzeichnet
      * @param casId
      * @param casText
-     * @param toolElements
      */
-    function displayTextAsButtons(casId, casText, toolElements) {
+    function displayTextAsButtons(casId, casText) {
         let textAsList = [];
-        let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
+   // Ohne Punkte     let lemmas = toolElementsGlobal["org.texttechnologylab.annotation.ocr.OCRToken"];
+
+        let lemmas = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"];
         var i = 0;
         const NUMBEROFTOKENS = 100;
-        for (let lemma in lemmas) {
-            var start = lemmas[lemma]["features"]["begin"];
-            var end = lemmas[lemma]["features"]["end"];
+        for (let address in lemmas) {
+            var start = fromAddressToLemmaBegin(address);
+            var end = fromAddressToLemmaEnd(address);
 
             // Damit Token nicht doppelt vorkommen in verschiedenen Versionen
-            if (lemmaStartList.includes(start)){
-                continue;
-            }
+      //      if (allAddresses.includes(start)){
+      //          continue;
+      //      }
 
-            lemmaStartList.push(start);
+            allAddresses.push(address);
             textAsList.push(casText.slice(start, end));
 
             if (i == NUMBEROFTOKENS){
@@ -144,12 +152,10 @@ function socketAnno(task) {
         addToken(textAsList);
 
         // Die Button bekommen Färbungen je nach Annotations
-        colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
-        colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
-        colorToken(toolElements["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
-        colorToken(toolElements["org.texttechnologylab.annotation.type.Food"], "#A569BD");
-
-        //addInputButtons();
+        colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
+        colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
+        colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
+        colorToken(toolElementsGlobal["org.texttechnologylab.annotation.type.Food"], "#A569BD");
 
 
         /**
@@ -169,7 +175,8 @@ function socketAnno(task) {
 
                 // Erstelle ein Button mit dem Wort und gib ihm eine id
                 var newButton = document.createElement("Button");
-                newButton.id = "lemmaStart" + lemmaStartList[i];
+                newButton.id = "address" + allAddresses[i];
+
                 newButton.setAttribute("onclick", "tokenClicked(id)");
 
                 // Setzt den Text des Buttons
@@ -186,21 +193,20 @@ function socketAnno(task) {
          * @param tool
          */
         function colorToken(tool, color) {
+            var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
             for (let element in tool) {
-                var start = tool[element]["features"]["begin"];
-                if (document.getElementById("lemmaStart"+start) == null){
-                    continue;
+                var begin = tool[element]["features"]["begin"];
+                for (let idFromAllDisplayedToken in idFromAllDisplayedTokens){
+                    var id = idFromAllDisplayedTokens[idFromAllDisplayedToken];
+                    var beginDisplayedToken = fromAddressToLemmaBegin(id);
+                    if (begin == beginDisplayedToken){
+                        document.getElementById("address"+id).style.background=color;
+                        document.getElementById("address"+id).className = color;
+                    }
                 }
-
-                document.getElementById("lemmaStart"+start).style.background=color;
-                document.getElementById("lemmaStart"+start).className = color;
-
             }
-
         }
-
     }
-
 }
 
 
@@ -249,3 +255,4 @@ function createSentimentButtons() {
     currentdiv.appendChild(neutralButton);
     document.getElementById("neutButton").style.backgroundColor = 'grey';
 }
+

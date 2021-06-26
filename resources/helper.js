@@ -78,6 +78,16 @@ function addNounButton() {
     currentDiv.appendChild(checkN);
 }
 
+function addTestButton() {
+    let currentDiv = document.getElementById("testText");
+    let checkN = document.createElement("Button");
+    checkN.id = "checkTest";
+    checkN.className = "btn btn-secondary btn-lg btn-block";
+    checkN.setAttribute("onclick", "sendAnnotationRelationHelper()");
+    checkN.innerHTML = "Annotiere Relationen";
+    currentDiv.appendChild(checkN);
+}
+
 function addVerbButton() {
     let currentDiv = document.getElementById("testText");
     let checkV = document.createElement("Button");
@@ -114,7 +124,7 @@ function addAnnoFoodButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoF";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationFood();changeButtonLight(buttonCheck.id)");
+    buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
     //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Annotiere Food";
     currentDiv.appendChild(buttonCheck);
@@ -194,4 +204,24 @@ function displaySentence(){
 function changeButtonLight() {
 
     document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';
+}
+
+/**
+ * Hilfsunktion um mit der adresse(id) eines Token dem lemmaBegin zu bekommen
+ * @param address
+ * @returns {number}
+ */
+function fromAddressToLemmaBegin(address){
+     var entitiesTool = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+     return entitiesTool[address]["features"]["begin"];
+}
+
+/**
+ * Hilfsunktion um mit der adresse(id) eines Token dem lemmaBegin zu bekommen
+ * @param address
+ * @returns {number}
+ */
+function fromAddressToLemmaEnd(address){
+    var entitiesTool = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"]
+    return entitiesTool[address]["features"]["end"];
 }

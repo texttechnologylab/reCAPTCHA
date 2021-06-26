@@ -1,4 +1,6 @@
 function checkInputNouns(){
+    console.log(selectedTokensId);
+
     var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN";
     //checkInputHelper(toolString);
     if (checkInputHelper(toolString) == true) {
@@ -38,41 +40,39 @@ function checkInputFood(){
 /**
  * Hilsfunktion
  * Kontrolliert die Eingabe des Users. Vergleicht dafür die Liste der ausgewählten Token des Users mit der Liste
- * der ToolElements aus dem Textannotater. Vergleiche werden durch lemmaStart vorgenommen.
+ * der ToolElements aus dem Textannotater. Vergleiche werden durch lemmaBegin vorgenommen.
  * @param toolString
  */
 function checkInputHelper(toolString){
-    var numberOfFalse = 0;
-    var allLemmaStartFromTool = [];
-    var allLemmaStartDisplayedTokens = getAllLemmaStartDisplayedTokens();
-    var allLemmaStart = [];
+    var entitiesTool = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"]
+    var numberOfFalse = 0; // Anzahl der falsch ausgewählten Token vom User
+    var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
+    var allLemmaBeginFromTool = [];
+    var allLemmaBegin = [];
 
-    // Nötige Information über die Token sind in tool gespeichert
+    // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
     var tool = toolElementsGlobal[toolString];
-
-    // Speichert von jedem annotierten Token seinen lemmaStart in die Liste
     for (let toolKey in tool) {
-        allLemmaStartFromTool.push(tool[toolKey]["features"]["begin"])
+        allLemmaBeginFromTool.push(tool[toolKey]["features"]["begin"])
     }
 
-    // allLemmaStart = allLemmaStartFromTool *UND-Operator* allLemmaStartDisplayedTokens
-    for (let element in allLemmaStartDisplayedTokens){
-        var displayedTokenLemmaStart = allLemmaStartDisplayedTokens[element];
-        if (allLemmaStartFromTool.includes(displayedTokenLemmaStart)){
-            allLemmaStart.push(displayedTokenLemmaStart);
+    // Berechnet: allLemmaBegin = allLemmaBeginFromTool *UND-Operator* idFromAllDisplayedTokens
+    for (let element in idFromAllDisplayedTokens){
+        var displayedTokenLemmaBegin =  entitiesTool[idFromAllDisplayedTokens[element]]["features"]["begin"];
+        if (allLemmaBeginFromTool.includes(displayedTokenLemmaBegin)){
+            allLemmaBegin.push(displayedTokenLemmaBegin);
         }
     }
+    var allLemmaBeginOriginalLength = allLemmaBegin.length; // Originalgröße wird gespeichert
 
-
-    var allLemmaStartOriginalLength = allLemmaStart.length; // Originalgröße wird gespeichert
-
-    // Vergleicht beide Listen miteinander und speichert egebnis in numberOfFalse und numberOfCorrect
+    // Vergleicht beide Listen miteinander und speichert das Ergebnis in numberOfFalse und numberOfCorrect
     for (let word in selectedTokensId){
-        var lemmaStart = selectedTokensId[word].split("lemmaStart")[1];
+        var adress = selectedTokensId[word].split("address")[1];
+        var lemmaBegin = fromAddressToLemmaBegin(adress);
 
-        var index = allLemmaStart.indexOf(parseInt(lemmaStart, 10));
+        var index = allLemmaBegin.indexOf(lemmaBegin);
         if (index > -1) {
-            allLemmaStart.splice(index, 1);
+            allLemmaBegin.splice(index, 1);
         }
         else {
             numberOfFalse++;
@@ -80,39 +80,37 @@ function checkInputHelper(toolString){
 
     }
 
-    var numberOfCorrect = allLemmaStartOriginalLength - allLemmaStart.length;
+    var numberOfCorrect = allLemmaBeginOriginalLength - allLemmaBegin.length; // Anzahl der richtig ausgewählten
 
     // Zum testen
     alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
-    if(numberOfFalse == 0 && allLemmaStart.length == 0){
-        let correct = true;
+    if(numberOfFalse == 0 && allLemmaBegin.length == 0){
         alert("Alles korrekt ausgewählt");
-        return correct;
+        return true;
     } else {
-        let correct = false;
-        return correct;
+        return false;
     }
 }
 
 
 /**
  * Speichert alle ids von den Token die auf der Seite angezeigt werden in eine Liste und gibt diese zurück
- * @returns {number[]}
+ * @returns {string[]}
  */
-function getAllLemmaStartDisplayedTokens(){
-    var displayedTokensId = [];
-    var allLemmaStartDisplayedTokens = [];
+function getIdFromAllDisplayedTokens(){
+    var idFromAllDisplayedTokensWithAddress = [];
+    var idFromAllDisplayedTokens = [];
 
     var childDivs = document.getElementById('playArea').getElementsByTagName('button');
     for (var i = 0; i < childDivs.length; i++) {
-        displayedTokensId.push(childDivs[i].id);
+        idFromAllDisplayedTokensWithAddress.push(childDivs[i].id);
     }
 
-    for (let element in displayedTokensId){
-        if ((displayedTokensId[element]).includes("lemmaStart")){
-            allLemmaStartDisplayedTokens.push(parseInt((displayedTokensId[element]).split("lemmaStart")[1]), 10);
+    for (let element in idFromAllDisplayedTokensWithAddress){
+        if ((idFromAllDisplayedTokensWithAddress[element]).includes("address")){
+            idFromAllDisplayedTokens.push((idFromAllDisplayedTokensWithAddress[element]).split("address")[1]);
         }
     }
-    return allLemmaStartDisplayedTokens;
+    return idFromAllDisplayedTokens;
 }
 
