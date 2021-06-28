@@ -1,8 +1,4 @@
 function checkInputNouns(){
-    console.log(selectedTokensId);
-
-    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN";
-    //checkInputHelper(toolString);
     if (checkInputHelper(toolString) == true) {
         document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
     } else {
@@ -11,17 +7,14 @@ function checkInputNouns(){
 
 }
 function checkInputVerbs(){
-    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V";
-    //checkInputHelper(toolString);
-    if (checkInputHelper(toolString) == true) {
+    if (checkInputHelper(getToolStringVerbs()) == true) {
         document.getElementById("secondTaskLight").style.backgroundColor = 'lime';
     } else {
         document.getElementById("secondTaskLight").style.backgroundColor = 'red';
     }
 }
 function checkInputAdjectives(){
-    var toolString = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
-    if (checkInputHelper(toolString) == true) {
+    if (checkInputHelper(getToolStringAdjectives()) == true) {
         document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
     } else {
         document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
@@ -29,8 +22,7 @@ function checkInputAdjectives(){
 }
 
 function checkInputFood(){
-    var toolString = "org.texttechnologylab.annotation.type.Food";
-    if (checkInputHelper(toolString) == true) {
+    if (checkInputHelper(getToolStringFood()) == true) {
         document.getElementById("fifthTaskLight").style.backgroundColor = 'lime';
     } else {
         document.getElementById("fifthTaskLight").style.backgroundColor = 'red';

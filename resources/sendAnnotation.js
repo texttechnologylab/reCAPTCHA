@@ -47,16 +47,16 @@ function sendAnnotationHelper(type){
 // Für jedes Tool wird eine Funktion geschrieben.
 
 function sendAnnotationFood(){
-    sendAnnotationHelper("org.texttechnologylab.annotation.type.Food");
+    sendAnnotationHelper(getToolStringFood());
 }
 function sendAnnotationNouns(){
-    sendAnnotationHelper("de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN");
+    sendAnnotationHelper(getToolStringNouns());
 }
 function sendAnnotationVerbs(){
-    sendAnnotationHelper("de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V");
+    sendAnnotationHelper(getToolStringVerbs());
 }
 function sendAnnotationAdjectives(){
-    sendAnnotationHelper("de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ");
+    sendAnnotationHelper(getToolStringAdjectives());
 }
 
 

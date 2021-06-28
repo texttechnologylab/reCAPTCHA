@@ -225,3 +225,30 @@ function fromAddressToLemmaEnd(address){
     var entitiesTool = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"]
     return entitiesTool[address]["features"]["end"];
 }
+
+/**
+ * https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+ * Berechnet eine Zufallsahl in range [0-max]
+ * @param max
+ * @returns {number}
+ */
+function getRandomIntMax(max) {
+    return Math.floor(Math.random() * max);
+}
+
+/**
+ * https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+ * Berechnet eine Zufallsahl in range [min-max]
+ * @param min
+ * @param max
+ * @returns {number}
+ */
+function getRandomIntMinMax(min, max) {
+    if (min < 0){
+        min = 0
+    }
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+

@@ -2,7 +2,7 @@ let toolElementsGlobal;
 let webSocketGlobal;
 
 // socketAnno("s");
-function socketAnno(task) {
+function socketAnno(targetTool) {
     const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
    // const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
@@ -13,7 +13,6 @@ function socketAnno(task) {
   //  let tool = "quickpanel"; proppanel
     let tool = "proppanel";
 
-  //  let lemmaStartList = [];
     let allAddresses = [];
     let casText;
 
@@ -61,19 +60,15 @@ function socketAnno(task) {
                     toolElementsGlobal = toolElements;
                     webSocketGlobal = webSocket;
 
-                    // Bestimmung der Angezeige
-                    if (task == "displayTextAsButton") {
-                        displayTextAsButtons(casId, casText);
-                    }
-                    else if (task == "loadSentences"){
+                    if (targetTool == "loadSentences"){
                         loadSentences(casId, casText);
                         createSentimentButtons();
                     }
-                    else {
-                     var x = toolElements["org.texttechnologylab.annotation.semaf.semafsr.SrLink"]; // Argument
-                     var test = [];
-
-                     console.log(x);
+                    else if (targetTool == "standard"){
+                        displayTextAsButtons(casText, targetTool)
+                    }
+                    else{
+                        displayTextAsButtons(casText, targetTool)
                     }
 
                     break;
@@ -118,38 +113,51 @@ function socketAnno(task) {
     /**
      * Nimmt aus den quickpanel Tool die Lemma Werte jedes Tokens und speichert damit jeden Token
      * des Satzes in eine Liste ein. Mit der Liste gibt sie jeden Tokon als Button aus und die Id jedes Button
-     * ist durch sein lemmaStart gekennzeichnet
+     * ist durch seine addresse(id) im "org.texttechnologylab.annotation.semaf.isobase.Entity" Tool gekennzeichnet
      * @param casId
      * @param casText
      */
-    function displayTextAsButtons(casId, casText) {
-        let textAsList = [];
-   // Ohne Punkte     let lemmas = toolElementsGlobal["org.texttechnologylab.annotation.ocr.OCRToken"];
+    function displayTextAsButtons(casText, targetTool) {
+        var textAsList = [];
+        var allLemmaBegin = [];
+        var allLemmaEnd = [];
 
-        let lemmas = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"];
-        var i = 0;
-        const NUMBEROFTOKENS = 100;
+        // Ohne Punkte     let lemmas = toolElementsGlobal["org.texttechnologylab.annotation.ocr.OCRToken"];
+        var lemmas = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+        const NUMBEROFTOKENS = 60;
         for (let address in lemmas) {
-            var start = fromAddressToLemmaBegin(address);
+            var begin = fromAddressToLemmaBegin(address);
             var end = fromAddressToLemmaEnd(address);
 
             // Damit Token nicht doppelt vorkommen in verschiedenen Versionen
-      //      if (allAddresses.includes(start)){
+      //      if (allAddresses.includes(begin)){
       //          continue;
       //      }
 
+            // Tokeneigenschaften sind in gleicher Reiehnfolge in den vier Listen gepeichert
+            allLemmaBegin.push(begin);
+            allLemmaEnd.push(end);
             allAddresses.push(address);
-            textAsList.push(casText.slice(start, end));
-
-            if (i == NUMBEROFTOKENS){
-                break;
-            }
-
-            i++;
-
         }
-        // Es wird jedes Token als Button angezeigt
-        addToken(textAsList);
+        // Falls die Aufgabe ist selber zu annotiern, dann Text von Beginn anzeigen ohne nach bestimmten Kriterien zu suchen
+        if (targetTool == "standard"){
+            for (i = 0; i < NUMBEROFTOKENS; i++) {
+                textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
+            }
+            // Es wird jedes Token als Button angezeigt
+            addToken(textAsList, 0);
+        }
+        else {
+            var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
+            var startTokenIndex = getRandomIntMinMax(indexTarget - 30, indexTarget);
+            for (i = startTokenIndex; i < NUMBEROFTOKENS + startTokenIndex; i++) {
+                textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
+            }
+            // Es wird jedes Token als Button angezeigt
+            addToken(textAsList, startTokenIndex);
+        }
+
+
 
         // Die Button bekommen Färbungen je nach Annotations
         colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
@@ -162,7 +170,7 @@ function socketAnno(task) {
          * Hilfsfunktion
          * @param textAsList
          */
-        function addToken(textAsList) {
+        function addToken(textAsList, startTokenIndex) {
             // Div in dem die Buttons eingefügt werden
             var currentDiv = document.getElementById("playArea");
             var newDiv = document.createElement("div");
@@ -175,7 +183,7 @@ function socketAnno(task) {
 
                 // Erstelle ein Button mit dem Wort und gib ihm eine id
                 var newButton = document.createElement("Button");
-                newButton.id = "address" + allAddresses[i];
+                newButton.id = "address" + allAddresses[startTokenIndex+i];
 
                 newButton.setAttribute("onclick", "tokenClicked(id)");
 
@@ -206,6 +214,26 @@ function socketAnno(task) {
                 }
             }
         }
+
+        /**
+         * Hilfsfunktion: Gibt den Index eines Token zurück
+         * @param targetTool
+         * @returns {*}
+         */
+        function getRandomLemmaStartOfTargetTool(targetTool){
+            var testListe = [];
+            targetTool = toolElementsGlobal[targetTool];
+
+            // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
+            for (let toolKey in targetTool) {
+                testListe.push(targetTool[toolKey]["features"]["begin"]);
+            }
+
+            var x = getRandomIntMax(testListe.length);
+            return testListe[x];
+        }
+
+
     }
 }
 
@@ -255,4 +283,5 @@ function createSentimentButtons() {
     currentdiv.appendChild(neutralButton);
     document.getElementById("neutButton").style.backgroundColor = 'grey';
 }
+
 
