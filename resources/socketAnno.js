@@ -124,7 +124,6 @@ function socketAnno(targetTool) {
 
         // Ohne Punkte     let lemmas = toolElementsGlobal["org.texttechnologylab.annotation.ocr.OCRToken"];
         var lemmas = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"];
-        const NUMBEROFTOKENS = 60;
         for (let address in lemmas) {
             var begin = fromAddressToLemmaBegin(address);
             var end = fromAddressToLemmaEnd(address);
@@ -141,6 +140,7 @@ function socketAnno(targetTool) {
         }
         // Falls die Aufgabe ist selber zu annotiern, dann Text von Beginn anzeigen ohne nach bestimmten Kriterien zu suchen
         if (targetTool == "standard"){
+            const NUMBEROFTOKENS = 60;
             for (i = 0; i < NUMBEROFTOKENS; i++) {
                 textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
             }
@@ -148,6 +148,8 @@ function socketAnno(targetTool) {
             addToken(textAsList, 0);
         }
         else {
+            const NUMBEROFTOKENS = getRandomIntMinMax(30, 60);
+
             var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
             var startTokenIndex = getRandomIntMinMax(indexTarget - 30, indexTarget);
             for (i = startTokenIndex; i < NUMBEROFTOKENS + startTokenIndex; i++) {

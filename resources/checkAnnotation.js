@@ -1,5 +1,5 @@
 function checkInputNouns(){
-    if (checkInputHelper(getToolStringFood()) == true) {
+    if (checkInputHelper(getToolStringNouns()) == true) {
         document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
     } else {
         document.getElementById("firstTaskLight").style.backgroundColor = 'red';
