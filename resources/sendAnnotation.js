@@ -97,5 +97,9 @@ function sendAnnotationRelationHelper(){
         data: {casId: casId}
     }));
 
+
+    alert("Everything correct");
+    window.close();
+
 }
 

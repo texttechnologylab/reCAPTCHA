@@ -1,8 +1,9 @@
 function checkInputNouns(){
     if (checkInputHelper(getToolStringNouns()) == true) {
-        document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
+     //   document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
+        taskCheckAdjectivés();
     } else {
-        document.getElementById("firstTaskLight").style.backgroundColor = 'red';
+     //   document.getElementById("firstTaskLight").style.backgroundColor = 'red';
     }
 
 }
@@ -15,9 +16,10 @@ function checkInputVerbs(){
 }
 function checkInputAdjectives(){
     if (checkInputHelper(getToolStringAdjectives()) == true) {
-        document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
+        taskTen();
+        //   document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
     } else {
-        document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
+     //   document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
     }
 }
 
@@ -30,10 +32,11 @@ function checkInputFood(){
 }
 
 /**
- * Hilsfunktion
+ *  * Hilsfunktion
  * Kontrolliert die Eingabe des Users. Vergleicht dafür die Liste der ausgewählten Token des Users mit der Liste
  * der ToolElements aus dem Textannotater. Vergleiche werden durch lemmaBegin vorgenommen.
  * @param toolString
+ * @returns {boolean}
  */
 function checkInputHelper(toolString){
     var entitiesTool = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"]

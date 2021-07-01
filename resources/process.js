@@ -46,7 +46,6 @@ function taskCreator() {
     fifthTaskButton.setAttribute("onclick", "taskFive()");
     fifthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(fifthTaskButton);
-    addNounButton();
 
     let sixthTaskButton = document.createElement("Button");
     sixthTaskButton.id = "sixthTaskLight";
