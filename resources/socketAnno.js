@@ -7,7 +7,7 @@ function socketAnno(targetTool) {
    // const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
 
-    let casId = "28450";
+    let casId = "28490";
     let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
     let view = "https://authority.hucompute.org/user/316809";
   //  let tool = "quickpanel"; proppanel
@@ -114,7 +114,7 @@ function socketAnno(targetTool) {
      * Nimmt aus den quickpanel Tool die Lemma Werte jedes Tokens und speichert damit jeden Token
      * des Satzes in eine Liste ein. Mit der Liste gibt sie jeden Tokon als Button aus und die Id jedes Button
      * ist durch seine addresse(id) im "org.texttechnologylab.annotation.semaf.isobase.Entity" Tool gekennzeichnet
-     * @param casId
+     * @param
      * @param casText
      */
     function displayTextAsButtons(casText, targetTool) {
@@ -129,9 +129,9 @@ function socketAnno(targetTool) {
             var end = fromAddressToLemmaEnd(address);
 
             // Damit Token nicht doppelt vorkommen in verschiedenen Versionen
-      //      if (allAddresses.includes(begin)){
-      //          continue;
-      //      }
+            //      if (allAddresses.includes(begin)){
+            //          continue;
+            //      }
 
             // Tokeneigenschaften sind in gleicher Reiehnfolge in den vier Listen gepeichert
             allLemmaBegin.push(begin);
@@ -139,15 +139,14 @@ function socketAnno(targetTool) {
             allAddresses.push(address);
         }
         // Falls die Aufgabe ist selber zu annotiern, dann Text von Beginn anzeigen ohne nach bestimmten Kriterien zu suchen
-        if (targetTool == "standard"){
+        if (targetTool == "standard") {
             const NUMBEROFTOKENS = 60;
             for (i = 0; i < NUMBEROFTOKENS; i++) {
                 textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
             }
             // Es wird jedes Token als Button angezeigt
             addToken(textAsList, 0);
-        }
-        else {
+        } else {
             const NUMBEROFTOKENS = getRandomIntMinMax(30, 60);
 
             var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
@@ -158,8 +157,7 @@ function socketAnno(targetTool) {
             // Es wird jedes Token als Button angezeigt
             addToken(textAsList, startTokenIndex);
         }
-
-
+    }
 
         // Die Button bekommen Färbungen je nach Annotations
         colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
@@ -180,13 +178,15 @@ function socketAnno(targetTool) {
             newDiv.innerHTML = "";
             currentDiv.appendChild(newDiv);
 
+
+            //textAsList = ["Hallo", "Welt", "Wie"];
             for (i = 0; i < textAsList.length; i++) {
                 let word = textAsList[i];
 
                 // Erstelle ein Button mit dem Wort und gib ihm eine id
                 var newButton = document.createElement("Button");
+                newButton.className = "word-button";
                 newButton.id = "address" + allAddresses[startTokenIndex+i];
-
                 newButton.setAttribute("onclick", "tokenClicked(id)");
 
                 // Setzt den Text des Buttons
@@ -237,7 +237,7 @@ function socketAnno(targetTool) {
 
 
     }
-}
+
 
 
 //Function to check the right sentiment

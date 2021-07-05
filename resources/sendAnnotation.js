@@ -10,7 +10,7 @@ function sendAnnotationHelper(type){
     //  var selectedTokensId = selectedTokensId; // Globale Variable in Funktion local speichern
 
     // Bleiben fest erstmal
-    var casId = "28450";
+    var casId = "28490";
     var view = "https://authority.hucompute.org/user/316809";
     var tool = "quickpanel";
     var bPrivate = false;
@@ -70,7 +70,7 @@ function sendAnnotationRelationHelper(){
     var type = "org.texttechnologylab.annotation.semaf.semafsr.SrLink";
 
     // Bleiben fest erstmal
-    var casId = "28450";
+    var casId = "28490";
     var view = "https://authority.hucompute.org/user/316809";
     var tool = "proppanel";
     var bPrivate = false;

@@ -54,6 +54,10 @@ i {
 
 }
 
+#canvas{
+  background:transparent;
+}
+
 header {
   color: #9b9a9a;
   font-size: 100px;
@@ -319,6 +323,7 @@ label {
 
 button {
   border-radius: 0;
+;
 }
 
 button:focus:not(:focus-visible) {
@@ -330,10 +335,14 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+.word-button {
+  margin: 1rem;
+  border: none;
+
 }
 
 button,
@@ -4321,6 +4330,8 @@ textarea.form-control-lg {
   flex: 1 1 auto;
   padding: 1rem 1rem;
 }
+
+
 
 .card-title {
   margin-bottom: 0.5rem;
