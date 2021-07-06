@@ -87,7 +87,18 @@ function taskCreator() {
     tenTaskButton.setAttribute("onclick", "taskTen()");
     tenTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(tenTaskButton);
+
+
+    // WIEDER LÖSCHEN
+    let testTask = document.createElement("Button");
+    testTask.id = "testTask";
+    testTask.innerHTML = "Test";
+    testTask.setAttribute("onclick", "testTask()");
+    testTask.style.backgroundColor = 'blue';
+    currentDiv.appendChild(testTask);
 }
+
+
 
 function taskOne() {
     selectedTokensId = [];
@@ -100,6 +111,32 @@ function taskOne() {
     currentdiv.appendChild(text);
     socketAnno(getToolStringNouns());
     addNounButton();
+
+
+}
+
+function testTask() {
+    /*
+//Linie hinzufügen
+let newLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+newLine.setAttribute('stroke', 'red');
+newLine.id = "line1";
+currentdiv.appendChild(newLine);
+ */
+    //Test Buttons hinzufügen
+    let currentdiv = document.getElementById("playArea");
+    currentdiv.innerHTML = "";
+    let but = document.createElement('button');
+    but.innerHTML = "Test1";
+    but.id = "button1";
+    but.setAttribute("onclick", "drawline()");
+    currentdiv.appendChild(but);
+
+    let but2 = document.createElement('button');
+    but2.innerHTML = "Test2";
+    but2.id = "button2";
+    but2.setAttribute("onclick", "deleteLine()");
+    currentdiv.appendChild(but2);
 }
 
 function taskTwo() {
