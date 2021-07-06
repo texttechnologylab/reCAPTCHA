@@ -20,13 +20,8 @@ function tokenClicked(buttonId) {
 
     if (button.style.background == selectedColorRGB) {
         // Färb Token wieder zurück. In classname ist Farbe gespeichert
-        if (button.classList.contains(button.className)){
-            button.style.background = button.className;
-        }
-        else {
-            button.style.background = greyColor;
+        button.style.background = greyColor;
 
-        }
 
         // Element mit value aus Array entfernen: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
         const index = selectedTokensId.indexOf(buttonId);
