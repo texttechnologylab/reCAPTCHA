@@ -1,38 +1,38 @@
 function checkInputNouns(){
     if (checkInputHelper(getToolStringNouns()) == true) {
-     //   document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
-        taskCheckAdjectivés();
+        document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
+        //taskCheckAdjectivés();
     } else {
-     //   document.getElementById("firstTaskLight").style.backgroundColor = 'red';
+        document.getElementById("firstTaskLight").style.backgroundColor = 'red';
     }
 
 }
 function checkInputVerbs(){
     if (checkInputHelper(getToolStringVerbs()) == true) {
-        document.getElementById("secondTaskLight").style.backgroundColor = 'lime';
+        document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
     } else {
-        document.getElementById("secondTaskLight").style.backgroundColor = 'red';
+        document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
     }
 }
 function checkInputAdjectives(){
     if (checkInputHelper(getToolStringAdjectives()) == true) {
-        taskTen();
-        //   document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
-    } else {
-     //   document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
-    }
-}
-
-function checkInputFood(){
-    if (checkInputHelper(getToolStringFood()) == true) {
+        //taskTen();
         document.getElementById("fifthTaskLight").style.backgroundColor = 'lime';
     } else {
         document.getElementById("fifthTaskLight").style.backgroundColor = 'red';
     }
 }
 
+function checkInputFood(){
+    if (checkInputHelper(getToolStringFood()) == true) {
+        document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';
+    } else {
+        document.getElementById("seventhTaskLight").style.backgroundColor = 'red';
+    }
+}
+
 /**
- *  * Hilsfunktion
+ *  * Hilfsfunktion
  * Kontrolliert die Eingabe des Users. Vergleicht dafür die Liste der ausgewählten Token des Users mit der Liste
  * der ToolElements aus dem Textannotater. Vergleiche werden durch lemmaBegin vorgenommen.
  * @param toolString

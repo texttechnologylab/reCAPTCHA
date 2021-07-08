@@ -130,7 +130,7 @@ function addAnnoNounsButton() {
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoN";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-    buttonCheck.setAttribute("onclick", "sendAnnotationNouns();changeButtonLight()");
+    buttonCheck.setAttribute("onclick", "sendAnnotationNouns()");
     buttonCheck.innerHTML = "Annotiere Nomen";
     currentDiv.appendChild(buttonCheck);
 }

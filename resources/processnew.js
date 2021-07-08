@@ -1,12 +1,10 @@
-
-//Prozessablauf, Start Beginnen, Buttons erzeugen
-
 function taskCreator() {
     let currentDiv = document.getElementById("taskArea");
     currentDiv.innerHTML = "";
     let buttonDiv = document.getElementById("playArea");
     buttonDiv.innerHTML = "";
 
+    //Check Nomen
     let firstTaskButton = document.createElement("Button");
     firstTaskButton.id = "firstTaskLight";
     let one = document.createTextNode("Aufgabe 1");
@@ -99,6 +97,7 @@ function taskCreator() {
 }
 
 function taskOne() {
+    //Check Nomen
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
@@ -109,6 +108,122 @@ function taskOne() {
     currentdiv.appendChild(text);
     socketAnno(getToolStringNouns());
     addNounButton();
+}
+
+function taskTwo() {
+    //Annotiere Nomen
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere alle Nomen");
+    currentDiv.appendChild(text);
+    socketAnno('standard');
+    addAnnoNounsButton();
+}
+
+function taskThree() {
+    //Check Verben
+    selectedTokensId = [];
+    let currentdiv = document.getElementById("playArea");
+    currentdiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere alle Verben");
+    currentdiv.appendChild(text);
+    socketAnno(getToolStringVerbs());
+    addVerbButton();
+}
+
+function taskFour() {
+    //Annotiere Verben
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere alle Verben");
+    currentDiv.appendChild(text);
+    socketAnno('standard');
+    addAnnoVerbsButton();
+}
+
+function taskFive() {
+    //Check Adjektive
+    selectedTokensId = [];
+    let currentdiv = document.getElementById("playArea");
+    currentdiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere alle Adjektive");
+    currentdiv.appendChild(text);
+    socketAnno(getToolStringAdjectives());
+    addAdjectiveButton();
+}
+
+function taskSix() {
+    //Annotiere Adjektive
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere alle Adjektive");
+    currentDiv.appendChild(text);
+    socketAnno('standard');
+    addAnnoAdjectiveButton();
+}
+
+function taskSeven() {
+    //Check Essen
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere Essen");
+    currentDiv.appendChild(text);
+    socketAnno(getToolStringFood());
+    addFoodButton();
+}
+
+function taskEight() {
+    //Annotation Food
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere Essen");
+    currentDiv.appendChild(text);
+    socketAnno('standard');
+    addAnnoFoodButton();
+}
+
+function taskNine() {
+    //PropAnno
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Klicke 2 Token die in Beziehung zueinander stehen");
+    currentDiv.appendChild(text);
+    socketAnno('standard');
+    addTestButton();
+}
+
+function taskTen() {
+    //Sentiment bestimmen
+    selectedTokensId = [];
+    let currentdiv = document.getElementById("playArea");
+    currentdiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Wähle Sentiment");
+    currentdiv.appendChild(text);
+    socketAnno("loadSentences");
 }
 
 function testTask() {
@@ -133,111 +248,4 @@ currentdiv.appendChild(newLine);
     but2.id = "button2";
     but2.setAttribute("onclick", "deleteLine()");
     currentdiv.appendChild(but2);
-}
-
-function taskTwo() {
-    selectedTokensId = [];
-    let currentdiv = document.getElementById("playArea");
-    currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Verben");
-    currentdiv.appendChild(text);
-    socketAnno(getToolStringVerbs());
-    addVerbButton();
-}
-
-function taskThree() {
-    selectedTokensId = [];
-    let currentdiv = document.getElementById("playArea");
-    currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Adjektive");
-    currentdiv.appendChild(text);
-    socketAnno(getToolStringAdjectives());
-    addAdjectiveButton();
-}
-
-function taskFour() {
-    selectedTokensId = [];
-    let currentdiv = document.getElementById("playArea");
-    currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Wähle Sentiment");
-    currentdiv.appendChild(text);
-    socketAnno("loadSentences");
-}
-
-function taskFive() {
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Essen");
-    currentDiv.appendChild(text);
-    socketAnno(getToolStringFood());
-    addFoodButton();
-}
-
-function taskSix() {
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Essen");
-    currentDiv.appendChild(text);
-    socketAnno('standard');
-    addAnnoFoodButton();
-}
-
-function taskSeven() {
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Nomen");
-    currentDiv.appendChild(text);
-    socketAnno('standard');
-    addAnnoNounsButton();
-}
-
-function taskEight() {
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Verben");
-    currentDiv.appendChild(text);
-    socketAnno('standard');
-    addAnnoVerbsButton();
-}
-
-function taskNine() {
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Adjektive");
-    currentDiv.appendChild(text);
-    socketAnno('standard');
-    addAnnoAdjectiveButton();
-}
-
-function taskTen() {
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
-    let text = document.createTextNode("Klicke 2 Token die in Beziehung zueinander stehen");
-    currentDiv.appendChild(text);
-    socketAnno('standard');
-    addTestButton();
 }
