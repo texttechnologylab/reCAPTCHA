@@ -1,10 +1,10 @@
 let toolElementsGlobal;
 let webSocketGlobal;
 
-// socketAnno("s");
-function socketAnno(targetTool) {
+
+const socketAnno = (function (){
     const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
-    // const WebSocket = require('ws');
+    //  const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
 
     let casId = "28490";
@@ -16,7 +16,12 @@ function socketAnno(targetTool) {
     let allAddresses = [];
     let casText;
 
-    startConnection();
+    let toolElements = null;
+
+    // Falls toolElements noch null ist dann wurde noch keine Connection zum Websocket aufgebaut
+    if (toolElements == null){
+        startConnection();
+    }
 
     function startConnection() {
 
@@ -57,25 +62,17 @@ function socketAnno(targetTool) {
                 }
 
                 case "open_tool": {
-                    let toolElements = response.data.toolElements;
+                    toolElements = response.data.toolElements;
                     toolElementsGlobal = toolElements;
                     webSocketGlobal = webSocket;
 
-
-                    if (targetTool == "loadSentences") {
-                        loadSentences(casId, casText);
-                        createSentimentButtons();
-                    } else if (targetTool == "standard") {
-                        displayTextAsButtons(casText, targetTool)
-                    } else {
-                        displayTextAsButtons(casText, targetTool)
-                    }
-
+                    // Sobald alles geladen hat dann kann man die Seite starten
+                    $('#startButton').removeAttr('disabled');
                     break;
                 }
 
                 case "msg": {
-                    //console.log(response);
+                    console.log(msg);
                     break;
                 }
             }
@@ -110,6 +107,7 @@ function socketAnno(targetTool) {
         }
     }
 
+
     /**
      * Nimmt aus den quickpanel Tool die Lemma Werte jedes Tokens und speichert damit jeden Token
      * des Satzes in eine Liste ein. Mit der Liste gibt sie jeden Tokon als Button aus und die Id jedes Button
@@ -117,7 +115,7 @@ function socketAnno(targetTool) {
      * @param casText
      * @param targetTool
      */
-    function displayTextAsButtons(casText, targetTool) {
+    function displayTextAsButtons(targetTool) {
         var textAsList = [];
         var allLemmaBegin = [];
         var allLemmaEnd = [];
@@ -165,82 +163,87 @@ function socketAnno(targetTool) {
         colorToken(toolElementsGlobal["org.texttechnologylab.annotation.type.Food"], "#A569BD");
 
 
-    }
+        // Alles definierte Hilfsfunktionen, die in "displayTextAsButtons()" genutzt werden
+
+        /**
+         * Hilfsfunktion
+         * @param textAsList
+         */
+        function addToken(textAsList, startTokenIndex) {
+            // Div in dem die Buttons eingefügt werden
+            var currentDiv = document.getElementById("playArea");
+            var newDiv = document.createElement("div");
+            newDiv.className = "card-body";
+            newDiv.innerHTML = "";
+            currentDiv.appendChild(newDiv);
 
 
+            //textAsList = ["Hallo", "Welt", "Wie"];
+            for (i = 0; i < textAsList.length; i++) {
+                let word = textAsList[i];
 
-    /**
-     * Hilfsfunktion
-     * @param textAsList
-     */
-    function addToken(textAsList, startTokenIndex) {
-        // Div in dem die Buttons eingefügt werden
-        var currentDiv = document.getElementById("playArea");
-        var newDiv = document.createElement("div");
-        newDiv.className = "card-body";
-        newDiv.innerHTML = "";
-        currentDiv.appendChild(newDiv);
+                // Erstelle ein Button mit dem Wort und gib ihm eine id
+                var newButton = document.createElement("Button");
+                newButton.className = "word-button";
+                newButton.id = "address" + allAddresses[startTokenIndex + i];
+                newButton.setAttribute("onclick", "tokenClicked(id)");
 
+                // Setzt den Text des Buttons
+                var newContent = document.createTextNode(word);
+                newButton.appendChild(newContent);
 
-        //textAsList = ["Hallo", "Welt", "Wie"];
-        for (i = 0; i < textAsList.length; i++) {
-            let word = textAsList[i];
-
-            // Erstelle ein Button mit dem Wort und gib ihm eine id
-            var newButton = document.createElement("Button");
-            newButton.className = "word-button";
-            newButton.id = "address" + allAddresses[startTokenIndex + i];
-            newButton.setAttribute("onclick", "tokenClicked(id)");
-
-            // Setzt den Text des Buttons
-            var newContent = document.createTextNode(word);
-            newButton.appendChild(newContent);
-
-            // füge das neu erstellte Element und seinen Inhalt ins DOM ein
-            newDiv.appendChild(newButton);
+                // füge das neu erstellte Element und seinen Inhalt ins DOM ein
+                newDiv.appendChild(newButton);
+            }
         }
-    }
 
-    /**
-     * Hilfsfunktion
-     * @param tool
-     */
-    function colorToken(tool, color) {
-        var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
-        console.log(idFromAllDisplayedTokens);
-        for (let element in tool) {
-            var begin = tool[element]["features"]["begin"];
-            for (let idFromAllDisplayedToken in idFromAllDisplayedTokens) {
-                var id = idFromAllDisplayedTokens[idFromAllDisplayedToken];
-                var beginDisplayedToken = fromAddressToLemmaBegin(id);
-                if (begin == beginDisplayedToken) {
-                    document.getElementById("address" + id).style.background = color;
-                    //  document.getElementById("address"+id).className = color;
+        /**
+         * Hilfsfunktion
+         * @param tool
+         */
+        function colorToken(tool, color) {
+            var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
+            console.log(idFromAllDisplayedTokens);
+            for (let element in tool) {
+                var begin = tool[element]["features"]["begin"];
+                for (let idFromAllDisplayedToken in idFromAllDisplayedTokens) {
+                    var id = idFromAllDisplayedTokens[idFromAllDisplayedToken];
+                    var beginDisplayedToken = fromAddressToLemmaBegin(id);
+                    if (begin == beginDisplayedToken) {
+                        document.getElementById("address" + id).style.background = color;
+                        //  document.getElementById("address"+id).className = color;
+                    }
                 }
             }
         }
-    }
 
-    /**
-     * Hilfsfunktion: Gibt den Index eines Token zurück
-     * @param targetTool
-     * @returns {*}
-     */
-    function getRandomLemmaStartOfTargetTool(targetTool) {
-        var testListe = [];
-        targetTool = toolElementsGlobal[targetTool];
+        /**
+         * Hilfsfunktion: Gibt den Index eines Token zurück
+         * @param targetTool
+         * @returns {*}
+         */
+        function getRandomLemmaStartOfTargetTool(targetTool) {
+            var testListe = [];
+            targetTool = toolElementsGlobal[targetTool];
 
-        // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
-        for (let toolKey in targetTool) {
-            testListe.push(targetTool[toolKey]["features"]["begin"]);
+            // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
+            for (let toolKey in targetTool) {
+                testListe.push(targetTool[toolKey]["features"]["begin"]);
+            }
+
+            var x = getRandomIntMax(testListe.length);
+            return testListe[x];
         }
-
-        var x = getRandomIntMax(testListe.length);
-        return testListe[x];
     }
 
 
-}
+    return{
+        displayTextAsButtons: displayTextAsButtons,
+        startConnection: startConnection,
+    }
+
+
+});
 
 
 
@@ -289,5 +292,3 @@ function createSentimentButtons() {
     currentdiv.appendChild(neutralButton);
     document.getElementById("neutButton").style.backgroundColor = 'grey';
 }
-
-
