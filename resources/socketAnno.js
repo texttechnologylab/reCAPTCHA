@@ -140,14 +140,14 @@ function socketAnno(targetTool) {
         }
         // Falls die Aufgabe ist selber zu annotiern, dann Text von Beginn anzeigen ohne nach bestimmten Kriterien zu suchen
         if (targetTool == "standard") {
-            const NUMBEROFTOKENS = 60;
+            const NUMBEROFTOKENS = 30;
             for (i = 0; i < NUMBEROFTOKENS; i++) {
                 textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
             }
             // Es wird jedes Token als Button angezeigt
             addToken(textAsList, 0);
         } else {
-            const NUMBEROFTOKENS = getRandomIntMinMax(30, 60);
+            const NUMBEROFTOKENS = getRandomIntMinMax(20, 40);
 
             var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
             var startTokenIndex = getRandomIntMinMax(indexTarget - 30, indexTarget);
