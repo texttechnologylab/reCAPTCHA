@@ -148,7 +148,7 @@ const socketAnno = (function (){
             const NUMBEROFTOKENS = getRandomIntMinMax(20, 40);
 
             var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
-            var startTokenIndex = getRandomIntMinMax(indexTarget - 30, indexTarget);
+            var startTokenIndex = getRandomIntMinMax(indexTarget - NUMBEROFTOKENS, indexTarget);
             for (i = startTokenIndex; i < NUMBEROFTOKENS + startTokenIndex; i++) {
                 textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
             }

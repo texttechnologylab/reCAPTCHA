@@ -32,7 +32,7 @@ function checkInputFood(){
 }
 
 /**
- *  * Hilfsfunktion
+ * Hilfsfunktion
  * Kontrolliert die Eingabe des Users. Vergleicht dafür die Liste der ausgewählten Token des Users mit der Liste
  * der ToolElements aus dem Textannotater. Vergleiche werden durch lemmaBegin vorgenommen.
  * @param toolString
