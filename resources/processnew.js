@@ -106,7 +106,7 @@ function taskOne() {
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
     //let currentDiv = document.getElementById("taskArea");
-    let text = document.createTextNode("Markiere alle Nomen");
+    let text = document.createTextNode("Markiere alle Nomen (Check)");
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
     addNounButton();
@@ -119,7 +119,7 @@ function taskTwo() {
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Nomen");
+    let text = document.createTextNode("Markiere alle Nomen (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
     addAnnoNounsButton();
@@ -132,7 +132,7 @@ function taskThree() {
     currentdiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Verben");
+    let text = document.createTextNode("Markiere alle Verben (Check)");
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
     addVerbButton();
@@ -145,7 +145,7 @@ function taskFour() {
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Verben");
+    let text = document.createTextNode("Markiere alle Verben (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
     addAnnoVerbsButton();
@@ -158,7 +158,7 @@ function taskFive() {
     currentdiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Adjektive");
+    let text = document.createTextNode("Markiere alle Adjektive (Check)");
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
     addAdjectiveButton();
@@ -171,7 +171,7 @@ function taskSix() {
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Adjektive");
+    let text = document.createTextNode("Markiere alle Adjektive (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
     addAnnoAdjectiveButton();
@@ -184,7 +184,7 @@ function taskSeven() {
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Essen");
+    let text = document.createTextNode("Markiere Essen (Check)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringFood());
     addFoodButton();
@@ -197,7 +197,7 @@ function taskEight() {
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Essen");
+    let text = document.createTextNode("Markiere Essen (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringFood());
     addAnnoFoodButton();
@@ -244,6 +244,9 @@ currentdiv.appendChild(newLine);
     but.id = "button1";
     but.setAttribute("onclick", "drawline()");
     currentdiv.appendChild(but);
+
+    getLine();
+
 
     let but2 = document.createElement('button');
     but2.innerHTML = "Test2";

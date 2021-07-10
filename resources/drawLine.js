@@ -1,3 +1,14 @@
+function getLine() {
+    var currentDiv = document.getElementById("playArea");
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+    line.setAttribute("id", "line1");
+    line.setAttribute("stroke", "red");
+    svg.appendChild(line);
+    currentDiv.appendChild(svg);
+}
+
 function drawline() {
     let line1 = $('#line1');
     let button1 = $('#button1');

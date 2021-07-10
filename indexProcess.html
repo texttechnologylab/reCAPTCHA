@@ -22,13 +22,15 @@
 
     <script src="resources/frontendResources/js/functions.js"></script>
     <script src="resources/socketAnno.js"></script>
-    <script src="resources/helper/helper.js"></script>
     <script src="resources/sendAnnotation.js"></script>
     <script src="resources/checkAnnotation.js"></script>
-    <script src="resources/processnew.js"></script>
     <script src="resources/helper/getToolStrings.js"></script>
+    <script src="resources/helper/newHelper.js"></script>
     <script src="resources/drawLine.js"></script>
+    <script src="resources/processGeneration.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
 
 </head>
 
@@ -52,7 +54,7 @@
                     </div>
                     <div class="card-body">
                         <div id = "playArea">
-                            <button id ="startButton" class="btn btn-secondary btn-lg btn-block" onclick="taskCreator();taskOne()" disabled> Start </button>
+                            <button id ="startButton" class="btn btn-secondary btn-lg btn-block" onclick="taskGenerator(chooseTasks())" disabled> Start </button>
                         </div>
                         <div class="card-body">
                             <div id="sentenceHolder">
@@ -66,7 +68,7 @@
         </div>
 
         <!-- Zum  testen -->
-        <div  id = "testText" class="card-header">
+        <div id = "testText" class="card-header">
         </div>
     </main>
 </div>

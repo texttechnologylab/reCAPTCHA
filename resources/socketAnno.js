@@ -248,6 +248,7 @@ const socketAnno = (function (){
 
 
 //Function to check the right sentiment
+//Function to check the right sentiment
 function createSentimentButtons() {
     let positiveButton = document.createElement('button');
     positiveButton.id = "posButton";
