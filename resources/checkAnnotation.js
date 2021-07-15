@@ -1,35 +1,68 @@
 function checkInputNouns(){
     if (checkInputHelper(getToolStringNouns()) == true) {
-        document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
+        // hier auf globale Variablen zugreifen
+        colorTask(currentTaskNumber, 'lime');
+        // document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
         //taskCheckAdjectivés();
     } else {
-        document.getElementById("firstTaskLight").style.backgroundColor = 'red';
+        colorTask(currentTaskNumber, 'red');
+        // document.getElementById("firstTaskLight").style.backgroundColor = 'red';
     }
 
 }
 function checkInputVerbs(){
     if (checkInputHelper(getToolStringVerbs()) == true) {
-        document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
+        colorTask(currentTaskNumber, 'lime');
+        // document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
     } else {
-        document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
+        // document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
     }
 }
 function checkInputAdjectives(){
     if (checkInputHelper(getToolStringAdjectives()) == true) {
+        colorTask(currentTaskNumber, 'lime');
         //taskTen();
-        document.getElementById("fifthTaskLight").style.backgroundColor = 'lime';
+        // document.getElementById("fifthTaskLight").style.backgroundColor = 'lime';
     } else {
-        document.getElementById("fifthTaskLight").style.backgroundColor = 'red';
+        colorTask(currentTaskNumber, 'red');
+        // document.getElementById("fifthTaskLight").style.backgroundColor = 'red';
     }
 }
 
 function checkInputFood(){
     if (checkInputHelper(getToolStringFood()) == true) {
-        document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';
+        colorTask(currentTaskNumber, 'lime');
+        // document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';
     } else {
-        document.getElementById("seventhTaskLight").style.backgroundColor = 'red';
+        colorTask(currentTaskNumber, 'red');
+        // document.getElementById("seventhTaskLight").style.backgroundColor = 'red';
     }
 }
+
+
+function colorTask(currentTaskNumber, color) {
+    let elementId;
+    switch(currentTaskNumber) {
+        case 1:
+            elementId = "firstTaskLight";
+            break;
+        case 2:
+            elementId = "secondTaskLight";
+            break;
+        case 3:
+            elementId = "thirdTaskLight";
+            break;
+        case 4:
+            elementId = "fourthTaskLight";
+            break;
+        case 5:
+            elementId = "fifthTaskLight";
+            break;
+    }
+
+    document.getElementById(elementId).style.backgroundColor = color;
+}
+
 
 /**
  * Hilfsfunktion

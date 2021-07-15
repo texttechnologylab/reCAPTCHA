@@ -253,8 +253,6 @@ function addSendButton(task, taskNumber) {
     // sendButton.id = "sendButton";
     sendButton.className = "btn btn-secondary btn-lg btn-block";
     let value;
-
-
     switch (task) {
         case "checkNouns":
             value = "checkInputNouns()";

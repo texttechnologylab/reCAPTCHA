@@ -51,15 +51,15 @@ function sendAnnotationFood(){
 }
 function sendAnnotationNouns(){
     sendAnnotationHelper(getToolStringNouns());
-    document.getElementById("secondTaskLight").style.backgroundColor = 'lime';
+    colorTask(currentTaskNumber, 'lime');
 }
 function sendAnnotationVerbs(){
     sendAnnotationHelper(getToolStringVerbs());
-    document.getElementById("fourthTaskLight").style.backgroundColor = 'lime';
+    colorTask(currentTaskNumber, 'lime');
 }
 function sendAnnotationAdjectives(){
     sendAnnotationHelper(getToolStringAdjectives());
-    document.getElementById("sixthTaskLight").style.backgroundColor = 'lime';
+    colorTask(currentTaskNumber, 'lime');
 }
 
 

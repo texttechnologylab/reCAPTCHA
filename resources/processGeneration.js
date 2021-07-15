@@ -1,14 +1,14 @@
 const SOCKETANNO = socketAnno();
+// currentTaskNumber = 1;
 
 //Sicherungsaufgaben
-function taskOne(taskNumber) {
+function taskOne() {
     //Check Nomen
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    //let currentDiv = document.getElementById("taskArea");
     let text = document.createTextNode("Markiere alle Nomen (Check)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
@@ -191,12 +191,15 @@ function taskElection(taskButtonNumber, taskNumber) {
     switch (taskButtonNumber + 1) {
         case 1:
             let firstTaskButton = document.createElement("Button");
-            firstTaskButton.id = "taskLight" + taskNumber;
+            firstTaskButton.id = "firstTaskLight";
             window.alert(firstTaskButton.id);
             let one = document.createTextNode("Aufgabe 1");
             firstTaskButton.appendChild(one);
 
-            firstTaskButton.setAttribute("onclick", task);
+            firstTaskButton.addEventListener("click", function () {
+                callTask(taskNumber);
+                currentTaskNumber = 1;
+            });
             firstTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(firstTaskButton);
             break;
@@ -206,7 +209,10 @@ function taskElection(taskButtonNumber, taskNumber) {
             let two = document.createTextNode("2");
             secondTaskButton.appendChild(two);
 
-            secondTaskButton.setAttribute("onclick", task);
+            secondTaskButton.addEventListener("click", function(){
+                callTask(taskNumber);
+                currentTaskNumber = 2;
+            });
             secondTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(secondTaskButton);
             break;
@@ -216,7 +222,10 @@ function taskElection(taskButtonNumber, taskNumber) {
             let three = document.createTextNode("3");
             thirdTaskButton.appendChild(three);
 
-            thirdTaskButton.setAttribute("onclick", task);
+            thirdTaskButton.addEventListener("click", function (){
+                callTask(taskNumber);
+                currentTaskNumber = 3;
+            });
             thirdTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(thirdTaskButton);
             break;
@@ -226,7 +235,10 @@ function taskElection(taskButtonNumber, taskNumber) {
             let four = document.createTextNode("4");
             fourthTaskButton.appendChild(four);
 
-            fourthTaskButton.setAttribute("onclick", task);
+            fourthTaskButton.addEventListener("click", function() {
+                callTask(taskNumber);
+                currentTaskNumber = 4;
+            });
             fourthTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(fourthTaskButton);
             break;
@@ -236,7 +248,10 @@ function taskElection(taskButtonNumber, taskNumber) {
             let five = document.createTextNode("5");
             fifthTaskButton.appendChild(five);
 
-            fifthTaskButton.setAttribute("onclick", task);
+            fifthTaskButton.addEventListener("click", function() {
+                callTask(taskNumber);
+                currentTaskNumber = 5;
+            });
             fifthTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(fifthTaskButton);
             break;
@@ -246,7 +261,10 @@ function taskElection(taskButtonNumber, taskNumber) {
             let six = document.createTextNode("6");
             sixthTaskButton.appendChild(six);
 
-            sixthTaskButton.setAttribute("onclick", task);
+            sixthTaskButton.addEventListener("click", function() {
+                callTask(taskNumber);
+                currentTaskNumber = 6;
+            });
             sixthTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(sixthTaskButton);
             break;
@@ -256,7 +274,10 @@ function taskElection(taskButtonNumber, taskNumber) {
             let seven = document.createTextNode("7");
             seventhTaskButton.appendChild(seven);
 
-            seventhTaskButton.setAttribute("onclick", task);
+            seventhTaskButton.addEventListener("click", function() {
+                callTask(taskNumber);
+                currentTaskNumber = 7;
+            });
             seventhTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(seventhTaskButton);
             break;
@@ -266,10 +287,59 @@ function taskElection(taskButtonNumber, taskNumber) {
             let eight = document.createTextNode("8");
             eighthTaskButton.appendChild(eight);
 
-            eighthTaskButton.setAttribute("onclick", task);
+            eighthTaskButton.addEventListener("click", function () {
+                callTask(taskNumber);
+                currentTaskNumber = 8;
+            });
             eighthTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(eighthTaskButton);
             break;
     }
 }
+
+function currentTask(taskButtonNumber) {
+    switch(taskButtonNumber) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+    }
+    let taskButton = document.getElementById("firstTaskButton");
+    //
+}
+
+function callTask(taskNumber) {
+    switch (taskNumber) {
+        case 1:
+            taskOne()
+            break;
+        case 2:
+            taskTwo()
+            break;
+        case 3:
+            taskThree();
+            break;
+        case 4:
+            taskFour();
+            break;
+        case 5:
+            taskFive();
+            break;
+        case 6:
+            taskSix();
+            break;
+        case 7:
+            taskSeven();
+            break;
+        case 8:
+            taskEight();
+            break;
+
+    }
+}
+
 
