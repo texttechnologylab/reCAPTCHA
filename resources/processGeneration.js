@@ -1,5 +1,4 @@
 const SOCKETANNO = socketAnno();
-// currentTaskNumber = 1;
 
 //Sicherungsaufgaben
 function taskOne() {
@@ -160,33 +159,6 @@ function taskElection(taskButtonNumber, taskNumber) {
 
     let currentDiv = document.getElementById("taskArea");
     let task = "";
-    switch(taskNumber) {
-        case 1:
-            task = "taskOne()";
-            break;
-        case 2:
-            task = "taskTwo()";
-            break;
-        case 3:
-            task = "taskThree()";
-            break;
-        case 4:
-            task = "taskFour()";
-            break;
-        case 5:
-            task = "taskFive()";
-            break;
-        case 6:
-            task = "taskSix()";
-            break;
-        case 7:
-            task = "taskSeven()";
-            break;
-        case 8:
-            task = "taskEight()";
-            break;
-    }
-
 
     switch (taskButtonNumber + 1) {
         case 1:
@@ -297,20 +269,6 @@ function taskElection(taskButtonNumber, taskNumber) {
     }
 }
 
-function currentTask(taskButtonNumber) {
-    switch(taskButtonNumber) {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-    }
-    let taskButton = document.getElementById("firstTaskButton");
-    //
-}
 
 function callTask(taskNumber) {
     switch (taskNumber) {
