@@ -1,5 +1,7 @@
-// Speichert die ids aller Token die angeklickt worden sind.
-let selectedTokensId = [];
+// Globale variablieren werden hier initialisiert
+
+
+let selectedTokensId = []; // Speichert die id aller Token die angeklickt sind.
 
 let sentenceCounterGlobal = 0;
 let allSentencesGlobal = [];

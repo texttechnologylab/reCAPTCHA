@@ -139,6 +139,7 @@ function getIdFromAllDisplayedTokens(){
             idFromAllDisplayedTokens.push((idFromAllDisplayedTokensWithAddress[element]).split("address")[1]);
         }
     }
+
     return idFromAllDisplayedTokens;
 }
 
