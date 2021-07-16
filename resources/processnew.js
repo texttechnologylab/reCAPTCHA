@@ -1,4 +1,4 @@
-const SOCKETANNO = socketAnno();
+const SOCKETANNO = websocketAnno();
 
 function taskCreator() {
     let currentDiv = document.getElementById("taskArea");
@@ -225,7 +225,7 @@ function taskTen() {
     otherDiv.innerHTML = "";
     let text = document.createTextNode("Wähle Sentiment");
     currentdiv.appendChild(text);
-    socketAnno("loadSentences");
+    websocketAnno("loadSentences");
 }
 
 function testTask() {

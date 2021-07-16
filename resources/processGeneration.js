@@ -1,4 +1,4 @@
-const SOCKETANNO = socketAnno();
+const SOCKETANNO = websocketAnno();
 
 //Sicherungsaufgaben
 function taskOne() {

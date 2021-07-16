@@ -2,7 +2,7 @@ let toolElementsGlobal;
 let webSocketGlobal;
 
 
-const socketAnno = (function (){
+const websocketAnno = (function (){
     const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
     //  const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
@@ -10,6 +10,7 @@ const socketAnno = (function (){
     let casId = "28490";
     let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
     let view = "https://authority.hucompute.org/user/316809";
+
     //  let tool = "quickpanel"; proppanel
     let tool = "proppanel";
 
@@ -138,14 +139,14 @@ const socketAnno = (function (){
         }
         // Falls die Aufgabe ist selber zu annotiern, dann Text von Beginn anzeigen ohne nach bestimmten Kriterien zu suchen
         if (targetTool == "standard") {
-            const NUMBEROFTOKENS = 30;
+            const NUMBEROFTOKENS = 15;
             for (i = 0; i < NUMBEROFTOKENS; i++) {
                 textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
             }
             // Es wird jedes Token als Button angezeigt
             addToken(textAsList, 0);
         } else {
-            const NUMBEROFTOKENS = getRandomIntMinMax(20, 40);
+            const NUMBEROFTOKENS = getRandomIntMinMax(10, 20);
 
             var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
             var startTokenIndex = getRandomIntMinMax(indexTarget - NUMBEROFTOKENS, indexTarget);

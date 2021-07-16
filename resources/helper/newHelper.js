@@ -187,7 +187,7 @@ function saveSentiment(selection) {
 
 function displaySentence(){
     if (sentenceCounterGlobal == 0) {
-        socketAnno('loadSentences');
+        websocketAnno('loadSentences');
     }
     else{
         document.getElementById("sentenceHolder").innerHTML = allSentencesGlobal[sentenceCounterGlobal];
