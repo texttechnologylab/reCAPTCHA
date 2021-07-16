@@ -101,7 +101,7 @@ function sendAnnotationRelationHelper(){
     }));
 
 
-    alert("Everything correct");
+    alert("Das Recaptcha wurde erfolgreich gelöst");
     window.close();
 
 }

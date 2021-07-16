@@ -22,13 +22,12 @@
 
     <script src="resources/frontendResources/js/functions.js"></script>
     <script src="resources/socketAnno.js"></script>
-    <script src="resources/helper.js"></script>
+    <script src="resources/processVedatTest.js"></script>
     <script src="resources/sendAnnotation.js"></script>
-    <script src="resources/checkAnnotation.js"></script>
-    <script src="resources/processTest.js"></script>
-    <script src="resources/getToolStrings.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+    <script src="resources/helper/helper.js"></script>
+    <script src="resources/helper/getToolStrings.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 </head>
@@ -45,38 +44,21 @@
         <div class="row">
             <div class="col-xl-6">
                 <div class="card mb-4">
+                    <div id ="taskArea" class="card-header">
+                        <!--    <i> Start </i> <br>  -->
+                        <i> Lösen Sie das reCaptcha. </i> <br>
+                        <i> Klicke Start </i>
+
+                    </div>
                     <div class="card-body">
                         <div id = "playArea">
-                            <button id="button1" onclick="drawline()" style="width: 50px; height: 50px; top:0; left:0; background:#e53935 ; position:absolute;"> Button1 </button>
-                            <button id="button2" style="width: 100px; height: 100px; top:200px; left:300px; background:#4527a0 ; position:absolute;"> Button2 </button>
-
-                            <script>
-                                function drawline() {
-                                    var currentDiv = document.getElementById("playArea");
-                                    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                                    let newLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                                    // variable for the namespace
-
-                                    newLine.setAttribute("id", "line1");
-                                    newLine.setAttribute("stroke", "#e53935")
-                                    svg.appendChild(newLine);
-                                    currentDiv.appendChild(svg);
-
-
-
-                                    line1 = $('#line1');
-                                    button1 = $('#button1');
-                                    button2 = $('#button2');
-                                    let pos1 = button1.position();
-                                    let pos2 = button2.position();
-
-                                    line1
-                                        .attr('x1', pos1.left)
-                                        .attr('y1', pos1.top)
-                                        .attr('x2', pos2.left)
-                                        .attr('y2', pos2.top);
-                                }
-                            </script>
+                            <button id ="startButton" class="btn btn-secondary btn-lg btn-block" onclick="processRecaptcha()" disabled> Start </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="sentenceHolder">
+                            </div>
+                            <div id="sentimentButtonHolder">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,10 +67,10 @@
 
         <!-- Zum  testen -->
         <div  id = "testText" class="card-header">
-            <button id ="endButton" class="btn btn-secondary btn-lg btn-block"> End </button>
         </div>
     </main>
 </div>
 
 </body>
 </html>
+

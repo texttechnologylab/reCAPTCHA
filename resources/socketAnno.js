@@ -157,10 +157,10 @@ const socketAnno = (function (){
         }
 
         // Die Button bekommen Färbungen je nach Annotations
-        colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
-        colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
-        colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
-        colorToken(toolElementsGlobal["org.texttechnologylab.annotation.type.Food"], "#A569BD");
+      //  colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
+      //  colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
+      //  colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
+        colorToken(toolElementsGlobal[targetTool], "#A569BD");
 
 
         // Alles definierte Hilfsfunktionen, die in "displayTextAsButtons()" genutzt werden
