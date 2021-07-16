@@ -146,6 +146,7 @@ function addAnnoVerbsButton() {
     currentDiv.appendChild(buttonCheck);
 }
 
+
 function addAnnoAdjectiveButton() {
     let currentDiv = document.getElementById("testText");
     var buttonCheck = document.createElement("button");
@@ -153,6 +154,16 @@ function addAnnoAdjectiveButton() {
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives()");
     buttonCheck.innerHTML = "Annotiere Adjektive";
+    currentDiv.appendChild(buttonCheck);
+}
+
+function addAnnoAnimalFaunaButton() {
+    let currentDiv = document.getElementById("testText");
+    var buttonCheck = document.createElement("button");
+    buttonCheck.id = "annoA";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
+    buttonCheck.setAttribute("onclick", "sendAnnotationAnimalFauna()");
+    buttonCheck.innerHTML = "Annotiere Fauna";
     currentDiv.appendChild(buttonCheck);
 }
 

@@ -1,15 +1,16 @@
 let toolElementsGlobal;
 let webSocketGlobal;
+let webSocketGlobalForAnnotation;
 
 
-const websocketAnno = (function (){
+const websocketAnno = (function (view){
     const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
     //  const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
 
     let casId = "28490";
     let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
-    let view = "https://authority.hucompute.org/user/316809";
+    //let view = "https://authority.hucompute.org/user/316809";
 
     //  let tool = "quickpanel"; proppanel
     let tool = "proppanel";
@@ -55,10 +56,18 @@ const websocketAnno = (function (){
                 }
 
                 case "open_view": {
-                    webSocket.send(JSON.stringify({
-                        cmd: 'open_tool',
-                        data: {casId: response.data.casId, view: response.data.view, toolName: tool}
-                    }));
+
+                    if (response.data.view == "recaptcha") {
+                        webSocketGlobalForAnnotation = webSocket;
+                    }
+                    else {
+                        webSocket.send(JSON.stringify({
+                            cmd: 'open_tool',
+                            data: {casId: response.data.casId, view: response.data.view, toolName: tool}
+                        }));
+                    }
+
+
                     break;
                 }
 
@@ -66,6 +75,13 @@ const websocketAnno = (function (){
                     toolElements = response.data.toolElements;
                     toolElementsGlobal = toolElements;
                     webSocketGlobal = webSocket;
+
+                    // Recaptcha View laden um Annotationen zu speichern
+                    webSocket.send(JSON.stringify({
+                        cmd: 'open_view',
+                        data: {casId: casId, view: "recaptcha", force: true}
+
+                    }));
 
                     // Sobald alles geladen hat dann kann man die Seite starten
                     $('#startButton').removeAttr('disabled');

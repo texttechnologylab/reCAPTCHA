@@ -10,3 +10,6 @@ function getToolStringVerbs(){
 function getToolStringAdjectives(){
     return "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ";
 }
+function getToolStringAnimalFauna(){
+    return "org.texttechnologylab.annotation.type.Plant_Flora";
+}

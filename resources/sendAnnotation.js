@@ -11,7 +11,7 @@ function sendAnnotationHelper(type){
 
     // Bleiben fest erstmal
     var casId = "28490";
-    var view = "https://authority.hucompute.org/user/316809";
+    var view = "recaptcha";
     var tool = "quickpanel";
     var bPrivate = false;
     var batchIdentifier = "_b1_";
@@ -35,16 +35,16 @@ function sendAnnotationHelper(type){
             queue: cmdQueue, options: [{privateSession: bPrivate}]
         }
     });
-    webSocketGlobal.send(cmd);
+    webSocketGlobalForAnnotation.send(cmd);
     console.log(cmd);
 
-    webSocketGlobal.send(JSON.stringify({
+    webSocketGlobalForAnnotation.send(JSON.stringify({
         cmd: 'save_cas',
         data: {casId: casId}
     }));
 }
 
-// Für jedes Tool wird eine Funktion geschrieben.
+//---- Für jedes Tool wird eine Funktion geschrieben.
 
 function sendAnnotationFood(){
     sendAnnotationHelper(getToolStringFood());
@@ -59,6 +59,10 @@ function sendAnnotationVerbs(){
 }
 function sendAnnotationAdjectives(){
     sendAnnotationHelper(getToolStringAdjectives());
+    colorTask(currentTaskNumber, 'lime');
+}
+function sendAnnotationAnimalFauna(){
+    sendAnnotationHelper(getToolStringAnimalFauna());
     colorTask(currentTaskNumber, 'lime');
 }
 

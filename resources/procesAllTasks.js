@@ -1,4 +1,5 @@
-const SOCKETANNO = websocketAnno();
+var view = "https://authority.hucompute.org/user/316809";
+const SOCKETANNO = websocketAnno(view);
 
 function taskCreator() {
     let currentDiv = document.getElementById("taskArea");
@@ -88,14 +89,6 @@ function taskCreator() {
     tenTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(tenTaskButton);
 
-
-    // WIEDER LÖSCHEN
-    let testTask = document.createElement("Button");
-    testTask.id = "testTask";
-    testTask.innerHTML = "Test";
-    testTask.setAttribute("onclick", "testTask()");
-    testTask.style.backgroundColor = 'blue';
-    currentDiv.appendChild(testTask);
 }
 
 function taskOne() {
@@ -210,7 +203,7 @@ function taskNine() {
     currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Klicke 2 Token die in Beziehung zueinander stehen");
+    let text = document.createTextNode("Markiere genau zwei Wörter");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     addTestButton();
@@ -219,38 +212,12 @@ function taskNine() {
 function taskTen() {
     //Sentiment bestimmen
     selectedTokensId = [];
-    let currentdiv = document.getElementById("playArea");
-    currentdiv.innerHTML = "";
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
     let otherDiv = document.getElementById("testText");
     otherDiv.innerHTML = "";
-    let text = document.createTextNode("Wähle Sentiment");
-    currentdiv.appendChild(text);
-    websocketAnno("loadSentences");
-}
-
-function testTask() {
-    /*
-//Linie hinzufügen
-let newLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
-newLine.setAttribute('stroke', 'red');
-newLine.id = "line1";
-currentdiv.appendChild(newLine);
- */
-    //Test Buttons hinzufügen
-    let currentdiv = document.getElementById("playArea");
-    currentdiv.innerHTML = "";
-    let but = document.createElement('button');
-    but.innerHTML = "Test1";
-    but.id = "button1";
-    but.setAttribute("onclick", "drawline()");
-    currentdiv.appendChild(but);
-
-    getLine();
-
-
-    let but2 = document.createElement('button');
-    but2.innerHTML = "Test2";
-    but2.id = "button2";
-    but2.setAttribute("onclick", "deleteLine()");
-    currentdiv.appendChild(but2);
+    let text = document.createTextNode("Markiere Fauna (Anno)");
+    currentDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons(getToolStringAnimalFauna());
+    addAnnoAnimalFaunaButton();
 }

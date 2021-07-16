@@ -1,4 +1,5 @@
-const SOCKETANNO = websocketAnno();
+var view = "https://authority.hucompute.org/user/316809";
+const SOCKETANNO = websocketAnno(view);
 
 
 function processRecaptcha(){
