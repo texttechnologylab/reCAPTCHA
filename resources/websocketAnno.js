@@ -1,10 +1,8 @@
 let toolElementsGlobal;
 let webSocketGlobal;
-let webSocketGlobalForAnnotation;
-
 
 const websocketAnno = (function (view){
-    const url = "ws://" + "textannotator.texttechnologylab.org" + "/uima";
+    const url = "ws://textannotator.texttechnologylab.org/uima";
     //  const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
 
@@ -57,15 +55,10 @@ const websocketAnno = (function (view){
 
                 case "open_view": {
 
-                    if (response.data.view == "recaptcha") {
-                        webSocketGlobalForAnnotation = webSocket;
-                    }
-                    else {
-                        webSocket.send(JSON.stringify({
-                            cmd: 'open_tool',
-                            data: {casId: response.data.casId, view: response.data.view, toolName: tool}
-                        }));
-                    }
+                    webSocket.send(JSON.stringify({
+                        cmd: 'open_tool',
+                        data: {casId: response.data.casId, view: response.data.view, toolName: tool}
+                    }));
 
 
                     break;
@@ -79,7 +72,7 @@ const websocketAnno = (function (view){
                     // Recaptcha View laden um Annotationen zu speichern
                     webSocket.send(JSON.stringify({
                         cmd: 'open_view',
-                        data: {casId: casId, view: "recaptcha", force: true}
+                        data: {casId: casId, view: view, force: true}
 
                     }));
 
@@ -119,7 +112,6 @@ const websocketAnno = (function (view){
                 document.getElementById("playArea").innerHTML = textSentence
                 sentenceCounterGlobal++;
             }
-            //  text = text + " " + word;
             allSentencesGlobal.push(textSentence);
         }
     }
@@ -173,10 +165,7 @@ const websocketAnno = (function (view){
             addToken(textAsList, startTokenIndex);
         }
 
-        // Die Button bekommen Färbungen je nach Annotations
-      //  colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ"], "#35EB4D");
-      //  colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN"], "#167DFB");
-      //  colorToken(toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V"], "#E9311B");
+        // Für Tests: Token werden je nach toolTarget gefärbt
         colorToken(toolElementsGlobal[targetTool], "#A569BD");
 
 
@@ -195,7 +184,6 @@ const websocketAnno = (function (view){
             currentDiv.appendChild(newDiv);
 
 
-            //textAsList = ["Hallo", "Welt", "Wie"];
             for (i = 0; i < textAsList.length; i++) {
                 let word = textAsList[i];
 
@@ -263,8 +251,6 @@ const websocketAnno = (function (view){
 });
 
 
-
-//Function to check the right sentiment
 //Function to check the right sentiment
 function createSentimentButtons() {
     let positiveButton = document.createElement('button');
