@@ -1,69 +1,3 @@
-function checkInputNouns(){
-    if (checkInputHelper(getToolStringNouns()) == true) {
-        // hier auf globale Variablen zugreifen
-        colorTask(currentTaskNumber, 'lime');
-        // document.getElementById("firstTaskLight").style.backgroundColor = 'lime';
-        //taskCheckAdjectivés();
-    } else {
-        colorTask(currentTaskNumber, 'red');
-        // document.getElementById("firstTaskLight").style.backgroundColor = 'red';
-    }
-
-}
-function checkInputVerbs(){
-    if (checkInputHelper(getToolStringVerbs()) == true) {
-        colorTask(currentTaskNumber, 'lime');
-        // document.getElementById("thirdTaskLight").style.backgroundColor = 'lime';
-    } else {
-        // document.getElementById("thirdTaskLight").style.backgroundColor = 'red';
-    }
-}
-function checkInputAdjectives(){
-    if (checkInputHelper(getToolStringAdjectives()) == true) {
-        colorTask(currentTaskNumber, 'lime');
-        //taskTen();
-        // document.getElementById("fifthTaskLight").style.backgroundColor = 'lime';
-    } else {
-        colorTask(currentTaskNumber, 'red');
-        // document.getElementById("fifthTaskLight").style.backgroundColor = 'red';
-    }
-}
-
-function checkInputFood(){
-    if (checkInputHelper(getToolStringFood()) == true) {
-        colorTask(currentTaskNumber, 'lime');
-        // document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';
-    } else {
-        colorTask(currentTaskNumber, 'red');
-        // document.getElementById("seventhTaskLight").style.backgroundColor = 'red';
-    }
-}
-
-
-function colorTask(currentTaskNumber, color) {
-    let elementId;
-    switch(currentTaskNumber) {
-        case 1:
-            elementId = "firstTaskLight";
-            break;
-        case 2:
-            elementId = "secondTaskLight";
-            break;
-        case 3:
-            elementId = "thirdTaskLight";
-            break;
-        case 4:
-            elementId = "fourthTaskLight";
-            break;
-        case 5:
-            elementId = "fifthTaskLight";
-            break;
-    }
-
-    document.getElementById(elementId).style.backgroundColor = color;
-}
-
-
 /**
  * Hilfsfunktion
  * Kontrolliert die Eingabe des Users. Vergleicht dafür die Liste der ausgewählten Token des Users mit der Liste
@@ -72,14 +6,15 @@ function colorTask(currentTaskNumber, color) {
  * @returns {boolean}
  */
 function checkInputHelper(toolString){
-    var entitiesTool = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"]
+    toolElements = SOCKETANNO.getToolElementsInstance();
+    var entitiesTool = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"]
     var numberOfFalse = 0; // Anzahl der falsch ausgewählten Token vom User
     var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
     var allLemmaBeginFromTool = [];
     var allLemmaBegin = [];
 
     // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
-    var tool = toolElementsGlobal[toolString];
+    var tool = toolElements[toolString];
     for (let toolKey in tool) {
         allLemmaBeginFromTool.push(tool[toolKey]["features"]["begin"])
     }
@@ -119,6 +54,178 @@ function checkInputHelper(toolString){
         return false;
     }
 }
+
+/*
+    Funktionen die Folgen sind alle eine Variantion der Hilfsfunktion "checkInputHelper".
+    Der Unterschied liegt nur darin weclche Entity kontrolliert wird.
+ */
+
+/**
+ * Kontrolliert ob Eingabe von Nomen richtig ist. Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputNouns(){
+    if (checkInputHelper(getToolStringNouns()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Verben richtig ist. Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputVerbs(){
+    if (checkInputHelper(getToolStringVerbs()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Adjektiven richtig ist. Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputAdjectives(){
+    if (checkInputHelper(getToolStringAdjectives()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Food Entitys richtig ist.
+ * Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputFood(){
+    if (checkInputHelper(getToolStringAdjectives()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+    checkInputHelper(getToolStringFood());
+}
+
+/**
+ * Kontrolliert ob Eingabe von Animal_Fauna Entitys richtig ist.
+ * Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputAnimalFauna(){
+    if (checkInputHelper(getToolStringAnimalFauna()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Plant_Flora Entitys richtig ist.
+ * Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputPlantFlora(){
+    if (checkInputHelper(getToolStringPlantFlora()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Act_Action_Activity Entitys richtig ist.
+ * Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputActActionActivity(){
+    if (checkInputHelper(getToolStringActActionActivity()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Location_Place Entitys richtig ist.
+ * Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputLocationPlace(){
+    if (checkInputHelper(getToolStringLocationPlace()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Human_Being Entitys richtig ist.
+ * Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputHumanBeing(){
+    if (checkInputHelper(getToolStringPersonHumanBeing()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Event_Happening Entitys richtig ist.
+ * Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputEventHappening(){
+    if (checkInputHelper(getToolStringEventHappening()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+/**
+ * Kontrolliert ob Eingabe von Vehicle Entitys richtig ist.
+ * Je nachdem wird die nächste Aufgabe angezeigt
+ */
+function checkInputVehicle(){
+    if (checkInputHelper(getToolStringVehicle()) == false ){
+        getRandomTaskFromClassOne();
+    }
+    else{
+        getRandomTaskFromClassTwo();
+    }
+}
+
+
+
+function colorTask(currentTaskNumber, color) {
+    let elementId;
+    switch(currentTaskNumber) {
+        case 1:
+            elementId = "firstTaskLight";
+            break;
+        case 2:
+            elementId = "secondTaskLight";
+            break;
+        case 3:
+            elementId = "thirdTaskLight";
+            break;
+        case 4:
+            elementId = "fourthTaskLight";
+            break;
+        case 5:
+            elementId = "fifthTaskLight";
+            break;
+    }
+
+    document.getElementById(elementId).style.backgroundColor = color;
+}
+
 
 
 /**
