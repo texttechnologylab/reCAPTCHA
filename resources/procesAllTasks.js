@@ -208,7 +208,9 @@ function taskNine() {
     let text = document.createTextNode("Markiere genau zwei Wörter");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
-    addTestButton();
+    // side bar erzeugen
+    //addTestButton();
+    addPropSelect();
 }
 
 function taskTen() {

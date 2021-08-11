@@ -41,7 +41,7 @@ function tokenClicked(buttonId) {
 
 function addNounButton() {
     // vorher "testText"
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     let checkN = document.createElement("Button");
     checkN.id = "checkN";
@@ -52,7 +52,7 @@ function addNounButton() {
 }
 
 function addTestButton() {
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     let checkN = document.createElement("Button");
     checkN.id = "checkTest";
@@ -62,8 +62,41 @@ function addTestButton() {
     currentDiv.appendChild(checkN);
 }
 
+function addPropSelect() {
+    let currentDiv = document.getElementById("confirmation");
+    currentDiv.innerHTML = "";
+    let checkProp = document.createElement("select");
+    checkProp.id = "propSelection";
+    checkProp.className = "btn btn-secondary btn-lg btn-block";
+    checkProp.text = "Wähle Relation";
+    let options = [["selectButton", "Wähle Relation"],["noun", "Nomenverbindung"], ["verb", "Verbenverbindung"], ["adjective", "Adjektiveverbindung"]];
+
+    for (let i = 0; i < options.length; i++) {
+        let option = document.createElement("option");
+        option.text = options[i][1];
+        option.value = options[i][0];
+        checkProp.options[i] = option;
+    }
+    currentDiv.appendChild(checkProp);
+    let sendProp = document.createElement("Button");
+    sendProp.innerHTML = "OK";
+    sendProp.className = "btn btn-secondary btn-lg btn-block";
+    currentDiv.appendChild(sendProp);
+
+    /*
+    let nounOption = document.createElement("option");
+    nounOption.text = "Nomen Relation";
+    nounOption.value = "noun";
+    checkProp.options[1] = nounOption;
+    //nounOption.innerHTML = "Nomenverbindung";
+    //nounOption.id = "Nomen Relation";
+    //checkProp.appendChild(nounOption);
+    //checkProp.innerHTML = "Wähle Relation";
+     */
+}
+
 function addVerbButton() {
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     let checkV = document.createElement("Button");
     checkV.id = "checkV";
@@ -75,7 +108,7 @@ function addVerbButton() {
 }
 
 function addAdjectiveButton() {
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     let checkA = document.createElement("Button");
     checkA.id = "checkA";
@@ -86,7 +119,7 @@ function addAdjectiveButton() {
 }
 
 function addFoodButton() {
-    let currentDiv = document.getElementById("buttonArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id ="checkF";
@@ -96,8 +129,9 @@ function addFoodButton() {
     currentDiv.appendChild(buttonCheck);
 }
 
+// alles auf textArea umändern
 function addAnnoFoodButton() {
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoF";
@@ -109,7 +143,7 @@ function addAnnoFoodButton() {
 }
 
 function addAnnoNounsButton() {
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoN";
@@ -120,7 +154,7 @@ function addAnnoNounsButton() {
 }
 
 function addAnnoVerbsButton() {
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoV";
@@ -133,7 +167,7 @@ function addAnnoVerbsButton() {
 
 
 function addAnnoAdjectiveButton() {
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoA";
@@ -144,7 +178,7 @@ function addAnnoAdjectiveButton() {
 }
 
 function addAnnoAnimalFaunaButton() {
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("confirmation");
     currentDiv.innerText = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoA";
@@ -246,7 +280,7 @@ function getRandomIntMinMax(min, max) {
 }
 
 function addSendButton(task, taskNumber) {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("confirmation");
     let sendButton = document.createElement("Button");
     // sendButton.id = "sendButton";
     sendButton.className = "btn btn-secondary btn-lg btn-block";
