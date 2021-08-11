@@ -101,13 +101,12 @@ function checkInputAdjectives(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputFood(){
-    if (checkInputHelper(getToolStringAdjectives()) == false ){
+    if (checkInputHelper(getToolStringFood()) == false ){
         getRandomTaskFromClassOne();
     }
     else{
         getRandomTaskFromClassTwo();
     }
-    checkInputHelper(getToolStringFood());
 }
 
 /**
