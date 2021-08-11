@@ -220,8 +220,19 @@ function colorTask(currentTaskNumber, color) {
         case 5:
             elementId = "fifthTaskLight";
             break;
+        case 6:
+            elementId = "sixthTaskLight";
+            break;
+        case 7:
+            elementId = "seventhTaskLight";
+            break;
+        case 8:
+            elementId = "eightTaskLight";
+            break;
+        case 9:
+            elementId = "ninthTaskLight";
+            break;
     }
-
     document.getElementById(elementId).style.backgroundColor = color;
 }
 

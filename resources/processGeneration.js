@@ -117,6 +117,19 @@ function taskEight() {
     addSendButton("annoFood");
 }
 
+function taskNine() {
+    //PropAnno
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let otherDiv = document.getElementById("testText");
+    otherDiv.innerHTML = "";
+    let text = document.createTextNode("Klicke 2 Token die in Beziehung zueinander stehen");
+    currentDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons("standard");
+    addSendButton("propAnno");
+}
+
 
 function chooseTasks() {
 
@@ -142,12 +155,11 @@ function chooseTasks() {
     }
 
     let taskList = [taskOne, taskTwo, taskThree, taskFour];
-    // let taskList = [1, 2, 3, 4];
+    taskList = [1,2,6,9]
     return taskList;
 }
 
 function taskGenerator(taskList) {
-
     let currentDiv = document.getElementById("taskArea");
     currentDiv.innerHTML = "";
     let buttonDiv = document.getElementById("playArea");
@@ -168,7 +180,6 @@ function taskElection(taskButtonNumber, taskNumber) {
         case 1:
             let firstTaskButton = document.createElement("Button");
             firstTaskButton.id = "firstTaskLight";
-            window.alert(firstTaskButton.id);
             let one = document.createTextNode("Aufgabe 1");
             firstTaskButton.appendChild(one);
 
@@ -270,9 +281,20 @@ function taskElection(taskButtonNumber, taskNumber) {
             eighthTaskButton.style.backgroundColor = 'red';
             currentDiv.appendChild(eighthTaskButton);
             break;
+        case 9:
+            let ninthTaskButton = document.createElement("Button");
+            ninthTaskButton.id = "ninthTaskLight";
+            let nine = document.createTextNode("9");
+            ninthTaskButton.appendChild(nine);
+
+            ninthTaskButton.addEventListener("click", function () {
+                callTask(taskNumber);
+                currentTaskNumber = 9;
+            });
+            ninthTaskButton.style.backgroundColor = 'red';
+            currentDiv.appendChild(ninthTaskButton);
     }
 }
-
 
 function callTask(taskNumber) {
     switch (taskNumber) {
@@ -300,7 +322,9 @@ function callTask(taskNumber) {
         case 8:
             taskEight();
             break;
-
+        case 9:
+            taskNine();
+            break;
     }
 }
 

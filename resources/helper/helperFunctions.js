@@ -40,7 +40,9 @@ function tokenClicked(buttonId) {
 
 
 function addNounButton() {
-    let currentDiv = document.getElementById("testText");
+    // vorher "testText"
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
     let checkN = document.createElement("Button");
     checkN.id = "checkN";
     checkN.className = "btn btn-secondary btn-lg btn-block";
@@ -50,7 +52,8 @@ function addNounButton() {
 }
 
 function addTestButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
     let checkN = document.createElement("Button");
     checkN.id = "checkTest";
     checkN.className = "btn btn-secondary btn-lg btn-block";
@@ -60,7 +63,8 @@ function addTestButton() {
 }
 
 function addVerbButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
     let checkV = document.createElement("Button");
     checkV.id = "checkV";
     checkV.className = "btn btn-secondary btn-lg btn-block";
@@ -71,7 +75,8 @@ function addVerbButton() {
 }
 
 function addAdjectiveButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
     let checkA = document.createElement("Button");
     checkA.id = "checkA";
     checkA.className = "btn btn-secondary btn-lg btn-block";
@@ -81,7 +86,8 @@ function addAdjectiveButton() {
 }
 
 function addFoodButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("buttonArea");
+    currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id ="checkF";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
@@ -91,7 +97,8 @@ function addFoodButton() {
 }
 
 function addAnnoFoodButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoF";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
@@ -102,7 +109,8 @@ function addAnnoFoodButton() {
 }
 
 function addAnnoNounsButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoN";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
@@ -112,7 +120,8 @@ function addAnnoNounsButton() {
 }
 
 function addAnnoVerbsButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoV";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
@@ -124,7 +133,8 @@ function addAnnoVerbsButton() {
 
 
 function addAnnoAdjectiveButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoA";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
@@ -134,7 +144,8 @@ function addAnnoAdjectiveButton() {
 }
 
 function addAnnoAnimalFaunaButton() {
-    let currentDiv = document.getElementById("testText");
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerText = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoA";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
