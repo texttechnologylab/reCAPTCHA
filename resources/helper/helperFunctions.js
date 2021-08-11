@@ -38,30 +38,6 @@ function tokenClicked(buttonId) {
 
 }
 
-/** KANN WEG
- * Fügt die zwei Buttons hinzu um Tokens selber zu annotieren oder Tokens auszuwählen zur Überprüfung
- */
-function addInputButtons(){
-    let currentDiv = document.getElementById("testText");
-    var newDiv = document.createElement("div");
-    newDiv.className = "card-body";
-
-    var buttonCheck = document.createElement("button");
-    var buttonAnnotation = document.createElement("button");
-
-    buttonCheck.setAttribute("onclick", "checkInputFood()");
-    buttonCheck.innerHTML = "Kontrolliere Essen";
-    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
-
-    buttonAnnotation.setAttribute("onclick", "sendAnnotationFood()");
-    buttonAnnotation.innerHTML = "Annotiere Essen";
-    buttonAnnotation.className = "btn btn-secondary btn-lg btn-block";
-    buttonAnnotation.role
-
-    newDiv.appendChild(buttonAnnotation);
-    newDiv.appendChild(buttonCheck);
-    currentDiv.appendChild(newDiv);
-}
 
 function addNounButton() {
     let currentDiv = document.getElementById("testText");
@@ -174,7 +150,7 @@ function addAnnoAnimalFaunaButton() {
  */
 function checkSentiment(selection, toolString) {
     var result = selection;
-    var sentiment = toolElementsGlobal[toolString];
+    var sentiment = SOCKETANNO.getToolElementsInstance()[toolString];
 
     //abchecken ob richtig
     if (result == sentiment) {
@@ -218,7 +194,7 @@ function changeButtonLight() {
  * @returns {number}
  */
 function fromAddressToLemmaBegin(address){
-    var entitiesTool = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+    var entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"];
     return entitiesTool[address]["features"]["begin"];
 }
 
@@ -228,7 +204,7 @@ function fromAddressToLemmaBegin(address){
  * @returns {number}
  */
 function fromAddressToLemmaEnd(address){
-    var entitiesTool = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"]
+    var entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"]
     return entitiesTool[address]["features"]["end"];
 }
 
