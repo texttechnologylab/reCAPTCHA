@@ -15,6 +15,8 @@ function sendAnnotationHelper(type){
     var batchIdentifier = "_b1_";
     var cmdQueue = [];
 
+    var webSocket = SOCKETANNO.getWebSocketInstance();
+
     // Extrahiert alle Annotierten Token und speichert sie in eine queue
     for (let element in selectedTokensId){
         var selectedTokenId = (selectedTokensId[element]).split("address")[1];
@@ -34,10 +36,10 @@ function sendAnnotationHelper(type){
             queue: cmdQueue, options: [{privateSession: bPrivate}]
         }
     });
-    webSocketGlobal.send(cmd);
+    webSocket.send(cmd);
 
     // Speichert die Annotationen
-    webSocketGlobal.send(JSON.stringify({
+    webSocket.send(JSON.stringify({
         cmd: 'save_cas',
         data: {casId: casId}
     }));
@@ -89,6 +91,10 @@ function sendAnnotationRelationHelper(){
     var batchIdentifier = "_b1_";
     var cmdQueue = [];
 
+
+    var webSocket = SOCKETANNO.getWebSocketInstance();
+
+
     var figureTokenId = parseInt((selectedTokensId[0]).split("address")[1]);
     var groundTokenId = parseInt((selectedTokensId[1]).split("address")[1]);
 
@@ -102,16 +108,12 @@ function sendAnnotationRelationHelper(){
             queue: cmdQueue, options: [{privateSession: bPrivate}]
         }
     });
-    webSocketGlobal.send(cmd);
+    webSocket.send(cmd);
 
-    webSocketGlobal.send(JSON.stringify({
+    webSocket.send(JSON.stringify({
         cmd: 'save_cas',
         data: {casId: casId}
     }));
-
-
- //   alert("Das Recaptcha wurde erfolgreich gelöst");
-  //  window.close();
 
 }
 

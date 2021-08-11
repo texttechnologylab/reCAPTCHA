@@ -1,21 +1,12 @@
-let toolElementsGlobal;
-let webSocketGlobal;
+const webSocketAnno = (function (casId, view, tool){
+    let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1"; // Bleibt erstmal fest
 
-const websocketAnno = (function (view){
     const url = "ws://textannotator.texttechnologylab.org/uima";
     //  const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
 
-    let casId = "28490";
-    let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
-    //let view = "https://authority.hucompute.org/user/316809";
-
-    //  let tool = "quickpanel"; proppanel
-    let tool = "proppanel";
-
     let allAddresses = [];
     let casText;
-
     let toolElements = null;
 
     // Falls toolElements noch null ist dann wurde noch keine Connection zum Websocket aufgebaut
@@ -30,7 +21,6 @@ const websocketAnno = (function (view){
             if (webSocket.readyState === webSocket.OPEN) {
                 webSocket.send(JSON.stringify({cmd: 'session', data: {session: session}}));
                 webSocket.send(JSON.stringify({cmd: 'open_cas', data: {casId: casId}}));
-
             }
         };
 
@@ -40,7 +30,6 @@ const websocketAnno = (function (view){
             //response.cmd gibt an welche Art von Nachricht empfangen worden ist.
             switch (response.cmd) {
                 case "session": {
-                    //   alert("Session successfully");
                     break;
                 }
                 case "open_cas": {
@@ -54,27 +43,34 @@ const websocketAnno = (function (view){
                 }
 
                 case "open_view": {
-
                     webSocket.send(JSON.stringify({
                         cmd: 'open_tool',
                         data: {casId: response.data.casId, view: response.data.view, toolName: tool}
                     }));
-
-
                     break;
                 }
 
                 case "open_tool": {
-                    toolElements = response.data.toolElements;
-                    toolElementsGlobal = toolElements;
-                    webSocketGlobal = webSocket;
+                    console.log("OPEN TOOL", response.data.toolName, response.data.currentView);
+                    // Da recpatcha view nur für neue Annotationen geöffnet wird
+                    if (response.data.currentView != "recaptcha") {
+                        toolElements = response.data.toolElements;
 
-                    // Recaptcha View laden um Annotationen zu speichern
-                    webSocket.send(JSON.stringify({
-                        cmd: 'open_view',
-                        data: {casId: casId, view: view, force: true}
+                        // Noch in Bearbeitung da PropAnno nicht in recaptcha view funktoniert
+                        /*
+                        webSocket.send(JSON.stringify({
+                            cmd: 'close_view',
+                            data: {casId: casId, view: response.data.currentView, force: true}
+                        }));
+                        webSocket.send(JSON.stringify({
+                            cmd: 'close_tool',
+                            data: {casId: casId, tool: response.data.toolName, force: true}
+                        }));
 
-                    }));
+                         */
+
+                    }
+
 
                     // Sobald alles geladen hat dann kann man die Seite starten
                     $('#startButton').removeAttr('disabled');
@@ -85,6 +81,15 @@ const websocketAnno = (function (view){
                     console.log(msg);
                     break;
                 }
+                case "close_view":{
+                    console.log("CLOSE VIEW", response.data.view)
+                    webSocket.send(JSON.stringify({
+                        cmd: 'open_view',
+                        data: {casId: casId, view: "recaptcha", force: true}
+                    }));
+
+                }
+
             }
 
         };
@@ -99,9 +104,16 @@ const websocketAnno = (function (view){
 
     }
 
+    function getWebSocketInstance(){
+        return webSocket;
+    }
+    function getToolElementsInstance(){
+        return toolElements;
+    }
+
 
     function loadSentences(casId, casText) {
-        var sentences = toolElementsGlobal["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
+        var sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
         for (let sentence in sentences) {
             var start = sentences[sentence]["features"]["begin"];
             var end = sentences[sentence]["features"]["end"];
@@ -129,8 +141,8 @@ const websocketAnno = (function (view){
         var allLemmaBegin = [];
         var allLemmaEnd = [];
 
-        // Ohne Punkte     let lemmas = toolElementsGlobal["org.texttechnologylab.annotation.ocr.OCRToken"];
-        var lemmas = toolElementsGlobal["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+        // Ohne Punkte     let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
+        var lemmas = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"];
         for (let address in lemmas) {
             var begin = fromAddressToLemmaBegin(address);
             var end = fromAddressToLemmaEnd(address);
@@ -140,7 +152,7 @@ const websocketAnno = (function (view){
             //          continue;
             //      }
 
-            // Tokeneigenschaften sind in gleicher Reiehnfolge in den vier Listen gepeichert
+            // Tokeneigenschaften sind in gleicher Reiehnfolge in den drei Listen gepeichert
             allLemmaBegin.push(begin);
             allLemmaEnd.push(end);
             allAddresses.push(address);
@@ -166,7 +178,7 @@ const websocketAnno = (function (view){
         }
 
         // Für Tests: Token werden je nach toolTarget gefärbt
-        colorToken(toolElementsGlobal[targetTool], "#A569BD");
+        colorToken(toolElements[targetTool], "#A569BD");
 
 
         // Alles definierte Hilfsfunktionen, die in "displayTextAsButtons()" genutzt werden
@@ -229,7 +241,7 @@ const websocketAnno = (function (view){
          */
         function getRandomLemmaStartOfTargetTool(targetTool) {
             var testListe = [];
-            targetTool = toolElementsGlobal[targetTool];
+            targetTool = toolElements[targetTool];
 
             // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
             for (let toolKey in targetTool) {
@@ -245,6 +257,9 @@ const websocketAnno = (function (view){
     return{
         displayTextAsButtons: displayTextAsButtons,
         startConnection: startConnection,
+        getWebSocketInstance: getWebSocketInstance,
+        getToolElementsInstance: getToolElementsInstance,
+
     }
 
 

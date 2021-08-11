@@ -1,5 +1,7 @@
 var view = "https://authority.hucompute.org/user/316809";
-const SOCKETANNO = websocketAnno(view);
+var tool = "proppanel";
+var casId = "28490"
+const SOCKETANNO = webSocketAnno(casId, view, tool);
 
 function taskCreator() {
     let currentDiv = document.getElementById("taskArea");
