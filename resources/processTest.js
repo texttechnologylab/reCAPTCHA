@@ -21,8 +21,7 @@ function getRandomTaskFromClassOne(){
  */
 function getRandomTaskFromClassTwo() {
     const tasksClassTwo = [taskAnnotateAdjectives, taskAnnotateFood, taskAnnotateNouns,
-                            taskAnnotateVerbs, taskSelectRelation];
+        taskAnnotateVerbs, taskSelectRelation];
     tasksClassTwo[getRandomIntMax(tasksClassTwo.length)]();
 
 }
-
