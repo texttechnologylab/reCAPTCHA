@@ -98,8 +98,6 @@ function taskOne() {
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     //let currentDiv = document.getElementById("taskArea");
     let text = document.createTextNode("Markiere alle Nomen (Check)");
     currentdiv.appendChild(text);
@@ -112,8 +110,6 @@ function taskTwo() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Nomen (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
@@ -125,8 +121,6 @@ function taskThree() {
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Verben (Check)");
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
@@ -138,8 +132,6 @@ function taskFour() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Verben (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
@@ -151,8 +143,6 @@ function taskFive() {
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Adjektive (Check)");
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
@@ -164,8 +154,6 @@ function taskSix() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Adjektive (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
@@ -177,8 +165,6 @@ function taskSeven() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Essen (Check)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringFood());
@@ -190,8 +176,6 @@ function taskEight() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Essen (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringFood());
@@ -203,8 +187,6 @@ function taskNine() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere genau zwei Wörter");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
@@ -218,8 +200,6 @@ function taskTen() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Fauna (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAnimalFauna());

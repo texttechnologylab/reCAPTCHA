@@ -2,13 +2,12 @@ function taskCheckNouns() {
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     //let currentDiv = document.getElementById("taskArea");
     let text = document.createTextNode("Markiere alle Nomen");
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
     addNounButton();
+    addRefreshButton();
 }
 
 function taskAnnotateNouns() {
@@ -16,8 +15,6 @@ function taskAnnotateNouns() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Nomen (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
@@ -29,8 +26,6 @@ function taskCheckVerbs() {
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Verben (Check)");
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
@@ -42,8 +37,6 @@ function taskAnnotateVerbs() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Verben (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
@@ -55,8 +48,6 @@ function taskCheckAdjectives() {
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Adjektive (Check)");
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
@@ -68,8 +59,6 @@ function taskAnnotateAdjectives() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Adjektive (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
@@ -81,8 +70,6 @@ function taskCheckFood() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Essen (Check)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringFood());
@@ -94,8 +81,6 @@ function taskAnnotateFood() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Essen (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringFood());
@@ -107,8 +92,6 @@ function taskSelectRelation() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere genau zwei Wörter");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
@@ -120,8 +103,6 @@ function taskTen() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let otherDiv = document.getElementById("testText");
-    otherDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Fauna (Anno)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAnimalFauna());

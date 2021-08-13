@@ -146,3 +146,10 @@ function addAnnoAnimalFaunaButton() {
     buttonCheck.innerHTML = "Annotiere Fauna";
     currentDiv.appendChild(buttonCheck);
 }
+
+function addRefreshButton() {
+    let currentDiv = document.getElementById("taskArea");
+    let refreshButton = document.createElement("i");
+    refreshButton.className = "fas fa-sync-alt";
+    //refreshButton.setAttribute("onclick", );
+}
