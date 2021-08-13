@@ -1,5 +1,5 @@
 const webSocketAnno = (function (casId, view, tool){
-    let session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1"; // Bleibt erstmal fest
+    const session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1"; // Bleibt erstmal fest
 
     const url = "ws://textannotator.texttechnologylab.org/uima";
     //  const WebSocket = require('ws');
@@ -8,6 +8,8 @@ const webSocketAnno = (function (casId, view, tool){
     let allAddresses = [];
     let casText;
     let toolElements = null;
+    // Zum Nutzen für Informationen, die wir schon kennen
+    let toolElementsFromInformationView = null;
 
     // Falls toolElements noch null ist dann wurde noch keine Connection zum Websocket aufgebaut
     if (toolElements == null){
@@ -52,22 +54,26 @@ const webSocketAnno = (function (casId, view, tool){
 
                 case "open_tool": {
                     console.log("OPEN TOOL", response.data.toolName, response.data.currentView);
+                    toolElements = response.data.toolElements;
+
+
                     // Da recpatcha view nur für neue Annotationen geöffnet wird
                     if (response.data.currentView != "recaptcha") {
                         toolElements = response.data.toolElements;
-
+                        console.log("CURENTVIEW", response.data.currentView)
                         // Noch in Bearbeitung da PropAnno nicht in recaptcha view funktoniert
-                        /*
-                        webSocket.send(JSON.stringify({
-                            cmd: 'close_view',
-                            data: {casId: casId, view: response.data.currentView, force: true}
-                        }));
+
+
                         webSocket.send(JSON.stringify({
                             cmd: 'close_tool',
                             data: {casId: casId, tool: response.data.toolName, force: true}
                         }));
 
-                         */
+                        webSocket.send(JSON.stringify({
+                            cmd: 'close_view',
+                            data: {casId: casId, view: response.data.currentView, force: true}
+                        }));
+
 
                     }
 
@@ -88,6 +94,7 @@ const webSocketAnno = (function (casId, view, tool){
                         data: {casId: casId, view: "recaptcha", force: true}
                     }));
 
+                    break;
                 }
 
             }
@@ -111,22 +118,6 @@ const webSocketAnno = (function (casId, view, tool){
         return toolElements;
     }
 
-
-    function loadSentences(casId, casText) {
-        var sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
-        for (let sentence in sentences) {
-            var start = sentences[sentence]["features"]["begin"];
-            var end = sentences[sentence]["features"]["end"];
-            var textSentence = casText.slice(start, end);
-
-            // Ersten Satz anzeigen.
-            if (sentenceCounterGlobal == 0) {
-                document.getElementById("playArea").innerHTML = textSentence
-                sentenceCounterGlobal++;
-            }
-            allSentencesGlobal.push(textSentence);
-        }
-    }
 
 
     /**
@@ -152,24 +143,56 @@ const webSocketAnno = (function (casId, view, tool){
             //          continue;
             //      }
 
-            // Tokeneigenschaften sind in gleicher Reiehnfolge in den drei Listen gepeichert
+            // Tokeneigenschaften sind in gleicher Reiehnfolge in den 3 Listen gepeichert
             allLemmaBegin.push(begin);
             allLemmaEnd.push(end);
             allAddresses.push(address);
+
         }
-        // Falls die Aufgabe ist selber zu annotiern, dann Text von Beginn anzeigen ohne nach bestimmten Kriterien zu suchen
+
+        /*
+            Falls die Aufgabe ist selber Annotationen zu bestimmen, dann ohne Kriterien einen Satz anzeigen.
+            Zeigt einen zufälligen Satz an der mindestens 6 Token beinhaltet
+        */
         if (targetTool == "standard") {
-            const NUMBEROFTOKENS = 15;
-            for (i = 0; i < NUMBEROFTOKENS; i++) {
-                textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
+
+            // Satz soll mindestens 6 Token beinhalten
+            while (true) {
+                var sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
+
+                var keys = Object.keys(sentences);
+             //   var randomKey = keys[getRandomIntMax(keys.length)]; // Bestimme zufälligen Satz(key)
+                var randomKey = keys[0]; // Bestimme zufälligen Satz(key)
+
+
+                var start = sentences[randomKey]["features"]["begin"];
+                var end = sentences[randomKey]["features"]["end"];
+
+                var startTokenIndex = allLemmaBegin.indexOf(start);
+                var endTokenIndex = allLemmaEnd.indexOf(end) + 1;
+                var lengthOfSentence = allLemmaEnd.slice(startTokenIndex, endTokenIndex).length;
+
+                for (i = startTokenIndex; i < lengthOfSentence + startTokenIndex; i++) {
+                    textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
+                }
+
+                if(textAsList.length >= 6){
+                    break;
+                }
+
             }
             // Es wird jedes Token als Button angezeigt
-            addToken(textAsList, 0);
-        } else {
-            const NUMBEROFTOKENS = getRandomIntMinMax(10, 20);
+            addToken(textAsList, startTokenIndex);
 
+        }
+        // Aufgabe ist ein bestimmten Token zu finden, jenachdem wird bestimmter Textabschnitt angezeigt
+        else {
+            const NUMBEROFTOKENS = getRandomIntMinMax(10, 20); // Anzahl der Tokens die angezeigt werden
+            // Index vom gesuchten Token
             var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
+            // Index vom ersten Token des Textes der angezeigt wird
             var startTokenIndex = getRandomIntMinMax(indexTarget - NUMBEROFTOKENS, indexTarget);
+            // Bestimme alle Token die angezeigt werden sollen
             for (i = startTokenIndex; i < NUMBEROFTOKENS + startTokenIndex; i++) {
                 textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
             }
@@ -253,7 +276,6 @@ const webSocketAnno = (function (casId, view, tool){
         }
     }
 
-
     return{
         displayTextAsButtons: displayTextAsButtons,
         startConnection: startConnection,
@@ -261,53 +283,4 @@ const webSocketAnno = (function (casId, view, tool){
         getToolElementsInstance: getToolElementsInstance,
 
     }
-
-
 });
-
-
-//Function to check the right sentiment
-function createSentimentButtons() {
-    let positiveButton = document.createElement('button');
-    positiveButton.id = "posButton";
-    let posText = document.createTextNode('😀' + '\n' + "positiv"); //\u263A
-    positiveButton.appendChild(posText);
-    positiveButton.addEventListener("click", function () {
-        checkInputSentiment("pos")
-    }, false);
-
-    let negativeButton = document.createElement('button');
-    negativeButton.id = "negButton";
-    //Farbe und Bild hinzufügen
-    let negText = document.createTextNode('🙁' + " " + "negativ"); //\u2639'
-    negativeButton.appendChild(negText);
-    negativeButton.addEventListener("click", function () {
-        checkInputSentiment("neg")
-    }, false);
-
-    let neutralButton = document.createElement('button');
-    neutralButton.id = "neutButton";
-    let neutText = document.createTextNode('😐' + " " + "neutral")
-    neutralButton.append(neutText);
-    neutralButton.addEventListener("click", function () {
-        checkInputSentiment("neutral")
-    }, false);
-
-    let nosentButton = document.createElement('button');
-    nosentButton.id = "nosentButton";
-    let nosentText = document.createTextNode("Kein Sentiment");
-    nosentButton.append(nosentText);
-    nosentButton.addEventListener("click", function () {
-        checkInputSentiment("keinSentiment")
-    }, false);
-    //sentiment hinzufügen
-
-    let currentdiv = document.getElementById("testText");
-    currentdiv.innerHTML = "";
-    currentdiv.appendChild(positiveButton);
-    document.getElementById("posButton").style.backgroundColor = 'lime';
-    currentdiv.appendChild(negativeButton);
-    document.getElementById("negButton").style.backgroundColor = 'red';
-    currentdiv.appendChild(neutralButton);
-    document.getElementById("neutButton").style.backgroundColor = 'grey';
-}

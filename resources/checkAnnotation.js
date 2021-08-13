@@ -6,7 +6,7 @@
  * @returns {boolean}
  */
 function checkInputHelper(toolString){
-    toolElements = SOCKETANNO.getToolElementsInstance();
+    var toolElements = SOCKETANNO.getToolElementsInstance();
     var entitiesTool = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"]
     var numberOfFalse = 0; // Anzahl der falsch ausgewählten Token vom User
     var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
@@ -200,30 +200,6 @@ function checkInputVehicle(){
     }
 }
 
-
-
-function colorTask(currentTaskNumber, color) {
-    let elementId;
-    switch(currentTaskNumber) {
-        case 1:
-            elementId = "firstTaskLight";
-            break;
-        case 2:
-            elementId = "secondTaskLight";
-            break;
-        case 3:
-            elementId = "thirdTaskLight";
-            break;
-        case 4:
-            elementId = "fourthTaskLight";
-            break;
-        case 5:
-            elementId = "fifthTaskLight";
-            break;
-    }
-
-    document.getElementById(elementId).style.backgroundColor = color;
-}
 
 
 

@@ -16,7 +16,7 @@ function taskAnnotateNouns() {
     currentDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Nomen (Anno)");
     currentDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons(getToolStringNouns());
+    SOCKETANNO.displayTextAsButtons("standard");
     addAnnoNounsButton();
 }
 
@@ -38,7 +38,7 @@ function taskAnnotateVerbs() {
     currentDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Verben (Anno)");
     currentDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
+    SOCKETANNO.displayTextAsButtons("standard");
     addAnnoVerbsButton();
 }
 
@@ -60,7 +60,7 @@ function taskAnnotateAdjectives() {
     currentDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Adjektive (Anno)");
     currentDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
+    SOCKETANNO.displayTextAsButtons("standard");
     addAnnoAdjectiveButton();
 }
 
@@ -83,7 +83,7 @@ function taskAnnotateFood() {
     currentDiv.innerHTML = "";
     let text = document.createTextNode("Markiere Essen (Anno)");
     currentDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons(getToolStringFood());
+    SOCKETANNO.displayTextAsButtons("standard");
     addAnnoFoodButton();
 }
 
@@ -99,7 +99,6 @@ function taskSelectRelation() {
 }
 
 function taskTen() {
-    //Sentiment bestimmen
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
