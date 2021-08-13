@@ -1,4 +1,5 @@
 var view = "https://authority.hucompute.org/user/316809";
+var views = "recaptcha";
 var tool = "proppanel";
 var casId = "28490"
 const SOCKETANNO = webSocketAnno(casId, view, tool);
@@ -14,15 +15,16 @@ function taskCreator() {
     firstTaskButton.id = "firstTaskLight";
     let one = document.createTextNode("Aufgabe 1");
     firstTaskButton.appendChild(one);
-    firstTaskButton.setAttribute("onclick", "taskOne()");
+    firstTaskButton.setAttribute("onclick", "taskCheckNouns()");
     firstTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(firstTaskButton);
+
 
     let secondTaskButton = document.createElement("Button");
     secondTaskButton.id = "secondTaskLight";
     let two = document.createTextNode("2");
     secondTaskButton.appendChild(two);
-    secondTaskButton.setAttribute("onclick", "taskTwo()");
+    secondTaskButton.setAttribute("onclick", "taskAnnotateNouns()");
     secondTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(secondTaskButton);
 
@@ -30,7 +32,7 @@ function taskCreator() {
     thirdTaskButton.id = "thirdTaskLight";
     let three = document.createTextNode("3");
     thirdTaskButton.appendChild(three);
-    thirdTaskButton.setAttribute("onclick", "taskThree()");
+    thirdTaskButton.setAttribute("onclick", "taskCheckVerbs()");
     thirdTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(thirdTaskButton);
 
@@ -38,7 +40,7 @@ function taskCreator() {
     fourthTaskButton.id = "fourthTaskLight";
     let four = document.createTextNode("4");
     fourthTaskButton.appendChild(four);
-    fourthTaskButton.setAttribute("onclick", "taskFour()");
+    fourthTaskButton.setAttribute("onclick", "taskAnnotateVerbs()");
     fourthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(fourthTaskButton);
 
@@ -46,7 +48,7 @@ function taskCreator() {
     fifthTaskButton.id = "fifthTaskLight";
     let five = document.createTextNode("5");
     fifthTaskButton.appendChild(five);
-    fifthTaskButton.setAttribute("onclick", "taskFive()");
+    fifthTaskButton.setAttribute("onclick", "taskCheckFood()");
     fifthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(fifthTaskButton);
 
@@ -54,7 +56,7 @@ function taskCreator() {
     sixthTaskButton.id = "sixthTaskLight";
     let six = document.createTextNode("6");
     sixthTaskButton.appendChild(six);
-    sixthTaskButton.setAttribute("onclick", "taskSix()");
+    sixthTaskButton.setAttribute("onclick", "taskAnnotateFood()");
     sixthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(sixthTaskButton);
     //addAnnoButton();
@@ -63,15 +65,16 @@ function taskCreator() {
     seventhTaskButton.id = "seventhTaskLight";
     let seven = document.createTextNode("7");
     seventhTaskButton.appendChild(seven);
-    seventhTaskButton.setAttribute("onclick", "taskSeven()");
+    seventhTaskButton.setAttribute("onclick", "taskSelectRelation()");
     seventhTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(seventhTaskButton);
 
+    /*
     let eighthTaskButton = document.createElement("Button");
     eighthTaskButton.id = "eighthTaskLight";
     let eight = document.createTextNode("8");
     eighthTaskButton.appendChild(eight);
-    eighthTaskButton.setAttribute("onclick", "taskEight()");
+    eighthTaskButton.setAttribute("onclick", "taskSelectRelation()");
     eighthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(eighthTaskButton);
 
@@ -91,8 +94,10 @@ function taskCreator() {
     tenTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(tenTaskButton);
 
-}
 
+     */
+}
+/*
 function taskOne() {
     //Check Nomen
     selectedTokensId = [];
@@ -191,8 +196,8 @@ function taskNine() {
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     // side bar erzeugen
-    //addTestButton();
-    addPropSelect();
+    addTestButton();
+  //  addPropSelect();
 }
 
 function taskTen() {
@@ -205,3 +210,6 @@ function taskTen() {
     SOCKETANNO.displayTextAsButtons(getToolStringAnimalFauna());
     addAnnoAnimalFaunaButton();
 }
+
+
+ */

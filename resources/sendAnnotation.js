@@ -37,6 +37,7 @@ function sendAnnotationHelper(type){
         }
     });
     webSocket.send(cmd);
+    console.log(cmd);
 
     // Speichert die Annotationen
     webSocket.send(JSON.stringify({
@@ -47,19 +48,17 @@ function sendAnnotationHelper(type){
 
 //------! Für jedes Tool wird eine Funktion geschrieben.
 
-function sendAnnotationFood(){
-    sendAnnotationHelper(getToolStringFood());
-}
 function sendAnnotationNouns(){
     sendAnnotationHelper(getToolStringNouns());
-    colorTask(currentTaskNumber, 'lime');
 }
 function sendAnnotationVerbs(){
     sendAnnotationHelper(getToolStringVerbs());
-
 }
 function sendAnnotationAdjectives(){
     sendAnnotationHelper(getToolStringAdjectives());
+}
+function sendAnnotationFood(){
+    sendAnnotationHelper(getToolStringFood());
 }
 function sendAnnotationAnimalFauna(){
     sendAnnotationHelper(getToolStringAnimalFauna());
@@ -84,6 +83,8 @@ function sendAnnotationRelationHelper(){
     // Bleiben fest erstmal
     var casId = "28490";
     var view = "recaptcha";
+  //  var view = "https://authority.hucompute.org/user/316809";
+
     var tool = "proppanel";
     var bPrivate = false;
     var batchIdentifier = "_b1_";
@@ -107,6 +108,7 @@ function sendAnnotationRelationHelper(){
         }
     });
     webSocket.send(cmd);
+    console.log(cmd);
 
     webSocket.send(JSON.stringify({
         cmd: 'save_cas',
