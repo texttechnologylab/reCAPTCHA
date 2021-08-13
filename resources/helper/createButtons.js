@@ -148,8 +148,16 @@ function addAnnoAnimalFaunaButton() {
 }
 
 function addRefreshButton() {
-    let currentDiv = document.getElementById("taskArea");
-    let refreshButton = document.createElement("i");
-    refreshButton.className = "fas fa-sync-alt";
+    let currentDiv = document.getElementById("iconsArea");
+    let button = document.createElement("button");
+    let icon = document.createElement("i");
+    icon.className = "fas fa-sync-alt";
+    icon.id = "refreshIcon";
+    button.appendChild(icon);
+    currentDiv.appendChild(button);
+
+    //refreshButton.className = "fas fa-sync-alt";
+    //button.appendChild(refreshButton);
+    //currentDiv.appendChild(button);
     //refreshButton.setAttribute("onclick", );
 }

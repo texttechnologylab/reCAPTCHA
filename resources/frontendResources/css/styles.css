@@ -61,6 +61,12 @@ i {
   background:transparent;
 }
 
+#iconsArea{
+  margin-left: 70%;
+  background-color: #b7b4b4;
+
+}
+
 line {
   stroke: red;
 }
@@ -87,11 +93,11 @@ header {
   justify-content: center;
 }
 
-/* #337ab7
+/*
 
-#005076
-#337ab7
-#00618F
+#337ab7 heller
+#00618F dunkler
+#005076 am dunkelsten
 
 grau #b7b4b4
 */
@@ -102,7 +108,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #625b5b;
-  background-color: #00618F;
+  background-color: #005076;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

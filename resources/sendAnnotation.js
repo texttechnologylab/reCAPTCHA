@@ -56,15 +56,13 @@ function sendAnnotationNouns(){
 }
 function sendAnnotationVerbs(){
     sendAnnotationHelper(getToolStringVerbs());
-    colorTask(currentTaskNumber, 'lime');
+
 }
 function sendAnnotationAdjectives(){
     sendAnnotationHelper(getToolStringAdjectives());
-    colorTask(currentTaskNumber, 'lime');
 }
 function sendAnnotationAnimalFauna(){
     sendAnnotationHelper(getToolStringAnimalFauna());
-    colorTask(currentTaskNumber, 'lime');
 }
 
 

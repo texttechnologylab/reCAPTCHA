@@ -7,7 +7,6 @@ function taskCheckNouns() {
     currentdiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
     addNounButton();
-    addRefreshButton();
 }
 
 function taskAnnotateNouns() {
@@ -74,6 +73,7 @@ function taskCheckFood() {
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringFood());
     addFoodButton();
+
 }
 
 function taskAnnotateFood() {

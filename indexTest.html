@@ -53,25 +53,19 @@
                         <!--    <i> Start </i> <br>  -->
                         <i> Lösen Sie das reCaptcha. </i> <br>
                         <i> Klicke Start </i>
-                        <button id = "wasgeht" class="fas fa-sync-alt"></button>
 
                     </div>
                     <div class="card-body">
                         <div id = "playArea">
-                            <button id ="startButton" class="btn btn-secondary btn-lg btn-block" onclick="processRecaptcha()" disabled> Start </button>
-                        </div>
-                        <div id = "confirmation">
-                        </div>
-                        <div class="card-body">
-                            <div id="sentenceHolder">
-                            </div>
-                            <div id="sentimentButtonHolder">
-                            </div>
+                            <button id ="startButton" class="btn btn-secondary btn-lg btn-block" onclick="processRecaptcha();addRefreshButton()" disabled> Start </button>
                         </div>
                     </div>
                 </div>
+                <div id = "confirmation">
+                </div>
+                <div id ="iconsArea">
+                </div>
             </div>
-
 
         <!-- Zum  testen -->
     </main>
