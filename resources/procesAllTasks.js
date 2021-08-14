@@ -1,5 +1,4 @@
 var view = "https://authority.hucompute.org/user/316809";
-var views = "recaptcha";
 var tool = "proppanel";
 var casId = "28490"
 const SOCKETANNO = webSocketAnno(casId, view, tool);

@@ -37,7 +37,6 @@ function sendAnnotationHelper(type){
         }
     });
     webSocket.send(cmd);
-    console.log(cmd);
 
     // Speichert die Annotationen
     webSocket.send(JSON.stringify({
