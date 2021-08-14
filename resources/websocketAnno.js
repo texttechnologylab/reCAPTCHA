@@ -1,3 +1,11 @@
+/**
+ * Stellt eine Verbindung zum Websocket des Textannotators auf.
+ * Beinhaltet Funktionen zum einzigen des Textes und Datenstrukturen, die Informationen zu Annotaionen beinhalten.
+ * toolElements: Speichert immer alle aktuellen Informationen des Textes.
+ * toolAnnotationsQuickpanel: Speichert Informationen zu bereits bestehende Annotationen aus der gestarteten View
+ * @type {function(*=, *=, *=): {getWebSocketInstance: function(): WebSocket, getToolElementsInstance: function(): null, displayTextAsButtons: displayTextAsButtons, getToolAnnotationsQuickpanel: function(): null}}
+ */
+
 const webSocketAnno = (function (casId, view, tool){
     const session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1"; // Bleibt erstmal fest
 
@@ -279,7 +287,6 @@ const webSocketAnno = (function (casId, view, tool){
 
     return{
         displayTextAsButtons: displayTextAsButtons,
-        startConnection: startConnection,
         getWebSocketInstance: getWebSocketInstance,
         getToolElementsInstance: getToolElementsInstance,
         getToolAnnotationsQuickpanel: getToolAnnotationsQuickpanel,
