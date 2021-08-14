@@ -1,8 +1,6 @@
 // Speichert die ids aller Token die angeklickt worden sind.
 let selectedTokensId = [];
 
-let sentenceCounterGlobal = 0;
-let allSentencesGlobal = [];
 
 /**
  * Falls ein Token angegklickt worden ist dann Token färben und die id in Liste speichern.
@@ -60,32 +58,6 @@ function checkSentiment(selection, toolString) {
 }
 
 
-//
-function checkInputSentiment(selection) {
-    saveSentiment(selection);
-}
-
-function saveSentiment(selection) {
-    var sentiment = selection
-    return sentiment;
-}
-
-function displaySentence(){
-    if (sentenceCounterGlobal == 0) {
-        websocketAnno('loadSentences');
-    }
-    else{
-        document.getElementById("sentenceHolder").innerHTML = allSentencesGlobal[sentenceCounterGlobal];
-        sentenceCounterGlobal++;
-    }
-
-}
-
-function changeButtonLight() {
-
-    document.getElementById("seventhTaskLight").style.backgroundColor = 'lime';
-}
-
 /**
  * Hilfsunktion um mit der adresse(id) eines Token dem lemmaBegin zu bekommen
  * @param address
@@ -130,43 +102,4 @@ function getRandomIntMinMax(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function addSendButton(task, taskNumber) {
-    let currentDiv = document.getElementById("confirmation");
-    let sendButton = document.createElement("Button");
-    // sendButton.id = "sendButton";
-    sendButton.className = "btn btn-secondary btn-lg btn-block";
-    let value;
-    switch (task) {
-        case "checkNouns":
-            value = "checkInputNouns()";
-            break;
-        case "checkVerbs":
-            value = "checkInputVerbs()";
-            break;
-        case "checkAdjectives":
-            value = "checkInputAdjectives()";
-            break;
-        case "checkFoods":
-            value = "checkInputFood()";
-            break;
-        case "annoNouns":
-            value = "sendAnnotationNouns()"
-            break;
-        case "annoVerbs":
-            value = "sendAnnotationVerbs()";
-            break;
-        case "annoAdjectives":
-            value = "sendAnnotationAdjectives()";
-            break;
-        case "annoFoods":
-            value = "sendAnnotationFood()";
-            break;
-    }
-
-    // hier muss noch tasklightID
-    sendButton.setAttribute("onclick", value);
-    sendButton.innerHTML = "Senden";
-    currentDiv.appendChild(sendButton);
 }

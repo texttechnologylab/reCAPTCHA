@@ -7,9 +7,10 @@ const webSocketAnno = (function (casId, view, tool){
 
     let allAddresses = [];
     let casText;
-    let toolElements = null;
-    // Zum Nutzen für Informationen, die wir schon kennen
-    let toolElementsFromInformationView = null;
+    let toolElements = null; // Speichert alle gegenwärtige Informationen
+    // Speichert die Annotationen des Quickpanel tools aus der gestarteten View
+    let toolAnnotationsQuickpanel = null;
+
 
     // Falls toolElements noch null ist dann wurde noch keine Connection zum Websocket aufgebaut
     if (toolElements == null){
@@ -59,9 +60,7 @@ const webSocketAnno = (function (casId, view, tool){
 
                     // Da recpatcha view nur für neue Annotationen geöffnet wird
                     if (response.data.currentView != "recaptcha") {
-                        toolElements = response.data.toolElements;
-                        console.log("CURENTVIEW", response.data.currentView)
-                        // Noch in Bearbeitung da PropAnno nicht in recaptcha view funktoniert
+                        toolAnnotationsQuickpanel = response.data.toolElements;
 
 
                         webSocket.send(JSON.stringify({
@@ -73,7 +72,6 @@ const webSocketAnno = (function (casId, view, tool){
                             cmd: 'close_view',
                             data: {casId: casId, view: response.data.currentView, force: true}
                         }));
-
 
                     }
 
@@ -116,6 +114,9 @@ const webSocketAnno = (function (casId, view, tool){
     }
     function getToolElementsInstance(){
         return toolElements;
+    }
+    function getToolAnnotationsQuickpanel(){
+        return toolAnnotationsQuickpanel;
     }
 
 
@@ -201,7 +202,7 @@ const webSocketAnno = (function (casId, view, tool){
         }
 
         // Für Tests: Token werden je nach toolTarget gefärbt
-        colorToken(toolElements[targetTool], "#A569BD");
+        colorToken(toolAnnotationsQuickpanel[targetTool], "#A569BD");
 
 
         // Alles definierte Hilfsfunktionen, die in "displayTextAsButtons()" genutzt werden
@@ -281,6 +282,7 @@ const webSocketAnno = (function (casId, view, tool){
         startConnection: startConnection,
         getWebSocketInstance: getWebSocketInstance,
         getToolElementsInstance: getToolElementsInstance,
+        getToolAnnotationsQuickpanel: getToolAnnotationsQuickpanel,
 
     }
 });

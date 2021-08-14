@@ -6,6 +6,7 @@
  * @returns {boolean}
  */
 function checkInputHelper(toolString){
+    var toolAnnotationsInstance = SOCKETANNO.getToolAnnotationsQuickpanel();
     var toolElements = SOCKETANNO.getToolElementsInstance();
     var entitiesTool = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"]
     var numberOfFalse = 0; // Anzahl der falsch ausgewählten Token vom User
@@ -14,7 +15,7 @@ function checkInputHelper(toolString){
     var allLemmaBegin = [];
 
     // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
-    var tool = toolElements[toolString];
+    var tool = toolAnnotationsInstance[toolString];
     for (let toolKey in tool) {
         allLemmaBeginFromTool.push(tool[toolKey]["features"]["begin"])
     }
