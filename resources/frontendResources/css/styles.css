@@ -51,17 +51,24 @@
 i {
   font-size: 20px;
   font-weight: bold;
-
-
 }
+
+#playArea {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 #taskArea{
   background-color: #b7b4b4;
-  font-size: 20px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
-  min-height:100px;
-
-
-
+  min-height: 90px;
 }
 
 #canvas{
@@ -73,8 +80,7 @@ i {
   display: flex;
   align-items: center;
   justify-content: center;
-
-
+  min-height: 80px;
 }
 
 line {
