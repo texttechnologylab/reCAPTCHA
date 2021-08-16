@@ -62,11 +62,9 @@ const webSocketAnno = (function (casId, view, tool){
                 }
 
                 case "open_tool": {
-                    console.log("OPEN TOOL", response.data.toolName, response.data.currentView);
                     toolElements = response.data.toolElements;
 
-
-                    // Da recpatcha view nur für neue Annotationen geöffnet wird
+                    //  recpatcha view wird nur für neue Annotationen geöffnet.
                     if (response.data.currentView != "recaptcha") {
                         toolAnnotationsQuickpanel = response.data.toolElements;
 
@@ -84,7 +82,7 @@ const webSocketAnno = (function (casId, view, tool){
                     }
 
 
-                    // Sobald alles geladen hat dann kann man die Seite starten
+                    // Sobald alles geladen hat kann man die Seite starten.
                     $('#startButton').removeAttr('disabled');
                     break;
                 }
@@ -94,7 +92,6 @@ const webSocketAnno = (function (casId, view, tool){
                     break;
                 }
                 case "close_view":{
-                    console.log("CLOSE VIEW", response.data.view)
                     webSocket.send(JSON.stringify({
                         cmd: 'open_view',
                         data: {casId: casId, view: "recaptcha", force: true}
@@ -171,7 +168,7 @@ const webSocketAnno = (function (casId, view, tool){
 
                 var keys = Object.keys(sentences);
              //   var randomKey = keys[getRandomIntMax(keys.length)]; // Bestimme zufälligen Satz(key)
-                var randomKey = keys[0]; // Bestimme zufälligen Satz(key)
+                var randomKey = keys[0]; // Erster Satz
 
 
                 var start = sentences[randomKey]["features"]["begin"];
@@ -194,15 +191,18 @@ const webSocketAnno = (function (casId, view, tool){
             addToken(textAsList, startTokenIndex);
 
         }
-        // Aufgabe ist ein bestimmten Token zu finden, jenachdem wird bestimmter Textabschnitt angezeigt
+        /*   Der Text wird ausgehend von einem bestimmten Token angezeigt, jenachdem nach welchem Entity (targetTool) gesucht wird
+             Es wird mit der Liste gearbeitet, die alle lemmaStart beinhaltet.
+         */
         else {
+
             const NUMBEROFTOKENS = getRandomIntMinMax(10, 20); // Anzahl der Tokens die angezeigt werden
             // Index vom gesuchten Token
             var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
             // Index vom ersten Token des Textes der angezeigt wird
             var startTokenIndex = getRandomIntMinMax(indexTarget - NUMBEROFTOKENS, indexTarget);
             // Bestimme alle Token die angezeigt werden sollen
-            for (i = startTokenIndex; i < NUMBEROFTOKENS + startTokenIndex; i++) {
+            for (i = startTokenIndex; i < NUMBEROFTOKENS + startTokenIndex + 1; i++) {
                 textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
             }
             // Es wird jedes Token als Button angezeigt
@@ -252,7 +252,6 @@ const webSocketAnno = (function (casId, view, tool){
          */
         function colorToken(tool, color) {
             var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
-            console.log(idFromAllDisplayedTokens);
             for (let element in tool) {
                 var begin = tool[element]["features"]["begin"];
                 for (let idFromAllDisplayedToken in idFromAllDisplayedTokens) {
@@ -269,19 +268,19 @@ const webSocketAnno = (function (casId, view, tool){
         /**
          * Hilfsfunktion: Gibt den Index eines Token zurück
          * @param targetTool
-         * @returns {*}
+         * @returns {number} lemmaStart vom Token
          */
         function getRandomLemmaStartOfTargetTool(targetTool) {
-            var testListe = [];
-            targetTool = toolElements[targetTool];
+            var tokensTargetTool = []; // Speichert alle Token die mit targetTool annotiert worden sind
+            targetTool = toolAnnotationsQuickpanel[targetTool];
 
             // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
             for (let toolKey in targetTool) {
-                testListe.push(targetTool[toolKey]["features"]["begin"]);
+                tokensTargetTool.push(targetTool[toolKey]["features"]["begin"]);
             }
 
-            var x = getRandomIntMax(testListe.length);
-            return testListe[x];
+            // Gibt den lemmaStart eines zufälliges Token aus der Liste zurück.
+            return tokensTargetTool[getRandomIntMax(tokensTargetTool.length)];
         }
     }
 
