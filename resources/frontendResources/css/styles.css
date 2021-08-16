@@ -52,9 +52,13 @@ i {
   font-size: 20px;
   font-weight: bold;
 
+
 }
 #taskArea{
   background-color: #b7b4b4;
+  font-size: 20px;
+  font-weight: bold;
+
 }
 
 #canvas{
@@ -62,8 +66,11 @@ i {
 }
 
 #iconsArea{
-  margin-left: 70%;
   background-color: #b7b4b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 
 }
 

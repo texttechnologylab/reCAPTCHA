@@ -6,7 +6,7 @@ function addNounButton() {
     checkN.id = "checkN";
     checkN.className = "btn btn-secondary btn-lg btn-block";
     checkN.setAttribute("onclick", "checkInputNouns()");
-    checkN.innerHTML = "Check Nomen";
+    checkN.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkN);
 }
 
@@ -17,7 +17,7 @@ function addTestButton() {
     checkN.id = "checkTest";
     checkN.className = "btn btn-secondary btn-lg btn-block";
     checkN.setAttribute("onclick", "sendAnnotationRelationHelper()");
-    checkN.innerHTML = "Annotiere Relationen";
+    checkN.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkN);
 }
 
@@ -61,7 +61,7 @@ function addVerbButton() {
     checkV.id = "checkV";
     checkV.className = "btn btn-secondary btn-lg btn-block";
     checkV.setAttribute("onclick", "checkInputVerbs()");
-    checkV.innerHTML = "Check Verben";
+    checkV.innerHTML = "Verifizieren";
     currentDiv.innerHTML = "";
     currentDiv.appendChild(checkV);
 }
@@ -73,7 +73,7 @@ function addAdjectiveButton() {
     checkA.id = "checkA";
     checkA.className = "btn btn-secondary btn-lg btn-block";
     checkA.setAttribute("onclick", "checkInputAdjectives()");
-    checkA.innerHTML = "Check Adjektive";
+    checkA.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkA);
 }
 
@@ -84,7 +84,7 @@ function addFoodButton() {
     buttonCheck.id ="checkF";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "checkInputFood()");
-    buttonCheck.innerHTML = "Check Food";
+    buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
 }
 
@@ -97,7 +97,7 @@ function addAnnoFoodButton() {
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationFood()");
     //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
-    buttonCheck.innerHTML = "Annotiere Food";
+    buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
 }
 
@@ -108,7 +108,7 @@ function addAnnoNounsButton() {
     buttonCheck.id = "annoN";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationNouns()");
-    buttonCheck.innerHTML = "Annotiere Nomen";
+    buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
 }
 
@@ -120,7 +120,7 @@ function addAnnoVerbsButton() {
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationVerbs()");
     //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
-    buttonCheck.innerHTML = "Annotiere Verben";
+    buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
 }
 
@@ -132,7 +132,7 @@ function addAnnoAdjectiveButton() {
     buttonCheck.id = "annoA";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives()");
-    buttonCheck.innerHTML = "Annotiere Adjektive";
+    buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
 }
 
@@ -143,7 +143,7 @@ function addAnnoAnimalFaunaButton() {
     buttonCheck.id = "annoA";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationAnimalFauna()");
-    buttonCheck.innerHTML = "Annotiere Fauna";
+    buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
 }
 
@@ -156,8 +156,15 @@ function addRefreshButton() {
     button.appendChild(icon);
     currentDiv.appendChild(button);
 
-    //refreshButton.className = "fas fa-sync-alt";
-    //button.appendChild(refreshButton);
-    //currentDiv.appendChild(button);
-    //refreshButton.setAttribute("onclick", );
+    //
+}
+
+function addInfoButton() {
+    let currentDiv = document.getElementById("iconsArea");
+    let button = document.createElement("button");
+    let icon = document.createElement("i");
+    icon.className = "fas fa-info-circle";
+    icon.id = "infoButton";
+    button.appendChild(icon);
+    currentDiv.appendChild(button);
 }
