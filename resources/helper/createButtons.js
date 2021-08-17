@@ -1,6 +1,6 @@
 function addNounButton() {
     // vorher "testText"
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     let checkN = document.createElement("Button");
     checkN.id = "checkN";
@@ -8,10 +8,11 @@ function addNounButton() {
     checkN.setAttribute("onclick", "checkInputNouns()");
     checkN.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkN);
+    addRefreshButton();
 }
 
 function addTestButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     let checkN = document.createElement("Button");
     checkN.id = "checkTest";
@@ -19,10 +20,11 @@ function addTestButton() {
     checkN.setAttribute("onclick", "sendAnnotationRelationHelper()");
     checkN.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkN);
+    addRefreshButton();
 }
 
 function addPropSelect() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     let checkProp = document.createElement("select");
     checkProp.id = "propSelection";
@@ -41,6 +43,7 @@ function addPropSelect() {
     sendProp.innerHTML = "OK";
     sendProp.className = "btn btn-secondary btn-lg btn-block";
     currentDiv.appendChild(sendProp);
+    addRefreshButton();
 
     /*
     let nounOption = document.createElement("option");
@@ -55,7 +58,7 @@ function addPropSelect() {
 }
 
 function addVerbButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     let checkV = document.createElement("Button");
     checkV.id = "checkV";
@@ -64,10 +67,11 @@ function addVerbButton() {
     checkV.innerHTML = "Verifizieren";
     currentDiv.innerHTML = "";
     currentDiv.appendChild(checkV);
+    addRefreshButton();
 }
 
 function addAdjectiveButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     let checkA = document.createElement("Button");
     checkA.id = "checkA";
@@ -75,10 +79,11 @@ function addAdjectiveButton() {
     checkA.setAttribute("onclick", "checkInputAdjectives()");
     checkA.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkA);
+    addRefreshButton();
 }
 
 function addFoodButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id ="checkF";
@@ -86,11 +91,12 @@ function addFoodButton() {
     buttonCheck.setAttribute("onclick", "checkInputFood()");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
+    addRefreshButton();
 }
 
 // alles auf textArea umändern
 function addAnnoFoodButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoF";
@@ -99,10 +105,11 @@ function addAnnoFoodButton() {
     //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
+    addRefreshButton();
 }
 
 function addAnnoNounsButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoN";
@@ -110,10 +117,11 @@ function addAnnoNounsButton() {
     buttonCheck.setAttribute("onclick", "sendAnnotationNouns()");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
+    addRefreshButton();
 }
 
 function addAnnoVerbsButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoV";
@@ -122,11 +130,12 @@ function addAnnoVerbsButton() {
     //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
+    addRefreshButton();
 }
 
 
 function addAnnoAdjectiveButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoA";
@@ -134,10 +143,11 @@ function addAnnoAdjectiveButton() {
     buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives()");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
+    addRefreshButton();
 }
 
 function addAnnoAnimalFaunaButton() {
-    let currentDiv = document.getElementById("confirmation");
+    let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerText = "";
     var buttonCheck = document.createElement("button");
     buttonCheck.id = "annoA";
@@ -145,6 +155,7 @@ function addAnnoAnimalFaunaButton() {
     buttonCheck.setAttribute("onclick", "sendAnnotationAnimalFauna()");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
+    addRefreshButton();
 }
 
 function addRefreshButton() {
@@ -155,8 +166,6 @@ function addRefreshButton() {
     icon.id = "refreshIcon";
     button.appendChild(icon);
     currentDiv.appendChild(button);
-
-    //
 }
 
 function addInfoButton() {
