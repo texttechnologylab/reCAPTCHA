@@ -20,7 +20,6 @@ function addTestButton() {
     checkN.setAttribute("onclick", "sendAnnotationRelationHelper()");
     checkN.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkN);
-    //addRefreshButton("checkTest");
 }
 
 function addPropSelect() {
@@ -185,10 +184,14 @@ function addRefreshButton(task) {
         case "annoAdjective":
             taskFunk = "taskAnnotateAdjectives()";
             break;
+        case "propSelection":
+            taskFunk = "taskSelectRelation()";
+            break;
     }
     let currentDiv = document.getElementById("iconsArea");
     let button = document.createElement("button");
     button.setAttribute("onclick", taskFunk);
+    button.id = "refreshButton";
     let icon = document.createElement("i");
     icon.className = "fas fa-sync-alt";
     icon.id = "refreshIcon";

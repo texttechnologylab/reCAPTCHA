@@ -82,6 +82,12 @@ i {
   align-items: center;
   justify-content: center;
   min-height: 80px;
+
+}
+
+#refreshButton{
+  margin-left: 40px;
+  font-size: 20px;
 }
 
 line {
@@ -156,13 +162,14 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.375rem + 1.5vw);
+  /*font-size: calc(1.375rem + 1.5vw);*/
+  font-size: 1em;
   background-color: #337ab7;
   color: white;
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.5rem;
+    font-size: 1rem;
   }
 }
 

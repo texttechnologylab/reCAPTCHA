@@ -115,7 +115,8 @@ function taskSelectRelation() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere genau zwei Wörter");
+    let text = document.createTextNode("Markiere zusammenhängende Wörter," +
+        "Beispiele: Max Mustermann (Namen), Frankfurt am Main (Orte), Goethe Universität (Einrichtungen)");
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
