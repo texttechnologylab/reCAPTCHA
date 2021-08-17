@@ -8,7 +8,7 @@ function addNounButton() {
     checkN.setAttribute("onclick", "checkInputNouns()");
     checkN.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkN);
-    addRefreshButton();
+    addRefreshButton("checkNoun");
 }
 
 function addTestButton() {
@@ -20,7 +20,7 @@ function addTestButton() {
     checkN.setAttribute("onclick", "sendAnnotationRelationHelper()");
     checkN.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkN);
-    addRefreshButton();
+    //addRefreshButton("checkTest");
 }
 
 function addPropSelect() {
@@ -43,7 +43,7 @@ function addPropSelect() {
     sendProp.innerHTML = "OK";
     sendProp.className = "btn btn-secondary btn-lg btn-block";
     currentDiv.appendChild(sendProp);
-    addRefreshButton();
+    addRefreshButton("propSelection");
 
     /*
     let nounOption = document.createElement("option");
@@ -67,7 +67,7 @@ function addVerbButton() {
     checkV.innerHTML = "Verifizieren";
     currentDiv.innerHTML = "";
     currentDiv.appendChild(checkV);
-    addRefreshButton();
+    addRefreshButton("checkVerb");
 }
 
 function addAdjectiveButton() {
@@ -79,7 +79,7 @@ function addAdjectiveButton() {
     checkA.setAttribute("onclick", "checkInputAdjectives()");
     checkA.innerHTML = "Verifizieren";
     currentDiv.appendChild(checkA);
-    addRefreshButton();
+    addRefreshButton("checkAdjective");
 }
 
 function addFoodButton() {
@@ -91,7 +91,7 @@ function addFoodButton() {
     buttonCheck.setAttribute("onclick", "checkInputFood()");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
-    addRefreshButton();
+    addRefreshButton("checkFood");
 }
 
 // alles auf textArea umändern
@@ -105,7 +105,7 @@ function addAnnoFoodButton() {
     //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
-    addRefreshButton();
+    addRefreshButton("annoFood");
 }
 
 function addAnnoNounsButton() {
@@ -117,7 +117,7 @@ function addAnnoNounsButton() {
     buttonCheck.setAttribute("onclick", "sendAnnotationNouns()");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
-    addRefreshButton();
+    addRefreshButton("annoNoun");
 }
 
 function addAnnoVerbsButton() {
@@ -130,7 +130,7 @@ function addAnnoVerbsButton() {
     //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
-    addRefreshButton();
+    addRefreshButton("annoVerb");
 }
 
 
@@ -143,7 +143,7 @@ function addAnnoAdjectiveButton() {
     buttonCheck.setAttribute("onclick", "sendAnnotationAdjectives()");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
-    addRefreshButton();
+    addRefreshButton("annoAdjective");
 }
 
 function addAnnoAnimalFaunaButton() {
@@ -155,17 +155,47 @@ function addAnnoAnimalFaunaButton() {
     buttonCheck.setAttribute("onclick", "sendAnnotationAnimalFauna()");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
-    addRefreshButton();
+    addRefreshButton("annoAnimalFauna");
 }
 
-function addRefreshButton() {
+function addRefreshButton(task) {
+    let taskFunk = "";
+    switch(task){
+        case "checkNoun":
+            taskFunk = "taskCheckNouns()";
+            break;
+        case "checkVerb":
+            taskFunk = "taskCheckVerbs()";
+            break;
+        case "checkAdjective":
+            taskFunk = "taskCheckAdjectives()";
+            break;
+        case "checkFood":
+            taskFunk = "taskCheckFood()";
+            break;
+        case "annoFood":
+            taskFunk = "taskAnnotateFood()";
+            break;
+        case "annoNoun":
+            taskFunk = "taskAnnotateNouns()";
+            break;
+        case "annoVerb":
+            taskFunk = "taskAnnotateVerbs()";
+            break;
+        case "annoAdjective":
+            taskFunk = "taskAnnotateAdjectives()";
+            break;
+    }
     let currentDiv = document.getElementById("iconsArea");
     let button = document.createElement("button");
+    button.setAttribute("onclick", taskFunk);
     let icon = document.createElement("i");
     icon.className = "fas fa-sync-alt";
     icon.id = "refreshIcon";
     button.appendChild(icon);
     currentDiv.appendChild(button);
+
+
 }
 
 function addInfoButton() {
