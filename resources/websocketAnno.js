@@ -167,8 +167,8 @@ const webSocketAnno = (function (casId, view, tool){
                 var sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
 
                 var keys = Object.keys(sentences);
-             //   var randomKey = keys[getRandomIntMax(keys.length)]; // Bestimme zufälligen Satz(key)
-                var randomKey = keys[0]; // Erster Satz
+                var randomKey = keys[getRandomIntMax(keys.length)]; // Bestimme zufälligen Satz(key)
+            //    var randomKey = keys[0]; // Erster Satz
 
 
                 var start = sentences[randomKey]["features"]["begin"];
