@@ -1,5 +1,6 @@
 // Speichert die ids aller Token die angeklickt worden sind.
 let selectedTokensId = [];
+let drawLine = false;
 
 
 /**
@@ -9,6 +10,9 @@ let selectedTokensId = [];
  * @param buttonId
  */
 function tokenClicked(buttonId) {
+
+
+
     var greyColor = "#e9ecef"; // Standard Button Farbe
     var selectedColor = "#EBCA35";
     var selectedColorRGB = "rgb(235, 202, 53)";
@@ -32,6 +36,14 @@ function tokenClicked(buttonId) {
     else {
         button.style.background = selectedColor;
         selectedTokensId.push(buttonId);
+    }
+
+
+    if (drawLine == true && selectedTokensId.length == 2){
+        drawlinePos($("#"+selectedTokensId[0]), $("#"+selectedTokensId[1]));
+    }
+    else{
+        deleteLine();
     }
 
 }

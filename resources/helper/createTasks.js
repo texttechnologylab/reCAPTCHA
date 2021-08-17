@@ -112,6 +112,7 @@ function taskAnnotateFood() {
 
 function taskSelectRelation() {
     //PropAnno
+    drawLine = true;
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
@@ -121,6 +122,8 @@ function taskSelectRelation() {
     //taskDiv.appendChild(text);
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
+    createLine();
+
     addTestButton();
 }
 
