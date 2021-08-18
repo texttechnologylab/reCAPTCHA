@@ -3,8 +3,8 @@ function createLine() {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-    svg.setAttribute("width", "800");
-    svg.setAttribute("height", "400");
+    svg.setAttribute("width", "1200");
+    svg.setAttribute("height", "1200");
     svg.classList.add("overlay-svg");
 
     line.setAttribute("id", "line");
@@ -20,48 +20,71 @@ function createLine() {
 function drawlinePos(el1, el2) {
     let line = $('#line');
 
+    let simplePos1 = el1.position();
+    let simplePos2 = el2.position();
 
-    // Das erste Element soll immer das Element sein, dass am weitesten links ist.
-    if (el1.position().left < el2.position().left){
-        var element1 = el1;
-        var element2 = el2;
+    let pos1 = getPosition(el1)
+    let pos2 = getPosition(el2)
+
+
+    // Falls sie auf verschiedenen y- Ebenen sind
+    if(simplePos1.top != simplePos2.top){
+        if (simplePos1.top < simplePos2.top){
+            line
+                .attr('x1', pos1.posDown[0])
+                .attr('y1', pos1.posDown[1])
+                .attr('x2', pos2.posTop[0])
+                .attr('y2', pos2.posTop[1]);
+        }
+        else{
+            line
+                .attr('x1', pos1.posTop[0])
+                .attr('y1', pos1.posTop[1])
+                .attr('x2', pos2.posDown[0])
+                .attr('y2', pos2.posDown[1]);
+
+        }
+
+
+    }
+    // Falls sie auf gleiche y-Ebene sind
+    else if (simplePos1.left < simplePos2.left){
+        line
+            .attr('x1', pos1.posRight[0])
+            .attr('y1', pos1.posRight[1])
+            .attr('x2', pos2.posLeft[0])
+            .attr('y2', pos2.posLeft[1]);
     }
     else{
-        var element1 = el2;
-        var element2 = el1;
+        line
+            .attr('x1', pos1.posLeft[0])
+            .attr('y1', pos1.posLeft[1])
+            .attr('x2', pos2.posRight[0])
+            .attr('y2', pos2.posRight[1]);
     }
 
-    var pos1 = getPosition(element1)
-    var pos2 = getPosition(element2)
 
-
-    //------------------HIER: ALg. der entscheidet, wann welche Position genommen hat
-
-    line
-        .attr('x1', pos1.posRight[0])
-        .attr('y1', pos1.posRight[1])
-        .attr('x2', pos2.posLeft[0])
-        .attr('y2', pos2.posLeft[1]);
 
 }
 
 /**
- * Berechnet von einem gegebenen Element die Positionen links, rechts, oben sowie unten.
- * @param element
+ * Berechnet von einem gegebenen Element die Positionen der vier mittleren Punkte die
+ * links, rechts, oben und unten sind.
+ * @param element: ajax-Object
  * @returns {{posRight: *[], posTop: *[], posLeft: *[], posDown: *[]}}; [x-koordinate, y-koordinate]
  */
 function getPosition(element){
-    let style = getComputedStyle(element[0]);
+    let style = getComputedStyle(element[0]); // element[0] ist das dom-Object
 
     let marginLeft = parseInt(style.marginLeft);
     let marginTop = parseInt(style.marginTop);
     let position = element.position();
 
-    let posTop = [position.left + marginLeft + element.height(), position.top + marginTop];
-    let posDown = [position.left + marginLeft + element.height(), position.top + marginTop + element.height()];
+    let posTop = [position.left + marginLeft + element[0].offsetWidth*0.5, position.top + marginTop];
+    let posDown = [position.left + marginLeft + element[0].offsetWidth*0.5, position.top + marginTop + element[0].offsetHeight];
 
-    let posLeft = [position.left + marginLeft, position.top + marginTop + element.height()/2];
-    let posRight = [position.left + marginLeft + element.width() , position.top + marginTop + element.height()/2];
+    let posLeft = [position.left + marginLeft, position.top + marginTop + element[0].offsetHeight*0.5];
+    let posRight = [position.left + marginLeft + element[0].offsetWidth , position.top + marginTop + element[0].offsetHeight*0.5];
 
     return {posDown: posDown, posLeft: posLeft, posRight: posRight, posTop: posTop};
 }
@@ -69,7 +92,7 @@ function getPosition(element){
 
 
 function deleteLine() {
-    line = $('#line');
+    let line = $('#line');
 
     line
         .attr('x1', 0)
