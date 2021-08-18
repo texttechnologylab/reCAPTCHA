@@ -11,12 +11,10 @@ let drawLine = false;
  */
 function tokenClicked(buttonId) {
 
-
-
-    var greyColor = "#e9ecef"; // Standard Button Farbe
-    var selectedColor = "#EBCA35";
-    var selectedColorRGB = "rgb(235, 202, 53)";
-    var button = document.getElementById(buttonId);
+    const greyColor = "#e9ecef"; // Standard Button Farbe
+    const selectedColor = "#EBCA35";
+    const selectedColorRGB = "rgb(235, 202, 53)";
+    const button = document.getElementById(buttonId);
 
     // Falls der Token schon ausgewählt ist
 
@@ -49,34 +47,13 @@ function tokenClicked(buttonId) {
 }
 
 
-
-
-/** funktioniert noch nicht
- * Überprüft ob Auswahl passt oder nicht
- * @param selection
- * @param toolString
- */
-function checkSentiment(selection, toolString) {
-    var result = selection;
-    var sentiment = SOCKETANNO.getToolElementsInstance()[toolString];
-
-    //abchecken ob richtig
-    if (result == sentiment) {
-        alert("Richtig");
-    } else {
-        alert("Falsch");
-    }
-
-}
-
-
 /**
  * Hilfsunktion um mit der adresse(id) eines Token dem lemmaBegin zu bekommen
  * @param address
  * @returns {number}
  */
 function fromAddressToLemmaBegin(address){
-    var entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+    const entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"];
     return entitiesTool[address]["features"]["begin"];
 }
 
@@ -86,7 +63,7 @@ function fromAddressToLemmaBegin(address){
  * @returns {number}
  */
 function fromAddressToLemmaEnd(address){
-    var entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"]
+    const entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"]
     return entitiesTool[address]["features"]["end"];
 }
 

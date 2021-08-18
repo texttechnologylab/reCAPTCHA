@@ -1,6 +1,6 @@
-var view = "https://authority.hucompute.org/user/316809";
-var tool = "proppanel";
-var casId = "28490"
+const view = "https://authority.hucompute.org/user/316809";
+const tool = "proppanel";
+const casId = "28490"
 const SOCKETANNO = webSocketAnno(casId, view, tool);
 
 

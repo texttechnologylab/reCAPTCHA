@@ -6,35 +6,35 @@
  * @returns {boolean}
  */
 function checkInputHelper(toolString){
-    var toolAnnotationsInstance = SOCKETANNO.getToolAnnotationsQuickpanel();
-    var toolElements = SOCKETANNO.getToolElementsInstance();
-    var entitiesTool = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"]
-    var numberOfFalse = 0; // Anzahl der falsch ausgewählten Token vom User
-    var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
-    var allLemmaBeginFromTool = [];
-    var allLemmaBegin = [];
+    const toolAnnotationsInstance = SOCKETANNO.getToolAnnotationsQuickpanel();
+    const toolElements = SOCKETANNO.getToolElementsInstance();
+    const entitiesTool = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"]
+    let numberOfFalse = 0; // Anzahl der falsch ausgewählten Token vom User
+    const idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
+    let allLemmaBeginFromTool = [];
+    let allLemmaBegin = [];
 
     // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
-    var tool = toolAnnotationsInstance[toolString];
+    const tool = toolAnnotationsInstance[toolString];
     for (let toolKey in tool) {
         allLemmaBeginFromTool.push(tool[toolKey]["features"]["begin"])
     }
 
     // Berechnet: allLemmaBegin = allLemmaBeginFromTool *UND-Operator* idFromAllDisplayedTokens
     for (let element in idFromAllDisplayedTokens){
-        var displayedTokenLemmaBegin =  entitiesTool[idFromAllDisplayedTokens[element]]["features"]["begin"];
+        let displayedTokenLemmaBegin =  entitiesTool[idFromAllDisplayedTokens[element]]["features"]["begin"];
         if (allLemmaBeginFromTool.includes(displayedTokenLemmaBegin)){
             allLemmaBegin.push(displayedTokenLemmaBegin);
         }
     }
-    var allLemmaBeginOriginalLength = allLemmaBegin.length; // Originalgröße wird gespeichert
+    const allLemmaBeginOriginalLength = allLemmaBegin.length; // Originalgröße wird gespeichert
 
     // Vergleicht beide Listen miteinander und speichert das Ergebnis in numberOfFalse und numberOfCorrect
     for (let word in selectedTokensId){
-        var adress = selectedTokensId[word].split("address")[1];
-        var lemmaBegin = fromAddressToLemmaBegin(adress);
+        const adress = selectedTokensId[word].split("address")[1];
+        const lemmaBegin = fromAddressToLemmaBegin(adress);
 
-        var index = allLemmaBegin.indexOf(lemmaBegin);
+        const index = allLemmaBegin.indexOf(lemmaBegin);
         if (index > -1) {
             allLemmaBegin.splice(index, 1);
         }
@@ -44,7 +44,7 @@ function checkInputHelper(toolString){
 
     }
 
-    var numberOfCorrect = allLemmaBeginOriginalLength - allLemmaBegin.length; // Anzahl der richtig ausgewählten
+    const numberOfCorrect = allLemmaBeginOriginalLength - allLemmaBegin.length; // Anzahl der richtig ausgewählten
 
     // Zum testen
     alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
@@ -209,11 +209,11 @@ function checkInputVehicle(){
  * @returns {string[]}
  */
 function getIdFromAllDisplayedTokens(){
-    var idFromAllDisplayedTokensWithAddress = [];
-    var idFromAllDisplayedTokens = [];
+    let idFromAllDisplayedTokensWithAddress = [];
+    let idFromAllDisplayedTokens = [];
 
-    var childDivs = document.getElementById('playArea').getElementsByTagName('button');
-    for (var i = 0; i < childDivs.length; i++) {
+    let childDivs = document.getElementById('playArea').getElementsByTagName('button');
+    for (let i = 0; i < childDivs.length; i++) {
         idFromAllDisplayedTokensWithAddress.push(childDivs[i].id);
     }
 

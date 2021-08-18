@@ -8,28 +8,28 @@
 function sendAnnotationHelper(type){
 
     // Bleiben fest erstmal
-    var casId = "28490";
-    var view = "recaptcha"; // View in der alle Ergebnisse zwischengespeichert werden
-    var tool = "quickpanel";
-    var bPrivate = false;
-    var batchIdentifier = "_b1_";
-    var cmdQueue = [];
+   // const casId = "28490";
+    const view = "recaptcha"; // View in der alle Ergebnisse zwischengespeichert werden
+    const tool = "quickpanel";
+    const bPrivate = false;
+    const batchIdentifier = "_b1_";
+    let cmdQueue = [];
 
-    var webSocket = SOCKETANNO.getWebSocketInstance();
+    const webSocket = SOCKETANNO.getWebSocketInstance();
 
     // Extrahiert alle Annotierten Token und speichert sie in eine queue
     for (let element in selectedTokensId){
-        var selectedTokenId = (selectedTokensId[element]).split("address")[1];
-        var begin = fromAddressToLemmaBegin(selectedTokenId);
-        var end =  fromAddressToLemmaEnd(selectedTokenId);
+        const selectedTokenId = (selectedTokensId[element]).split("address")[1];
+        const begin = fromAddressToLemmaBegin(selectedTokenId);
+        const end =  fromAddressToLemmaEnd(selectedTokenId);
 
-        var features = {begin: begin, end: end, metaphor: false, metonym: false ,specific: false};
+        const features = {begin: begin, end: end, metaphor: false, metonym: false ,specific: false};
         cmdQueue.push({cmd: 'create', data: {bid: batchIdentifier, _type: type, features: features}});
 
     }
 
     // Schickt dem Socket die Nachricht welche Token annotiert wurden
-    var cmd = JSON.stringify({
+    const cmd = JSON.stringify({
         cmd: 'work_batch',
         data: {
             casId: casId, toolName: tool, view: view,
@@ -77,29 +77,28 @@ function sendAnnotationRelationHelper(){
         return;
     }
 
-    var type = "org.texttechnologylab.annotation.semaf.semafsr.SrLink";
+    const type = "org.texttechnologylab.annotation.semaf.semafsr.SrLink";
 
     // Bleiben fest erstmal
-    var casId = "28490";
-    var view = "recaptcha";
-  //  var view = "https://authority.hucompute.org/user/316809";
 
-    var tool = "proppanel";
-    var bPrivate = false;
-    var batchIdentifier = "_b1_";
-    var cmdQueue = [];
+    const view = "recaptcha";
 
-
-    var webSocket = SOCKETANNO.getWebSocketInstance();
+    const tool = "proppanel";
+    const bPrivate = false;
+    const batchIdentifier = "_b1_";
+    const cmdQueue = [];
 
 
-    var figureTokenId = parseInt((selectedTokensId[0]).split("address")[1]);
-    var groundTokenId = parseInt((selectedTokensId[1]).split("address")[1]);
+    const webSocket = SOCKETANNO.getWebSocketInstance();
 
-    var features = {figure: figureTokenId, ground: groundTokenId, rel_type: 'ARG0'};
+
+    const figureTokenId = parseInt((selectedTokensId[0]).split("address")[1]);
+    const groundTokenId = parseInt((selectedTokensId[1]).split("address")[1]);
+
+    const features = {figure: figureTokenId, ground: groundTokenId, rel_type: 'ARG0'};
     cmdQueue.push({cmd: 'create', data: {bid: batchIdentifier, _type: type, features: features}});
 
-    var cmd = JSON.stringify({
+    const cmd = JSON.stringify({
         cmd: 'work_batch',
         data: {
             casId: casId, toolName: tool, view: view,

@@ -36,7 +36,7 @@ const webSocketAnno = (function (casId, view, tool){
         };
 
         webSocket.onmessage = (msg) => {
-            var response = JSON.parse(msg.data);
+            const response = JSON.parse(msg.data);
 
             //response.cmd gibt an welche Art von Nachricht empfangen worden ist.
             switch (response.cmd) {
@@ -134,15 +134,16 @@ const webSocketAnno = (function (casId, view, tool){
      * @param targetTool
      */
     function displayTextAsButtons(targetTool) {
-        var textAsList = [];
-        var allLemmaBegin = [];
-        var allLemmaEnd = [];
+        let textAsList = [];
+        let allLemmaBegin = [];
+        let allLemmaEnd = [];
 
         // Ohne Punkte     let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
-        var lemmas = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+        const lemmas = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+
         for (let address in lemmas) {
-            var begin = fromAddressToLemmaBegin(address);
-            var end = fromAddressToLemmaEnd(address);
+            const begin = fromAddressToLemmaBegin(address);
+            const end = fromAddressToLemmaEnd(address);
 
             // Damit Token nicht doppelt vorkommen in verschiedenen Versionen
             //      if (allAddresses.includes(begin)){
@@ -161,24 +162,25 @@ const webSocketAnno = (function (casId, view, tool){
             Zeigt einen zufälligen Satz an der mindestens 6 Token beinhaltet
         */
         if (targetTool == "standard") {
+            let startTokenIndex = 0;
 
             // Satz soll mindestens 6 Token beinhalten
             while (true) {
-                var sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
+                const sentences = toolElements["de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence"];
 
-                var keys = Object.keys(sentences);
-                var randomKey = keys[getRandomIntMax(keys.length)]; // Bestimme zufälligen Satz(key)
+                const keys = Object.keys(sentences);
+                const randomKey = keys[getRandomIntMax(keys.length)]; // Bestimme zufälligen Satz(key)
             //    var randomKey = keys[0]; // Erster Satz
 
 
-                var start = sentences[randomKey]["features"]["begin"];
-                var end = sentences[randomKey]["features"]["end"];
+                const start = sentences[randomKey]["features"]["begin"];
+                const end = sentences[randomKey]["features"]["end"];
 
-                var startTokenIndex = allLemmaBegin.indexOf(start);
-                var endTokenIndex = allLemmaEnd.indexOf(end) + 1;
-                var lengthOfSentence = allLemmaEnd.slice(startTokenIndex, endTokenIndex).length;
+                startTokenIndex = allLemmaBegin.indexOf(start);
+                const endTokenIndex = allLemmaEnd.indexOf(end) + 1;
+                const lengthOfSentence = allLemmaEnd.slice(startTokenIndex, endTokenIndex).length;
 
-                for (i = startTokenIndex; i < lengthOfSentence + startTokenIndex; i++) {
+                for (let i = startTokenIndex; i < lengthOfSentence + startTokenIndex; i++) {
                     textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
                 }
 
@@ -198,11 +200,11 @@ const webSocketAnno = (function (casId, view, tool){
 
             const NUMBEROFTOKENS = getRandomIntMinMax(10, 20); // Anzahl der Tokens die angezeigt werden
             // Index vom gesuchten Token
-            var indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
+            const indexTarget = allLemmaBegin.indexOf(getRandomLemmaStartOfTargetTool(targetTool));
             // Index vom ersten Token des Textes der angezeigt wird
-            var startTokenIndex = getRandomIntMinMax(indexTarget - NUMBEROFTOKENS, indexTarget);
+            const startTokenIndex = getRandomIntMinMax(indexTarget - NUMBEROFTOKENS, indexTarget);
             // Bestimme alle Token die angezeigt werden sollen
-            for (i = startTokenIndex; i < NUMBEROFTOKENS + startTokenIndex + 1; i++) {
+            for (let i = startTokenIndex; i < NUMBEROFTOKENS + startTokenIndex + 1; i++) {
                 textAsList.push(casText.slice(allLemmaBegin[i], allLemmaEnd[i]));
             }
             // Es wird jedes Token als Button angezeigt
@@ -221,24 +223,24 @@ const webSocketAnno = (function (casId, view, tool){
          */
         function addToken(textAsList, startTokenIndex) {
             // Div in dem die Buttons eingefügt werden
-            var currentDiv = document.getElementById("playArea");
-            var newDiv = document.createElement("div");
+            const currentDiv = document.getElementById("playArea");
+            const newDiv = document.createElement("div");
             newDiv.className = "card-body";
             newDiv.innerHTML = "";
             currentDiv.appendChild(newDiv);
 
 
             for (i = 0; i < textAsList.length; i++) {
-                let word = textAsList[i];
+                const word = textAsList[i];
 
                 // Erstelle ein Button mit dem Wort und gib ihm eine id
-                var newButton = document.createElement("Button");
+                const newButton = document.createElement("Button");
                 newButton.className = "word-button";
                 newButton.id = "address" + allAddresses[startTokenIndex + i];
                 newButton.setAttribute("onclick", "tokenClicked(id)");
 
                 // Setzt den Text des Buttons
-                var newContent = document.createTextNode(word);
+                const newContent = document.createTextNode(word);
                 newButton.appendChild(newContent);
 
                 // füge das neu erstellte Element und seinen Inhalt ins DOM ein
@@ -251,12 +253,12 @@ const webSocketAnno = (function (casId, view, tool){
          * @param tool
          */
         function colorToken(tool, color) {
-            var idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
+            const idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
             for (let element in tool) {
-                var begin = tool[element]["features"]["begin"];
+                const begin = tool[element]["features"]["begin"];
                 for (let idFromAllDisplayedToken in idFromAllDisplayedTokens) {
-                    var id = idFromAllDisplayedTokens[idFromAllDisplayedToken];
-                    var beginDisplayedToken = fromAddressToLemmaBegin(id);
+                    const id = idFromAllDisplayedTokens[idFromAllDisplayedToken];
+                    const beginDisplayedToken = fromAddressToLemmaBegin(id);
                     if (begin == beginDisplayedToken) {
                         document.getElementById("address" + id).style.background = color;
                         //  document.getElementById("address"+id).className = color;
@@ -271,7 +273,7 @@ const webSocketAnno = (function (casId, view, tool){
          * @returns {number} lemmaStart vom Token
          */
         function getRandomLemmaStartOfTargetTool(targetTool) {
-            var tokensTargetTool = []; // Speichert alle Token die mit targetTool annotiert worden sind
+            let tokensTargetTool = []; // Speichert alle Token die mit targetTool annotiert worden sind
             targetTool = toolAnnotationsQuickpanel[targetTool];
 
             // Speichert von jedem Token, dass mit dem bestimmten tool annotiert worden ist den lemmaBegin im Text in eine Liste ein.
