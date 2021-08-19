@@ -6,8 +6,7 @@
  * @type {function(*=, *=, *=): {getWebSocketInstance: function(): WebSocket, getToolElementsInstance: function(): null, displayTextAsButtons: displayTextAsButtons, getToolAnnotationsQuickpanel: function(): null}}
  */
 
-const webSocketAnno = (function (casId, view, tool){
-    const session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1"; // Bleibt erstmal fest
+const webSocketAnno = (function (casId, view, tool, session){
 
     const url = "ws://textannotator.texttechnologylab.org/uima";
     //  const WebSocket = require('ws');
