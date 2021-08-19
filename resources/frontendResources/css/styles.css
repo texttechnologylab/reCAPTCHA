@@ -115,6 +115,11 @@ line {
   font-size: 30px;
 }
 
+.task-test {
+  background-color: #005076;
+  color: #ffffff;
+}
+
 header {
   color: #ffffff;
   font-size: 5em;
@@ -127,7 +132,6 @@ header {
 #337ab7 heller
 #00618F dunkler
 #005076 am dunkelsten
-
 grau #b7b4b4
 */
 body {
@@ -211,6 +215,8 @@ h6, .h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-size: 1rem;
+
 }
 
 abbr[title],
