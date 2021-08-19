@@ -29,7 +29,6 @@ function sendAnnotationHelper(type){
 
         const features = {begin: begin, end: end, metaphor: false, metonym: false ,specific: false};
         cmdQueue.push({cmd: 'create', data: {bid: batchIdentifier, _type: type, features: features}});
-
     }
 
     // Schickt dem Socket die Nachricht welche Token annotiert wurden
@@ -131,12 +130,17 @@ function sendAnnotationRelationHelper(){
  */
 function closeRecaptcha(){
     if (TIMESOFANNOTATION >= TIMESOFANNOTATIONLIMIT){
-        window.close();
+        accessEnabled();
+        setTimeout(closeWindow, 5000);
     }
     else {
         TIMESOFANNOTATION++;
         doRandomTaskFromClassTwo();
     }
 
+}
+
+function closeWindow() {
+    window.close();
 }
 
