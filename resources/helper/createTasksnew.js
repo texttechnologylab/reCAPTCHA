@@ -122,6 +122,8 @@ function taskSelectRelation() {
     taskDiv.appendChild(text);
     //currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
+    drawLine = true;
+    createLine();
     addTestButton();
 }
 

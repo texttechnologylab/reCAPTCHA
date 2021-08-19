@@ -7,8 +7,8 @@
  */
 function checkInputHelper(toolString){
     const toolAnnotationsInstance = SOCKETANNO.getToolAnnotationsQuickpanel();
-    const toolElements = SOCKETANNO.getToolElementsInstance();
-    const entitiesTool = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"]
+    let toolElements = SOCKETANNO.getToolElementsInstance();
+    let entitiesTool = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"]
     let numberOfFalse = 0; // Anzahl der falsch ausgewählten Token vom User
     const idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
     let allLemmaBeginFromTool = [];
@@ -50,9 +50,9 @@ function checkInputHelper(toolString){
     alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
     if(numberOfFalse == 0 && allLemmaBegin.length == 0){
         alert("Alles korrekt ausgewählt");
-        return true;
+        doRandomTaskFromClassTwo();
     } else {
-        return false;
+        doRandomTaskFromClassOne();
     }
 }
 
@@ -65,36 +65,21 @@ function checkInputHelper(toolString){
  * Kontrolliert ob Eingabe von Nomen richtig ist. Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputNouns(){
-    if (checkInputHelper(getToolStringNouns()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringNouns());
 }
 
 /**
  * Kontrolliert ob Eingabe von Verben richtig ist. Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputVerbs(){
-    if (checkInputHelper(getToolStringVerbs()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringVerbs());
 }
 
 /**
  * Kontrolliert ob Eingabe von Adjektiven richtig ist. Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputAdjectives(){
-    if (checkInputHelper(getToolStringAdjectives()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringAdjectives());
 }
 
 /**
@@ -102,12 +87,7 @@ function checkInputAdjectives(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputFood(){
-    if (checkInputHelper(getToolStringFood()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringFood());
 }
 
 /**
@@ -115,12 +95,7 @@ function checkInputFood(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputAnimalFauna(){
-    if (checkInputHelper(getToolStringAnimalFauna()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringAnimalFauna());
 }
 
 /**
@@ -128,12 +103,7 @@ function checkInputAnimalFauna(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputPlantFlora(){
-    if (checkInputHelper(getToolStringPlantFlora()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringPlantFlora());
 }
 
 /**
@@ -141,12 +111,7 @@ function checkInputPlantFlora(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputActActionActivity(){
-    if (checkInputHelper(getToolStringActActionActivity()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringActActionActivity());
 }
 
 /**
@@ -154,12 +119,7 @@ function checkInputActActionActivity(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputLocationPlace(){
-    if (checkInputHelper(getToolStringLocationPlace()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringLocationPlace());
 }
 
 /**
@@ -167,12 +127,7 @@ function checkInputLocationPlace(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputHumanBeing(){
-    if (checkInputHelper(getToolStringPersonHumanBeing()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringPersonHumanBeing());
 }
 
 /**
@@ -180,12 +135,7 @@ function checkInputHumanBeing(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputEventHappening(){
-    if (checkInputHelper(getToolStringEventHappening()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringEventHappening());
 }
 
 /**
@@ -193,12 +143,7 @@ function checkInputEventHappening(){
  * Je nachdem wird die nächste Aufgabe angezeigt
  */
 function checkInputVehicle(){
-    if (checkInputHelper(getToolStringVehicle()) == false ){
-        getRandomTaskFromClassOne();
-    }
-    else{
-        getRandomTaskFromClassTwo();
-    }
+    checkInputHelper(getToolStringVehicle());
 }
 
 

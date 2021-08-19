@@ -5,13 +5,13 @@ const SOCKETANNO = webSocketAnno(casId, view, tool);
 
 
 function processRecaptcha(){
-    getRandomTaskFromClassOne();
+    doRandomTaskFromClassOne();
 }
 
 /**
  * Ruft eine zufällige Aufgabe der Klasse 1 auf
  */
-function getRandomTaskFromClassOne(){
+function doRandomTaskFromClassOne(){
     const tasksClassOne = [taskCheckNouns, taskCheckVerbs, taskCheckAdjectives, taskCheckFood];
     tasksClassOne[getRandomIntMax(tasksClassOne.length)]();
 }
@@ -19,7 +19,7 @@ function getRandomTaskFromClassOne(){
 /**
  * Ruft eine zufällige Aufgabe der Klasse 2 auf
  */
-function getRandomTaskFromClassTwo() {
+function doRandomTaskFromClassTwo() {
     const tasksClassTwo = [taskAnnotateAdjectives, taskAnnotateFood, taskAnnotateNouns,
         taskAnnotateVerbs, taskSelectRelation];
     tasksClassTwo[getRandomIntMax(tasksClassTwo.length)]();

@@ -1,3 +1,6 @@
+let TIMESOFANNOTATION = 1; // Hilfsvariable, um zu bestimmmen wie oft Crowdsourcing Aufgaben erledigt werden sollen.
+let TIMESOFANNOTATIONLIMIT = 2;
+
 /**
  * Hilfsfunktion:
  * Funktion, die dem Textannotator die Annotationen übersendet. Funktioniert nur für Annotationen einzelner Wörter
@@ -43,6 +46,9 @@ function sendAnnotationHelper(type){
         cmd: 'save_cas',
         data: {casId: casId}
     }));
+
+    closeRecaptcha();
+
 }
 
 //------! Für jedes Tool wird eine Funktion geschrieben.
@@ -112,6 +118,20 @@ function sendAnnotationRelationHelper(){
         cmd: 'save_cas',
         data: {casId: casId}
     }));
+
+    drawLine = false;
+    closeRecaptcha();
+
+}
+
+function closeRecaptcha(){
+    if (TIMESOFANNOTATION >= TIMESOFANNOTATIONLIMIT){
+        window.close();
+    }
+    else {
+        TIMESOFANNOTATION++;
+        doRandomTaskFromClassTwo();
+    }
 
 }
 
