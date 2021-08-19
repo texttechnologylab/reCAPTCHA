@@ -1,5 +1,6 @@
-let TIMESOFANNOTATION = 1; // Hilfsvariable, um zu bestimmmen wie oft Crowdsourcing Aufgaben erledigt werden sollen.
-let TIMESOFANNOTATIONLIMIT = 2;
+// Hilfsvariable, um zu bestimmmen wie oft eine Crowdsourcing Aufgaben erledigt werden sollen.
+let TIMESOFANNOTATION = 1;
+let TIMESOFANNOTATIONLIMIT = 2; // Anzahl an Crowdsourcing Aufgaben die bearbeitet werden
 
 /**
  * Hilfsfunktion:
@@ -124,6 +125,10 @@ function sendAnnotationRelationHelper(){
 
 }
 
+/**
+ * Wichtig: Muss nach jeder Aufgabe zur Crowdsourcing aufgerufen werden
+ * Überprüft, ob die Anzahl der Aufgaben erreicht worden sind, falls ja dann Recpatcha schließen
+ */
 function closeRecaptcha(){
     if (TIMESOFANNOTATION >= TIMESOFANNOTATIONLIMIT){
         window.close();
