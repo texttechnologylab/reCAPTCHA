@@ -126,7 +126,6 @@ function addAnnoVerbsButton() {
     buttonCheck.id = "annoV";
     buttonCheck.className = "btn btn-secondary btn-lg btn-block";
     buttonCheck.setAttribute("onclick", "sendAnnotationVerbs()");
-    //buttonCheck.setAttribute("onclick", "changeButtonLight(buttonCheck.id)");
     buttonCheck.innerHTML = "Verifizieren";
     currentDiv.appendChild(buttonCheck);
     addRefreshButton("annoVerb");

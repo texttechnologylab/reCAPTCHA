@@ -137,7 +137,6 @@ function closeRecaptcha(){
         TIMESOFANNOTATION++;
         doRandomTaskFromClassTwo();
     }
-
 }
 
 function closeWindow() {

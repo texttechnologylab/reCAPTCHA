@@ -19,10 +19,9 @@ function doRandomTaskFromClassOne(){
 
 /**
  * Ruft eine zufällige Aufgabe der Klasse 2 auf
- */
+*/
 function doRandomTaskFromClassTwo() {
     const tasksClassTwo = [taskAnnotateAdjectives, taskAnnotateFood, taskAnnotateNouns,
         taskAnnotateVerbs, taskSelectRelation];
     tasksClassTwo[getRandomIntMax(tasksClassTwo.length)]();
-
 }
