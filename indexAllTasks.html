@@ -46,32 +46,20 @@
     reCaptcha
 </header>
 
-<div id="layoutSidenav_content">
-    <main>
+<main>
+    <div class="col-xl-6">
 
-            <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div id ="taskArea" class="card-header">
-                        <!--    <i> Start </i> <br>  -->
-                        <i> Lösen Sie das reCaptcha. </i> <br>
-                        <i> Klicke Start </i>
-
-                    </div>
-                    <div class="card-body">
-                        <div id = "playArea">
-                            <button id ="startButton" class="btn btn-secondary btn-lg btn-block" onclick="taskCreator()" disabled> Start </button>
-                        </div>
-                        <div id ="iconsArea">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <!-- Zum  testen -->
-        <div  id = "testText" class="card-header">
+        <div id ="taskArea" class="card-header">
+            <i> Lösen Sie das reCaptcha. </i> <br>
         </div>
-    </main>
-</div>
+
+        <div class="card-body" id="playArea">
+            <button id ="startButton" class="btn btn-secondary btn-lg btn-block" onclick="taskCreator()" disabled> Start </button>
+        </div>
+
+        <div id ="iconsArea"></div>
+    </div>
+</main>
 
 </body>
 </html>

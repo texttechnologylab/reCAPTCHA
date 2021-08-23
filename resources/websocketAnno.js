@@ -61,6 +61,7 @@ const webSocketAnno = (function (casId, view, tool, session){
                 }
 
                 case "open_tool": {
+                    console.log("Case: Open Tool")
                     toolElements = response.data.toolElements;
 
                     //  recpatcha view wird nur für neue Annotationen geöffnet.
@@ -224,12 +225,12 @@ const webSocketAnno = (function (casId, view, tool, session){
             // Div in dem die Buttons eingefügt werden
             const currentDiv = document.getElementById("playArea");
             const newDiv = document.createElement("div");
-            newDiv.className = "card-body";
+            newDiv.className = "buttonsArea";
             newDiv.innerHTML = "";
             currentDiv.appendChild(newDiv);
 
 
-            for (i = 0; i < textAsList.length; i++) {
+            for (let i = 0; i < textAsList.length; i++) {
                 const word = textAsList[i];
 
                 // Erstelle ein Button mit dem Wort und gib ihm eine id
