@@ -248,6 +248,7 @@ p {
   /*border: 2px solid red;*/
   /*border-radius: 8px;*/
   background-color: white;
+  z-index: -1;
 }
 
 .btn-secondary {
@@ -456,9 +457,8 @@ textarea {
 }
 
 .word-button {
-  margin: 1rem;
+  margin: 1.2rem;
   border: none;
-
 }
 
 button,
@@ -11377,6 +11377,11 @@ body {
 
   top: 0;
   left: 0;
+  z-index: 0;
   display: block;
   pointer-events: none;
+}
+
+.buttonsArea {
+  z-index: 1;
 }
