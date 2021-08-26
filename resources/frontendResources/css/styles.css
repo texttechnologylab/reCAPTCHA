@@ -165,28 +165,64 @@ hr {
   opacity: 0.25;
 }
 
-@media only screen and (max-width:1200px) {
+@media only screen and (max-width:750px) {
   .col-xl-6 {
     width: 100% !important;
     height: 100% !important;
+    /*display: flex;
+
+     */
   }
+  #taskArea {
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    height: 20%;
+  }
+  #playArea{
+    float: top;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 50px;
+    height: 50%;
+  }
+  #iconsArea {
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    height: 20% !important;
+    display: flex;
+    justify-content: center;
+    height: 30%;
+
+    /*display: flex;
+    align-items: center;
+    justify-content: center;
+     */
+  }
+  .btn-secondary {
+    transform: scale(1.5);
+  }
+  .word-button {
+    transform: scale(1.2);
+  }
+
   header {
     display: none !important;
   }
-  body {
+  /*body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
+
+   */
   main {
     height: 100%;
     width: 100%;
-    display: flex !important;
+    /*display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-  }
-  #playArea {
-    height: 50% !important;
+
+     */
   }
 }
 
