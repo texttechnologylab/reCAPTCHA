@@ -13,6 +13,7 @@ function processRecaptcha(){
  * Ruft eine zufällige Aufgabe der Klasse 1 auf
  */
 function doRandomTaskFromClassOne(){
+    // Tasks der Klase 1
     const tasksClassOne = [taskCheckNouns, taskCheckVerbs, taskCheckAdjectives, taskCheckFood];
     tasksClassOne[getRandomIntMax(tasksClassOne.length)]();
 }
@@ -21,7 +22,8 @@ function doRandomTaskFromClassOne(){
  * Ruft eine zufällige Aufgabe der Klasse 2 auf
 */
 function doRandomTaskFromClassTwo() {
+    // Tasks der KLasse 2
     const tasksClassTwo = [taskAnnotateAdjectives, taskAnnotateFood, taskAnnotateNouns,
-        taskAnnotateVerbs, taskSelectRelation];
+        taskAnnotateVerbs, taskSelectRelation, taskMultiToken];
     tasksClassTwo[getRandomIntMax(tasksClassTwo.length)]();
 }

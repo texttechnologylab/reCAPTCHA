@@ -95,17 +95,17 @@ function taskSelectRelation() {
     let text = document.createTextNode("Markiere genau zwei Wörter");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
-    createLine();
-
     addTestButton();
 }
 
-function taskTen() {
+function taskMultiToken() {
+    drawLine = true;
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Fauna (Anno)");
+    let text = document.createTextNode("Markiere zusammenhängende Wörter." + "\n" +
+        "Beispiele: Max Mustermann, Frankfurt am Main , Goethe Universität");
     currentDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons(getToolStringAnimalFauna());
-    addAnnoAnimalFaunaButton();
+    SOCKETANNO.displayTextAsButtons("standard");
+    addMultiTokenButton();
 }

@@ -65,37 +65,38 @@ function taskCreator() {
     seventhTaskButton.id = "seventhTaskLight";
     let seven = document.createTextNode("7");
     seventhTaskButton.appendChild(seven);
-    seventhTaskButton.setAttribute("onclick", "taskSelectRelation()");
+    seventhTaskButton.setAttribute("onclick", "taskSelectRelation");
     seventhTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(seventhTaskButton);
 
-    /*
+
     let eighthTaskButton = document.createElement("Button");
     eighthTaskButton.id = "eighthTaskLight";
     let eight = document.createTextNode("8");
     eighthTaskButton.appendChild(eight);
-    eighthTaskButton.setAttribute("onclick", "taskSelectRelation()");
+    eighthTaskButton.setAttribute("onclick", "taskMultiToken()");
     eighthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(eighthTaskButton);
 
-    let ninthTaskButton = document.createElement("Button");
-    ninthTaskButton.id = "ninthTaskLight";
-    let nine = document.createTextNode("9");
-    ninthTaskButton.appendChild(nine);
-    ninthTaskButton.setAttribute("onclick", "taskNine()");
-    ninthTaskButton.style.backgroundColor = 'red';
-    currentDiv.appendChild(ninthTaskButton);
+/*
+      let ninthTaskButton = document.createElement("Button");
+      ninthTaskButton.id = "ninthTaskLight";
+      let nine = document.createTextNode("9");
+      ninthTaskButton.appendChild(nine);
+      ninthTaskButton.setAttribute("onclick", "taskNine()");
+      ninthTaskButton.style.backgroundColor = 'red';
+      currentDiv.appendChild(ninthTaskButton);
 
-    let tenTaskButton = document.createElement("Button");
-    tenTaskButton.id = "tenTaskLight";
-    let ten = document.createTextNode("10");
-    tenTaskButton.appendChild(ten);
-    tenTaskButton.setAttribute("onclick", "taskTen()");
-    tenTaskButton.style.backgroundColor = 'red';
-    currentDiv.appendChild(tenTaskButton);
+      let tenTaskButton = document.createElement("Button");
+      tenTaskButton.id = "tenTaskLight";
+      let ten = document.createTextNode("10");
+      tenTaskButton.appendChild(ten);
+      tenTaskButton.setAttribute("onclick", "taskTen()");
+      tenTaskButton.style.backgroundColor = 'red';
+      currentDiv.appendChild(tenTaskButton);
 
 
-     */
+       */
 }
 /*
 function taskOne() {

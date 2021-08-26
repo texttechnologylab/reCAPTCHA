@@ -22,6 +22,19 @@ function addTestButton() {
     currentDiv.appendChild(checkN);
 }
 
+function addMultiTokenButton() {
+    const currentDiv = document.getElementById("iconsArea");
+    currentDiv.innerHTML = "";
+    const checkN = document.createElement("Button");
+    checkN.id = "checkTest";
+    checkN.className = "btn btn-secondary btn-lg btn-block";
+    checkN.setAttribute("onclick", "sendAnnotationMultiToken()");
+    checkN.innerHTML = "Verifizieren";
+    currentDiv.appendChild(checkN);
+    addRefreshButton("multiToken");
+
+}
+
 function addPropSelect() {
     const currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
@@ -185,6 +198,9 @@ function addRefreshButton(task) {
             break;
         case "propSelection":
             taskFunk = "taskSelectRelation()";
+            break;
+        case "multiToken":
+            taskFunk = "taskMultiToken()";
             break;
     }
     let currentDiv = document.getElementById("iconsArea");
