@@ -92,7 +92,7 @@ function taskSelectRelation() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere genau zwei Wörter");
+    let text = document.createTextNode("Markiere Relationen zwischen Wörtern");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     addTestButton();
