@@ -37,8 +37,14 @@ function tokenClicked(buttonId) {
     }
 
 
-    if (drawLine == true && selectedTokensId.length == 2){
-        drawlinePos($("#"+selectedTokensId[0]), $("#"+selectedTokensId[1]));
+    // Bestimme ob Linie gezeichnet wird
+    if (drawLine == true && selectedTokensId.length >= 2){
+        deleteLine();
+        for (let i=0; i < selectedTokensId.length; i++){
+            createLine(i);
+            drawlinePos(i ,$("#"+selectedTokensId[i]), $("#"+selectedTokensId[i+1]));
+
+        }
     }
     else{
         deleteLine();
