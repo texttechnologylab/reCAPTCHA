@@ -165,6 +165,32 @@ hr {
   opacity: 0.25;
 }
 
+@media only screen and (max-width:1200px) {
+  .col-xl-6 {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  header {
+    display: none !important;
+  }
+  body {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  main {
+    height: 100%;
+    width: 100%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #playArea {
+    height: 50% !important;
+  }
+}
+
+
 hr:not([size]) {
   height: 1px;
 }
