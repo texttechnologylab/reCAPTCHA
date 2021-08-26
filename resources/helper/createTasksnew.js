@@ -127,8 +127,21 @@ function taskSelectRelation() {
     //currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     drawLine = true;
-    createLine();
     addTestButton();
+}
+
+function taskMultiToken() {
+    drawLine = true;
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere zusammenhängende Wörter." + "\n" +
+        "Beispiele: Max Mustermann, Frankfurt am Main , Goethe Universität");
+    let taskDiv = document.getElementById("taskArea");
+    taskDiv.innerHTML = "";
+    taskDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons("standard");
+    addMultiTokenButton();
 }
 
 function taskTen() {
