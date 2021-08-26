@@ -125,6 +125,77 @@ function sendAnnotationRelationHelper(){
 }
 
 /**
+ * Funktion für Annotation von Multitoken.
+ */
+function sendAnnotationMultiToken(){
+
+    const webSocket = SOCKETANNO.getWebSocketInstance();
+    const tool = "quickpanel";
+    const bPrivate = false;
+    const view = "recaptcha";
+    const quickTreeTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.type.QuickTreeNode"];
+
+
+    /* Berechnet den Lemma Anfang und Ende des Multitokens, sowie die Adressen aller ausgewählten Token und speichert
+       sie jeweils in eine Liste */
+    let selectedTokensAdress = [];
+    let allAllemas = [];
+
+    for (let element in selectedTokensId){
+        const selectedTokenId = (selectedTokensId[element]).split("address")[1];
+        const begin = fromAddressToLemmaBegin(selectedTokenId);
+        const end = fromAddressToLemmaEnd(selectedTokenId);
+
+        allAllemas.push(begin);
+        allAllemas.push(end);
+
+
+        for(let addr in quickTreeTool){
+            if (quickTreeTool[addr]["features"]["children"] == "null" && quickTreeTool[addr]["features"]["begin"] == begin){
+                selectedTokensAdress.push(addr);
+            }
+        }
+    }
+
+
+    let cmdQueue = [];
+    let batchNumber = 0;
+    const batchIdentifier = "_b" + batchNumber.toString() + "_";
+    const type = 'org.texttechnologylab.annotation.type.QuickTreeNode';
+    // Beginn, und Ende von Lemma sowie alle Adressen der Tokens werden benötigt.
+    const features = {begin: Math.min.apply(Math,allAllemas),end:  Math.max.apply(Math, allAllemas), children:  selectedTokensAdress};
+
+    cmdQueue.push({cmd: 'create', data: {bid: batchIdentifier, features: features, _type: type}});
+
+    // Bestimme die Kinderknoten
+    for (let addr in selectedTokensAdress){
+        batchNumber++;
+        cmdQueue.push({cmd: "edit", data: {addr: selectedTokensAdress[addr].toString(), bid: "_b"+batchNumber.toString()+"_", features: {parent: "_b0_"}}});
+    }
+
+
+    const cmd = JSON.stringify({
+        cmd: 'work_batch',
+        data: {
+            casId: casId, toolName: tool, view: view,
+            queue: cmdQueue, options: [{privateSession: bPrivate}]
+        }
+    });
+    webSocket.send(cmd);
+
+    // Speichert die Annotationen
+    webSocket.send(JSON.stringify({
+        cmd: 'save_cas',
+        data: {casId: casId}
+    }));
+
+    closeRecaptcha();
+    drawLine = false;
+}
+
+
+
+/**
  * Wichtig: Muss nach jeder Aufgabe zur Crowdsourcing aufgerufen werden
  * Überprüft, ob die Anzahl der Aufgaben erreicht worden sind, falls ja dann Recpatcha schließen
  */

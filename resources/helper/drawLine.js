@@ -1,4 +1,8 @@
-function createLine() {
+/**
+ * Erstellet ein svg Objekt mit einer Linie und definiert die Eigenschaften des svg Objekts.
+ * @param number ist die i-te Linie
+ */
+function createLine(number) {
     const currentDiv = document.getElementById("playArea");
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -7,18 +11,22 @@ function createLine() {
     svg.setAttribute("height", "1200");
     svg.classList.add("overlay-svg");
 
-    line.setAttribute("id", "line");
+    line.setAttribute("id", "line" + number.toString());
     line.style.stroke = "#000000";
     line.style.strokeWidth = "3";
-
-
 
     svg.appendChild(line);
     currentDiv.appendChild(svg);
 }
 
-function drawlinePos(el1, el2) {
-    const line = $('#line');
+/**
+ * Zeichnet eine Linie zwischen den Postitionen von den Elementen el1 und el2
+ * @param number ist die i-te Linie
+ * @param el1
+ * @param el2
+ */
+function drawlinePos(number, el1, el2) {
+    const line = $('#line' + number.toString());
 
     const simplePos1 = el1.position();
     const simplePos2 = el2.position();
@@ -90,13 +98,17 @@ function getPosition(element){
 }
 
 
-
+/**
+ * Setzt alle Linien auf 0 und sie sind somit nicht mehr sichtbar.
+ */
 function deleteLine() {
-    const line = $('#line');
+    for(let i=0; i < selectedTokensId.length; i++) {
+        const line = $('#line'+ i.toString());
 
-    line
-        .attr('x1', 0)
-        .attr('y1', 0)
-        .attr('x2', 0)
-        .attr('y2', 0);
+        line
+            .attr('x1', 0)
+            .attr('y1', 0)
+            .attr('x2', 0)
+            .attr('y2', 0);
+    }
 }
