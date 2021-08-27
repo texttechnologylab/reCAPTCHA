@@ -225,3 +225,24 @@ function addInfoButton() {
     button.appendChild(icon);
     currentDiv.appendChild(button);
 }
+
+/*
+function propToolbar() {
+    let currentDiv = document.getElementById("iconsArea");
+    let newDiv = document.createElement("div");
+    let optionOne = document.createElement("button");
+    let optionTwo = document.createElement("button");
+    let optionThree = document.createElement("button");
+    optionOne.innerText = "...";
+    optionTwo.innerText = "...";
+    optionThree.innerText = "...";
+    optionOne.className = "toolbar-buttons";
+    newDiv.appendChild(optionOne);
+    newDiv.appendChild(optionTwo);
+    newDiv.appendChild(optionThree);
+    currentDiv.appendChild(optionOne);
+    currentDiv.appendChild(optionTwo);
+    currentDiv.appendChild(optionThree);
+}
+
+ */

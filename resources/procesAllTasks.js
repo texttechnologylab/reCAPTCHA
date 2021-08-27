@@ -78,25 +78,34 @@ function taskCreator() {
     eighthTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(eighthTaskButton);
 
-/*
-      let ninthTaskButton = document.createElement("Button");
-      ninthTaskButton.id = "ninthTaskLight";
-      let nine = document.createTextNode("9");
-      ninthTaskButton.appendChild(nine);
-      ninthTaskButton.setAttribute("onclick", "taskNine()");
-      ninthTaskButton.style.backgroundColor = 'red';
-      currentDiv.appendChild(ninthTaskButton);
-
-      let tenTaskButton = document.createElement("Button");
-      tenTaskButton.id = "tenTaskLight";
-      let ten = document.createTextNode("10");
-      tenTaskButton.appendChild(ten);
-      tenTaskButton.setAttribute("onclick", "taskTen()");
-      tenTaskButton.style.backgroundColor = 'red';
-      currentDiv.appendChild(tenTaskButton);
+    let ninthTaskButton = document.createElement("Button");
+    ninthTaskButton.id = "ninthTaskLight";
+    let nine = document.createTextNode("9");
+    ninthTaskButton.appendChild(nine);
+    ninthTaskButton.setAttribute("onclick", "taskSelectAdjectiveRelation()");
+    ninthTaskButton.style.backgroundColor = 'red';
+    currentDiv.appendChild(ninthTaskButton);
 
 
-       */
+    /*
+          let ninthTaskButton = document.createElement("Button");
+          ninthTaskButton.id = "ninthTaskLight";
+          let nine = document.createTextNode("9");
+          ninthTaskButton.appendChild(nine);
+          ninthTaskButton.setAttribute("onclick", "taskNine()");
+          ninthTaskButton.style.backgroundColor = 'red';
+          currentDiv.appendChild(ninthTaskButton);
+
+          let tenTaskButton = document.createElement("Button");
+          tenTaskButton.id = "tenTaskLight";
+          let ten = document.createTextNode("10");
+          tenTaskButton.appendChild(ten);
+          tenTaskButton.setAttribute("onclick", "taskTen()");
+          tenTaskButton.style.backgroundColor = 'red';
+          currentDiv.appendChild(tenTaskButton);
+
+
+           */
 }
 /*
 function taskOne() {

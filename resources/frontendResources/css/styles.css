@@ -169,34 +169,28 @@ hr {
   .col-xl-6 {
     width: 100% !important;
     height: 100% !important;
-    /*display: flex;
-
-     */
+    overflow:hidden;
   }
   #taskArea {
     margin-left: 0px !important;
     margin-top: 0px !important;
-    height: 20%;
+    height: 20% !important;
   }
   #playArea{
     float: top;
     margin-left: 0px !important;
-    margin-top: 0px !important;
-    margin-bottom: 50px;
-    height: 50%;
+    /*margin-top: 10px !important;*/
+    margin-top: 40px;
+    height: 50% !important;
+    overflow: hidden;
   }
   #iconsArea {
     margin-left: 0px !important;
     margin-top: 0px !important;
-    height: 20% !important;
     display: flex;
     justify-content: center;
-    height: 30%;
-
-    /*display: flex;
-    align-items: center;
-    justify-content: center;
-     */
+    align-items: center !important;
+    height: 30% !important;
   }
   .btn-secondary {
     transform: scale(1.5);
@@ -226,6 +220,10 @@ hr {
   }
 }
 
+#toolbar {
+  margin-right: 0% !important;
+  margin-left: 0%;
+}
 
 hr:not([size]) {
   height: 1px;
@@ -501,7 +499,6 @@ button {
   border-radius: 0;
   border: none;
   margin: 1px;
-;
 }
 
 button:focus:not(:focus-visible) {
