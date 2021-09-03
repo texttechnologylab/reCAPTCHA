@@ -1,5 +1,5 @@
 const view = "https://authority.hucompute.org/user/316809";
-const tool = "proppanel";
+const tool = "quickpanel";
 const casId = "28490";
 const session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
 const SOCKETANNO = webSocketAnno(casId, view, tool, session);
