@@ -50,9 +50,9 @@ function checkInputHelper(toolString){
     alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
     if(numberOfFalse == 0 && allLemmaBegin.length == 0){
         alert("Alles korrekt ausgewählt");
-        doRandomTaskFromClassTwo();
+        doRandomTaskForCrowdsourcing();
     } else {
-        doRandomTaskFromClassOne();
+        doRandomTaskForVerification();
     }
 }
 

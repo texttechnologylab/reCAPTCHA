@@ -9,7 +9,6 @@
 const webSocketAnno = (function (casId, view, tool, session){
 
     const url = "ws://textannotator.texttechnologylab.org/uima";
-    //  const WebSocket = require('ws');
     const webSocket = new WebSocket(url);
 
     let allAddresses = [];
@@ -130,7 +129,6 @@ const webSocketAnno = (function (casId, view, tool, session){
      * Nimmt aus den quickpanel Tool die Lemma Werte jedes Tokens und speichert damit jeden Token
      * des Satzes in eine Liste ein. Mit der Liste gibt sie jeden Tokon als Button aus und die Id jedes Button
      * ist durch seine addresse(id) im "org.texttechnologylab.annotation.semaf.isobase.Entity" Tool gekennzeichnet
-     * @param casText
      * @param targetTool
      */
     function displayTextAsButtons(targetTool) {
@@ -138,7 +136,7 @@ const webSocketAnno = (function (casId, view, tool, session){
         let allLemmaBegin = [];
         let allLemmaEnd = [];
 
-     //  let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
+     //  let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"]; Ohne Punkte
        const lemmas = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"];
 
         for (let address in lemmas) {

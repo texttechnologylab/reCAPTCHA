@@ -4,26 +4,32 @@ const casId = "28490";
 const session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
 const SOCKETANNO = webSocketAnno(casId, view, tool, session);
 
+// Hilfsvariable, um zu bestimmmen wie oft eine Crowdsourcing Aufgaben erledigt werden sollen.
+let TIMESOFANNOTATION = 1;
+let TIMESOFANNOTATIONLIMIT = 2; // Anzahl an Crowdsourcing Aufgaben die bearbeitet werden
+
 
 function processRecaptcha(){
-    doRandomTaskFromClassOne();
+    doRandomTaskForVerification();
 }
 
 /**
  * Ruft eine zufällige Aufgabe der Klasse 1 auf
  */
-function doRandomTaskFromClassOne(){
-    // Tasks der Klase 1
-    const tasksClassOne = [taskCheckNouns, taskCheckVerbs, taskCheckAdjectives, taskCheckFood];
-    tasksClassOne[getRandomIntMax(tasksClassOne.length)]();
+function doRandomTaskForVerification(){
+    // Tasks der Klase Vertrauenstest
+    const tasksVerification = [taskCheckNouns, taskCheckVerbs, taskCheckAdjectives, taskCheckFood];
+
+    tasksVerification[getRandomIntMax(tasksVerification.length)]();
 }
 
 /**
  * Ruft eine zufällige Aufgabe der Klasse 2 auf
 */
-function doRandomTaskFromClassTwo() {
-    // Tasks der KLasse 2
-    const tasksClassTwo = [taskAnnotateAdjectives, taskAnnotateFood, taskAnnotateNouns,
+function doRandomTaskForCrowdsourcing() {
+    // Tasks der KLasse Crowdsourcing
+    const tasksCrowdsourcing = [taskAnnotateAdjectives, taskAnnotateFood, taskAnnotateNouns,
         taskAnnotateVerbs, taskSelectRelation, taskMultiToken];
-    tasksClassTwo[getRandomIntMax(tasksClassTwo.length)]();
+
+    tasksCrowdsourcing[getRandomIntMax(tasksCrowdsourcing.length)]();
 }
