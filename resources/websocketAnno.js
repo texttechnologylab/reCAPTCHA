@@ -138,8 +138,8 @@ const webSocketAnno = (function (casId, view, tool, session){
         let allLemmaBegin = [];
         let allLemmaEnd = [];
 
-        // Ohne Punkte     let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
-        const lemmas = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+     //  let lemmas = toolElements["org.texttechnologylab.annotation.ocr.OCRToken"];
+       const lemmas = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"];
 
         for (let address in lemmas) {
             const begin = fromAddressToLemmaBegin(address);
