@@ -151,8 +151,8 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #337ab7;
-  /*background-color: #005076;*/
-  background-color: #b7b4b4;
+  /*background-color: #005076;   #b7b4b4 */
+  background-color: black;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -224,6 +224,27 @@ hr {
   margin-right: 0% !important;
   margin-left: 0%;
 }
+
+#quickToolbar {
+  border: 1px solid blue;
+  /*justify-content: center;
+  align-items: center;
+   */
+  width: 20%;
+  text-align: center;
+}
+
+.toolbar-buttons-line {
+}
+
+.toolbar-buttons {
+  margin-right: 0% !important;
+  margin-left: 0%;
+  margin-bottom: 0%;
+  margin-top: 0%;
+  max-width: 10%;
+}
+
 
 hr:not([size]) {
   height: 1px;
