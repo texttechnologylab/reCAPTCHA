@@ -6,7 +6,9 @@
  * @type {function(*=, *=, *=): {getWebSocketInstance: function(): WebSocket, getToolElementsInstance: function(): null, displayTextAsButtons: displayTextAsButtons, getToolAnnotationsQuickpanel: function(): null}}
  */
 
+
 const webSocketAnno = (function (casId, view, tool, session){
+
 
     const url = "ws://textannotator.texttechnologylab.org/uima";
     const webSocket = new WebSocket(url);
@@ -207,10 +209,12 @@ const webSocketAnno = (function (casId, view, tool, session){
             }
             // Es wird jedes Token als Button angezeigt
             addToken(textAsList, startTokenIndex);
+
+            // Färbt ein Token: Adjektiv oder Verb für PropAnno Aufgabe
+            colorToken(toolAnnotationsQuickpanel[targetTool], "#A569BD");
         }
 
-        // Für Tests: Token werden je nach toolTarget gefärbt
-        colorToken(toolAnnotationsQuickpanel[targetTool], "#A569BD");
+
 
 
         // Alles definierte Hilfsfunktionen, die in "displayTextAsButtons()" genutzt werden
@@ -259,9 +263,11 @@ const webSocketAnno = (function (casId, view, tool, session){
                     const beginDisplayedToken = fromAddressToLemmaBegin(id);
                     if (begin == beginDisplayedToken) {
                         document.getElementById("address" + id).style.background = color;
+                        return;
                         //  document.getElementById("address"+id).className = color;
                     }
                 }
+
             }
         }
 

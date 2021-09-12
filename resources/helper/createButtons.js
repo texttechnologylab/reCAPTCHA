@@ -11,7 +11,7 @@ function addNounButton() {
     addRefreshButton("checkNoun");
 }
 
-function addTestButton() {
+function addPropButton() {
     const currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
     const checkN = document.createElement("Button");

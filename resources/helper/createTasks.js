@@ -101,7 +101,7 @@ function taskSelectRelation() {
 }
  */
 
-function taskSelectRelation() {
+function taskSelectVerbRelation() {
     drawLine = true;
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
@@ -109,7 +109,7 @@ function taskSelectRelation() {
     let text = document.createTextNode("Auf welche Nomen beziehen sich markierte Verben? Verbinde");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
-    addTestButton();
+    addPropButton();
 }
 
 function taskSelectAdjectiveRelation() {
@@ -120,6 +120,7 @@ function taskSelectAdjectiveRelation() {
     let text = document.createTextNode("Worauf beziehen sich markierte Adjektive? Verbinden Sie (1 mal)");
     currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
+    addPropButton();
 }
 
 

@@ -126,7 +126,37 @@ function taskSelectRelation() {
     //currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     drawLine = true;
-    addTestButton();
+    addPropButton();
+}
+
+function taskSelectAdjectiveRelation() {
+    drawLine = true;
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let text = document.createTextNode("Worauf beziehen sich markierte Adjektive? Verbinden Sie (1 mal)");
+    text.className = "task-text";
+    let taskDiv = document.getElementById("taskArea");
+    taskDiv.innerHTML = "";
+    taskDiv.appendChild(text);
+  //  currentDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
+    addPropButton();
+}
+
+function taskSelectVerbRelation() {
+    drawLine = true;
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let text = document.createTextNode("Auf welche Nomen beziehen sich markierte Verben? Verbinde");
+    text.className = "task-text";
+    let taskDiv = document.getElementById("taskArea");
+    taskDiv.innerHTML = "";
+    taskDiv.appendChild(text);
+ //   currentDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
+    addPropButton();
 }
 
 function taskMultiToken() {
@@ -143,16 +173,3 @@ function taskMultiToken() {
     addMultiTokenButton();
 }
 
-function taskTen() {
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Fauna (Anno)");
-    text.className = "task-text";
-    let taskDiv = document.getElementById("taskArea");
-    taskDiv.innerHTML = "";
-    taskDiv.appendChild(text);
-    //currentDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons(getToolStringAnimalFauna());
-    addAnnoAnimalFaunaButton();
-}

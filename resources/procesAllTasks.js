@@ -65,7 +65,7 @@ function taskCreator() {
     seventhTaskButton.id = "seventhTaskLight";
     let seven = document.createTextNode("7");
     seventhTaskButton.appendChild(seven);
-    seventhTaskButton.setAttribute("onclick", "taskSelectRelation()");
+    seventhTaskButton.setAttribute("onclick", "taskSelectVerbRelation()");
     seventhTaskButton.style.backgroundColor = 'red';
     currentDiv.appendChild(seventhTaskButton);
 

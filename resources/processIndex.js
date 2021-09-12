@@ -4,7 +4,7 @@ const casId = "28490";
 const session = "BF21F80432A6F47B5F7F72EEFD9CE121.jvm1";
 const SOCKETANNO = webSocketAnno(casId, view, tool, session);
 
-// Hilfsvariable, um zu bestimmmen wie oft eine Crowdsourcing Aufgaben erledigt werden sollen.
+// Hilfsvariable, um zu bestimmmen wie oft eine Crowdsourcing Aufgabe erledigt werden soll.
 let TIMESOFANNOTATION = 1;
 let TIMESOFANNOTATIONLIMIT = 2; // Anzahl an Crowdsourcing Aufgaben die bearbeitet werden
 
@@ -28,8 +28,7 @@ function doRandomTaskForVerification(){
 */
 function doRandomTaskForCrowdsourcing() {
     // Tasks der KLasse Crowdsourcing
-    const tasksCrowdsourcing = [taskAnnotateAdjectives, taskAnnotateFood, taskAnnotateNouns,
-        taskAnnotateVerbs, taskSelectRelation, taskMultiToken];
+    const tasksCrowdsourcing = [taskSelectAdjectiveRelation, taskSelectVerbRelation, taskSelectRelation, taskMultiToken];
 
     tasksCrowdsourcing[getRandomIntMax(tasksCrowdsourcing.length)]();
 }
