@@ -11,7 +11,7 @@ function taskCheckNouns() {
 function taskAnnotateNouns() {
     //Annotiere Nomen
     selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
+    let currentDiv = document.getElementById("taskArea");
     currentDiv.innerHTML = "";
     let text = document.createTextNode("Markiere alle Nomen (Anno)");
     currentDiv.appendChild(text);
@@ -142,4 +142,15 @@ function taskVerbToNoun() {
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
+}
+
+
+function quickAnno() {
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("taskArea");
+    currentDiv.innerHTML = "";
+    currentDiv.innerHTML = "Bestimme Entities Essen/Orte/Location/... frei: \n wähle erst mal ein Wort aus und bestimme es anschließend mithilfe der Toolbar";
+    SOCKETANNO.displayTextAsButtons("standard");
+    let playDiv = document.getElementById("playArea");
+    // klickt Wort an dann erscheinen Entities oder ist schon direkt da mit spezifischer Farbe und bleibt dann so
 }

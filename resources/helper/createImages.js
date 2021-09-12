@@ -10,21 +10,33 @@ function accessEnabled () {
     currentDiv.appendChild(correctImage);
 }
 
-
-
 function createToolbar () {
-    /*
-    let currentDiv = document.getElementById("iconArea");
+    let currentDiv = document.getElementById("iconsArea");
+    currentDiv.innerHTML = "";
     let pickList = document.createElement("select");
-    let optionOne = document.createElement("option");
-    let options = ["Name", "Ort", "Organisation/Firma/Verein/..."]
+    pickList.className = "custom-select";
+    currentDiv.appendChild(pickList);
+    let options = ["Name", "Ort", "Organisation/Firma/Verein", "Essen", "Bakterium", "Zeit", "Kommunikation", "Beziehung"];
 
     for (let i = 0; i < options.length; i++) {
-        pickList.options[i] =
+        var option = document.createElement("option");
+        option.value = options[i];
+        option.text = options[i];
+        //option.style.backgroundColor = "#FF6600";
+        pickList.appendChild(option);
     }
-     */
-
+    currentDiv.appendChild(pickList);
 }
+
+function quickAnnoTask() {
+    let taskArea = document.getElementById("taskArea");
+    taskArea.innerHTML = "";
+    taskArea.innerHTML = "Bestimme Entities Essen/Nomen/Verben/Adjektive/Orte/Location frei: \n wähle erst mal ein Wort aus und bestimme es anschließend mithilfe der Toolbar"
+    SOCKETANNO.displayTextAsButtons("standard");
+    let currentDiv = document.getElementById("iconsArea");
+    createToolbar();
+}
+
 
 function createCheckBox() {
     let currentDiv = document.getElementById('iconsArea');
@@ -42,7 +54,6 @@ function createCheckBox() {
     labelTwo.htmlFor = 'Ort';
     labelTwo.appendChild(document.createTextNode('Ort'));
 
-
     let br = document.createElement('br');
     currentDiv.appendChild(checkBox);
     currentDiv.appendChild(label);
@@ -52,5 +63,4 @@ function createCheckBox() {
 }
 
 function createCheckButtons() {
-
 }

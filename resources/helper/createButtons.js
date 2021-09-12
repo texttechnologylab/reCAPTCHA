@@ -226,30 +226,190 @@ function addInfoButton() {
     currentDiv.appendChild(button);
 }
 
-function propToolbar() {
+/* Button Toolbar
+function quickToolbar() {
     let currentDiv = document.getElementById("iconsArea");
     let newDiv = document.createElement("div");
-    let optionOne = document.createElement("button");
-    let optionTwo = document.createElement("button");
-    let optionThree = document.createElement("button");
-    let optionFour = document.createElement("button");
-    let optionFive = document.createElement("button");
-    optionOne.innerText = "...";
-    optionTwo.innerText = "...";
-    optionThree.innerText = "...";
-    optionFour.innerText = "...";
-    optionFive.innerText = "...";
+    newDiv.id = "quickToolbar";
+    let firstLine = document.createElement("p");
+    firstLine.className = "toolbar-buttons-line";
+    let secLine = document.createElement("p");
 
+    let optionOne = document.createElement("button");
+    optionOne.setAttribute("onclick", "quickAnnotate('animals')");
+    optionOne.innerText = "Tier/Fauna";
     optionOne.className = "toolbar-buttons";
+
+
+    let optionTwo = document.createElement("button");
+    optionTwo.setAttribute("onclick", "quickAnnotate('flowers')");
+    optionTwo.innerText = "Pflanze";
+    optionTwo.className = "toolbar-buttons";
+
+    let optionThree = document.createElement("button");
+    optionThree.setAttribute("onclick", "quickAnnotate('food')");
+    optionThree.innerText = "Emotionen";
+    optionThree.className = "toolbar-buttons";
+
+    let optionFour = document.createElement("button");
+    optionFour.setAttribute("onclick", "quickAnnotate('emotions')");
+    optionFour.innerText = "Essen";
+    optionFour.className = "tool-buttons";
+
+    let optionFive = document.createElement("button");
+    optionFive.setAttribute("onclick", "quickAnnotate('amount')");
+    optionFive.innerText = "Anzahl/Menge";
+    optionFive.className = "tool-buttons";
+
+    let optionSix = document.createElement("button");
+    optionSix.setAttribute("onclick", "quickAnnotate('persons')");
+    optionSix.innerText = "Person";
+    optionSix.className = "tool-buttons";
+
+    let optionSeven = document.createElement("button");
+    optionSeven.setAttribute("onclick", "quickAnnotate('time')");
+    optionSeven.innerText = "Time";
+    optionSeven.className = "tool-buttons";
+
+    let optionEight = document.createElement("button");
+    optionEight.setAttribute("onclick", "quickAnnotate('locations')");
+    optionEight.innerText = "Ort";
+    optionEight.className = "tool-buttons";
+
+
+   mit Schleife
+    let options = [optionOne, optionTwo, optionThree, optionFour, optionFive, optionSix, optionSeven, optionEight];
+
+    for (let i = 1; i <= 8; i++) {
+        options[i].className = "toolbar-buttons";
+        options[i].innerText = "...";
+        if (i < 5) {
+            firstLine.appendChild(options[i]);
+        } else{
+            secLine.appendChild(options[i]);
+        }
+    }
+
     newDiv.appendChild(optionOne);
     newDiv.appendChild(optionTwo);
     newDiv.appendChild(optionThree);
     newDiv.appendChild(optionFour);
     newDiv.appendChild(optionFive);
-    currentDiv.appendChild(optionOne);
-    currentDiv.appendChild(optionTwo);
-    currentDiv.appendChild(optionThree);
-    currentDiv.appendChild(optionFour);
-    currentDiv.appendChild(optionFive);
+    newDiv.appendChild(optionOne);
+    newDiv.appendChild(optionTwo);
+    newDiv.appendChild(optionThree);
+    newDiv.appendChild(optionFour);
+    newDiv.appendChild(optionFive);
+    newDiv.appendChild(optionSix);
+    newDiv.appendChild(optionSeven);
+    newDiv.appendChild(optionEight);
 }
+*/
 
+/*
+function quickToolbar() {
+    let currentDiv = document.getElementById("iconsArea");
+    let newDiv = document.createElement("div");
+    newDiv.id = "quickToolbar";
+
+    let optionOne = document.createElement("button");
+    optionOne.setAttribute("onclick", "quickAnnotate('animals')");
+    optionOne.innerText = "Tier/Fauna";
+    optionOne.className = "toolbar-buttons";
+
+    let optionTwo = document.createElement("button");
+    optionTwo.setAttribute("onclick", "quickAnnotate('flowers')");
+    optionTwo.innerText = "Pflanze";
+    optionTwo.className = "toolbar-buttons";
+
+    let optionThree = document.createElement("button");
+    optionThree.setAttribute("onclick", "quickAnnotate('food')");
+    optionThree.innerText = "Emotionen";
+    optionThree.className = "toolbar-buttons";
+
+    let optionFour = document.createElement("button");
+    optionFour.setAttribute("onclick", "quickAnnotate('emotions')");
+    optionFour.innerText = "Essen";
+    optionFour.className = "tool-buttons";
+
+    let optionFive = document.createElement("button");
+    optionFive.setAttribute("onclick", "quickAnnotate('amount')");
+    optionFive.innerText = "Anzahl/Menge";
+    optionFive.className = "tool-buttons";
+
+    let optionSix = document.createElement("button");
+    optionSix.setAttribute("onclick", "quickAnnotate('persons')");
+    optionSix.innerText = "Person";
+    optionSix.className = "tool-buttons";
+
+    let optionSeven = document.createElement("button");
+    optionSeven.setAttribute("onclick", "quickAnnotate('time')");
+    optionSeven.innerText = "Time";
+    optionSeven.className = "tool-buttons";
+
+    let optionEight = document.createElement("button");
+    optionEight.setAttribute("onclick", "quickAnnotate('locations')");
+    optionEight.innerText = "Ort";
+    optionEight.className = "tool-buttons";
+
+
+
+    let options = [optionOne, optionTwo, optionThree, optionFour, optionFive, optionSix, optionSeven, optionEight];
+
+    for (let i = 1; i <= 8; i++) {
+        options[i].className = "toolbar-buttons";
+        options[i].innerText = "...";
+        if (i < 5) {
+            firstLine.appendChild(options[i]);
+        } else{
+            secLine.appendChild(options[i]);
+        }
+    }
+
+
+    newDiv.appendChild(optionOne);
+    newDiv.appendChild(optionTwo);
+    newDiv.appendChild(optionThree);
+    newDiv.appendChild(optionFour);
+
+    newDiv.appendChild(optionFive);
+    newDiv.appendChild(optionSix);
+    newDiv.appendChild(optionSeven);
+    newDiv.appendChild(optionEight);
+
+
+    newDiv.appendChild(optionOne);
+    newDiv.appendChild(optionTwo);
+    newDiv.appendChild(optionThree);
+    newDiv.appendChild(optionFour);
+    newDiv.appendChild(optionFive);
+    newDiv.appendChild(optionOne);
+    newDiv.appendChild(optionTwo);
+    newDiv.appendChild(optionThree);
+    newDiv.appendChild(optionFour);
+    newDiv.appendChild(optionFive);
+    newDiv.appendChild(optionSix);
+    newDiv.appendChild(optionSeven);
+    newDiv.appendChild(optionEight);
+
+    currentDiv.appendChild(newDiv);
+}
+*/
+
+function createToolbar() {
+    let currentDiv = document.getElementById("iconsArea");
+    currentDiv.innerHTML = "";
+    let pickList = document.createElement("select");
+    pickList.className = "custom-select";
+    currentDiv.appendChild(pickList);
+    let options = ["Name", "Ort", "Organisation/Firma/Verein", "Essen", "Bakterium", "Zeit", "Kommunikation", "Beziehung"];
+
+    for (let i = 0; i < options.length; i++) {
+        var option = document.createElement("option");
+        option.value = options[i];
+        option.text = options[i];
+        //option.style.backgroundColor = "#FF6600";
+        pickList.appendChild(option);
+    }
+    currentDiv.appendChild(pickList);
+}
