@@ -180,5 +180,5 @@ function quickAnno() {
     currentDiv.innerHTML = "Bestimme Entities Essen/Orte/Location/... frei: \n wähle erst mal ein Wort aus und bestimme es anschließend mithilfe der Toolbar";
     SOCKETANNO.displayTextAsButtons("standard");
     let playDiv = document.getElementById("playArea");
-
+    createToolbar();
 }
