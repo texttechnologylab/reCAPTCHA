@@ -144,7 +144,7 @@ function taskVerbToNoun() {
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
 }
 
-
+/*
 function quickAnno() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("taskArea");
@@ -154,3 +154,5 @@ function quickAnno() {
     let playDiv = document.getElementById("playArea");
     // klickt Wort an dann erscheinen Entities oder ist schon direkt da mit spezifischer Farbe und bleibt dann so
 }
+
+ */

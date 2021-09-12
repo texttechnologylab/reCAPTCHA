@@ -9,7 +9,7 @@ function accessEnabled () {
     currentDiv.innerHTML = "";
     currentDiv.appendChild(correctImage);
 }
-
+/*
 function createToolbar () {
     let currentDiv = document.getElementById("iconsArea");
     currentDiv.innerHTML = "";
@@ -27,6 +27,8 @@ function createToolbar () {
     }
     currentDiv.appendChild(pickList);
 }
+
+ */
 
 function quickAnnoTask() {
     let taskArea = document.getElementById("taskArea");

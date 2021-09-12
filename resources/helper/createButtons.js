@@ -397,8 +397,7 @@ function quickToolbar() {
 */
 
 function createToolbar() {
-    let currentDiv = document.getElementById("iconsArea");
-    currentDiv.innerHTML = "";
+    let currentDiv = document.getElementById("toolbarArea");
     let pickList = document.createElement("select");
     pickList.className = "custom-select";
     currentDiv.appendChild(pickList);
@@ -411,5 +410,4 @@ function createToolbar() {
         //option.style.backgroundColor = "#FF6600";
         pickList.appendChild(option);
     }
-    currentDiv.appendChild(pickList);
 }

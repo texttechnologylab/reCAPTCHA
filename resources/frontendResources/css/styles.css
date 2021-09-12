@@ -90,6 +90,12 @@ i {
   /*background-color: #00618F;*/
 }
 
+#toolbarArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #refreshButton{
   margin-left: 40px;
   font-size: 20px;
