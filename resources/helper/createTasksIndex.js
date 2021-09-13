@@ -175,11 +175,21 @@ function taskMultiToken() {
 
 function quickAnno() {
     selectedTokensId = [];
+    let selectedToolbar = [];
     let currentDiv = document.getElementById("taskArea");
     currentDiv.innerHTML = "";
-    currentDiv.innerHTML = "Bestimme Entities Essen/Orte/Location/... frei: \n wähle erst mal ein Wort aus und bestimme es anschließend mithilfe der Toolbar";
+    currentDiv.innerHTML = "Bestimme Entities Essen/Orte/Location frei: \n wähle erst mal ein Wort aus und bestimme es anschließend mithilfe der Toolbar";
     SOCKETANNO.displayTextAsButtons("standard");
-    //let playDiv = document.getElementById("playArea");
-    addNounButton();
+    addQuickAnnoButton();   // kann eine Funktion ausführen
     createToolbar();
+
+    document.querySelector("#selectToolbar").onchange = function () {
+        selectedToolbar.push(document.querySelector("#selectToolbar").value);
+        selectedToolbar.option = "---";
+    }
+
+    document.querySelector("#annoQuick").onclick = function () {
+        window.alert(selectedToolbar);
+        return selectedToolbar;
+    }
 }

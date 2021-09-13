@@ -397,17 +397,38 @@ function quickToolbar() {
 */
 
 function createToolbar() {
+    //let selectedToolbar = [];
     let currentDiv = document.getElementById("toolbarArea");
+    currentDiv.innerHTML = "";
     let pickList = document.createElement("select");
     pickList.className = "custom-select";
+    pickList.id = "selectToolbar";
     currentDiv.appendChild(pickList);
-    let options = ["Name", "Ort", "Organisation/Firma/Verein", "Essen", "Bakterium", "Zeit", "Kommunikation", "Beziehung"];
+    let options = [["---", "optionEmpty"],["Name", "optionName"], ["Ort", "optionLocation"], ["Organisation/Firma/Verein", "optionOrga"], ["Essen", "optionFood"], ["Bakterium", "optionBacteria"], ["Zeit", "optionTime"], ["Kommunikation", "optionCommunication"], ["Beziehung", "optionRelation"]];
 
     for (let i = 0; i < options.length; i++) {
         var option = document.createElement("option");
-        option.value = options[i];
-        option.text = options[i];
+        option.value = options[i][0];
+        option.text = options[i][0];
+        option.id = options[i][1];
         //option.style.backgroundColor = "#FF6600";
         pickList.appendChild(option);
     }
+    /*
+    document.querySelector("#selectToolbar").onchange = function () {
+        selectedToolbar.push(document.querySelector("#selectToolbar").value);
+    }
+     */
+}
+
+function addQuickAnnoButton() {
+    let selectedToolbar = [];
+    let iconsArea = document.getElementById("iconsArea");
+    iconsArea.innerHTML = "";
+    let buttonCheck = document.createElement("button");
+    buttonCheck.id = "annoQuick";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
+    //buttonCheck.setAttribute("onclick", "");
+    buttonCheck.innerHTML = "Verifizieren";
+    iconsArea.appendChild(buttonCheck);
 }
