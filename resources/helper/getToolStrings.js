@@ -11,7 +11,7 @@ function getToolStringFood(){
     return "org.texttechnologylab.annotation.type.Food";
 }
 function getToolStringAnimalFauna(){
-    return "org.texttechnologylab.annotation.type.Plant_Flora";
+    return "org.texttechnologylab.annotation.type.Animal_Fauna";
 }
 function getToolStringPlantFlora(){
     return "org.texttechnologylab.annotation.type.Plant_Flora";
