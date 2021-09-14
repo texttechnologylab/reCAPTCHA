@@ -200,7 +200,8 @@ function sendAnnotationMultiToken(){
 function closeRecaptcha(){
     if (TIMESOFANNOTATION >= TIMESOFANNOTATIONLIMIT){
 
-        // Sendet die Nachricht zur Main Page, dass das Recpatcha erfolgreich gelöst wurde
+        /*  Sendet die Nachricht, dass das reCpatcha erfolgreich gelöst worden ist
+            an die Website wo das reCaptcha aufgerufen worden ist.  */
         const mainPageURL = window.opener.location.href;
         var message = "IWAS";
         window.opener.postMessage(message, mainPageURL); //sending the message
