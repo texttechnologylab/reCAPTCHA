@@ -404,7 +404,12 @@ function createToolbar() {
     pickList.className = "custom-select";
     pickList.id = "selectToolbar";
     currentDiv.appendChild(pickList);
-    let options = [["---", "optionEmpty"],["Name", "optionName"], ["Ort", "optionLocation"], ["Organisation/Firma/Verein", "optionOrga"], ["Essen", "optionFood"], ["Bakterium", "optionBacteria"], ["Zeit", "optionTime"], ["Kommunikation", "optionCommunication"], ["Beziehung", "optionRelation"]];
+    let options = [
+        ["---", "optionEmpty"], ["Nomen", getToolStringNouns()], ["Verben", getToolStringVerbs()], ["Adjektive", getToolStringAdjectives()],
+        ["Name/Personen", getToolStringPersonHumanBeing()], ["Orte", getToolStringLocationPlace()], ["Organisation/Firma/Verein", "optionOrga"],
+        ["Essen", getToolStringFood()], ["Tiere", getToolStringAnimalFauna()], ["Fahrzeuge", getToolStringVehicle()],
+        ["Pflanzen", getToolStringPlantFlora()]
+    ];
 
     for (let i = 0; i < options.length; i++) {
         var option = document.createElement("option");
@@ -425,10 +430,19 @@ function addQuickAnnoButton() {
     let selectedToolbar = [];
     let iconsArea = document.getElementById("iconsArea");
     iconsArea.innerHTML = "";
-    let buttonCheck = document.createElement("button");
-    buttonCheck.id = "annoQuick";
-    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
+
+    let buttonAppend = document.createElement("button");
+    buttonAppend.id = "annoQuick";
+    buttonAppend.className = "btn btn-secondary btn-lg btn-block";
     //buttonCheck.setAttribute("onclick", "");
+    buttonAppend.innerHTML = "Auswählen";
+    iconsArea.appendChild(buttonAppend);
+
+
+let buttonCheck = document.createElement("button");
+    buttonCheck.id = "annoQuickVerification";
+    buttonCheck.className = "btn btn-secondary btn-lg btn-block";
+    buttonCheck.setAttribute("onclick", "closeRecaptchaIfFinished()");
     buttonCheck.innerHTML = "Verifizieren";
     iconsArea.appendChild(buttonCheck);
 }

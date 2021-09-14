@@ -175,7 +175,7 @@ function taskMultiToken() {
 
 function quickAnno() {
     selectedTokensId = [];
-    let selectedToolbar = [];
+    let selectedToolbar;
     let currentDiv = document.getElementById("taskArea");
     currentDiv.innerHTML = "";
     currentDiv.innerHTML = "Bestimme Entities Essen/Orte/Location frei: \n wähle erst mal ein Wort aus und bestimme es anschließend mithilfe der Toolbar";
@@ -184,12 +184,12 @@ function quickAnno() {
     createToolbar();
 
     document.querySelector("#selectToolbar").onchange = function () {
-        selectedToolbar.push(document.querySelector("#selectToolbar").value);
+        const value = document.querySelector("#selectToolbar").value;
+        selectedToolbar = value; // HIER BRAUCH ICH ID UND NICHT VALUE
         selectedToolbar.option = "---";
     }
 
     document.querySelector("#annoQuick").onclick = function () {
-        window.alert(selectedToolbar);
-        return selectedToolbar;
+        sendAnnotationHelper(selectedToolbar);
     }
 }

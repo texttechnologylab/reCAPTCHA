@@ -1,5 +1,3 @@
-
-
 /**
  * Hilfsfunktion:
  * Funktion, die dem Textannotator die Annotationen übersendet. Funktioniert nur für Annotationen einzelner Wörter
@@ -10,7 +8,6 @@
 function sendAnnotationHelper(type){
 
     // Bleiben fest erstmal
-   // const casId = "28490";
     const view = "recaptcha"; // View in der alle Ergebnisse zwischengespeichert werden
     const tool = "quickpanel";
     const bPrivate = false;
@@ -45,8 +42,6 @@ function sendAnnotationHelper(type){
         data: {casId: casId}
     }));
 
-    closeRecaptcha();
-
 }
 
 //------! Für jedes Tool wird eine Funktion geschrieben.
@@ -74,7 +69,6 @@ function sendAnnotationAnimalFauna(){
  */
 function sendAnnotationRelationHelper(){
 
-
     // PropAnnotator bildet Relation zwischen genau 2 Wörter
     if (selectedTokensId.length != 2){
         alert("Wähle genau 2 Wörter aus");
@@ -84,17 +78,13 @@ function sendAnnotationRelationHelper(){
     const type = "org.texttechnologylab.annotation.semaf.semafsr.SrLink";
 
     // Bleiben fest erstmal
-
     const view = "recaptcha";
-
     const tool = "proppanel";
     const bPrivate = false;
     const batchIdentifier = "_b1_";
     const cmdQueue = [];
 
-
     const webSocket = SOCKETANNO.getWebSocketInstance();
-
 
     const figureTokenId = parseInt((selectedTokensId[0]).split("address")[1]);
     const groundTokenId = parseInt((selectedTokensId[1]).split("address")[1]);
@@ -110,7 +100,6 @@ function sendAnnotationRelationHelper(){
         }
     });
     webSocket.send(cmd);
-    console.log(cmd);
 
     webSocket.send(JSON.stringify({
         cmd: 'save_cas',
@@ -118,7 +107,7 @@ function sendAnnotationRelationHelper(){
     }));
 
     drawLine = false;
-    closeRecaptcha();
+    closeRecaptchaIfFinished();
 
 }
 
@@ -187,7 +176,7 @@ function sendAnnotationMultiToken(){
         data: {casId: casId}
     }));
 
-    closeRecaptcha();
+    closeRecaptchaIfFinished();
     drawLine = false;
 }
 
@@ -197,23 +186,38 @@ function sendAnnotationMultiToken(){
  * Wichtig: Muss nach jeder Aufgabe zur Crowdsourcing aufgerufen werden
  * Überprüft, ob die Anzahl der Aufgaben erreicht worden sind, falls ja dann Recpatcha schließen
  */
-function closeRecaptcha(){
+function closeRecaptchaIfFinished(){
     if (TIMESOFANNOTATION >= TIMESOFANNOTATIONLIMIT){
-
-        /*  Sendet die Nachricht, dass das reCpatcha erfolgreich gelöst worden ist
-            an die Website wo das reCaptcha aufgerufen worden ist.  */
-        const mainPageURL = window.opener.location.href;
-        var message = "IWAS";
-        window.opener.postMessage(message, mainPageURL); //sending the message
-
-
         accessEnabled();
-        setTimeout(closeWindow, 5000);
     }
     else {
         TIMESOFANNOTATION++;
         doRandomTaskForCrowdsourcing();
     }
+}
+
+/**
+ * Falls recaptcha richtig gelöst wurde, dann wird die Funktion aufgerufen.
+ */
+function accessEnabled () {
+
+    /*  Sendet die Nachricht, dass das reCpatcha erfolgreich gelöst worden ist
+            an die Website wo das reCaptcha aufgerufen worden ist.  */
+    const mainPageURL = window.opener.location.href;
+    var message = "IWAS";
+    window.opener.postMessage(message, mainPageURL); //sending the message
+
+    let currentDiv = document.getElementById("playArea");
+    let correctImage = document.createElement("img");
+    correctImage.src = "resources/frontendResources/assets/img/grünerhaken.png";
+    correctImage.alt = "Verifizierung erfolgreich";
+    correctImage.width = "200";
+    correctImage.height = "200";
+    currentDiv.innerHTML = "";
+    currentDiv.appendChild(correctImage);
+
+    setTimeout(closeWindow, 3000);
+
 }
 
 function closeWindow() {
