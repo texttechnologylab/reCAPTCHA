@@ -199,6 +199,13 @@ function sendAnnotationMultiToken(){
  */
 function closeRecaptcha(){
     if (TIMESOFANNOTATION >= TIMESOFANNOTATIONLIMIT){
+
+        // Sendet die Nachricht zur Main Page, dass das Recpatcha erfolgreich gelöst wurde
+        const mainPageURL = window.opener.location.href;
+        var message = "IWAS";
+        window.opener.postMessage(message, mainPageURL); //sending the message
+
+
         accessEnabled();
         setTimeout(closeWindow, 5000);
     }
