@@ -185,7 +185,38 @@ function quickAnno() {
 
     document.querySelector("#selectToolbar").onchange = function () {
         const value = document.querySelector("#selectToolbar").value;
-        selectedToolbar = value; // HIER BRAUCH ICH ID UND NICHT VALUE
+        //const value = option.value;
+        let valueId = "";
+        switch(value) {
+            case "Verben":
+                valueId = getToolStringVerbs();
+                break;
+            case "Adjektive":
+                valueId = getToolStringAdjectives();
+                break;
+            case "Name/Person":
+                valueId = getToolStringPersonHumanBeing();
+                break;
+            case "Orte":
+                valueId = getToolStringLocationPlace();
+                break;
+            case "Organisation/Firma/Verein":
+                valueId = getToolStringAdjectives();
+                break;
+            case "Essen":
+                valueId = getToolStringFood();
+                break;
+            case "Tiere":
+                valueId = getToolStringAnimalFauna();
+                break;
+            case "Fahrzeuge":
+                valueId =  getToolStringVehicle();
+                break;
+            case "Pflanzen":
+                valueId = getToolStringPlantFlora();
+                break;
+        }
+        selectedToolbar = valueId; // HIER BRAUCH ICH ID UND NICHT VALUE
         selectedToolbar.option = "---";
     }
 

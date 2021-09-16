@@ -1,25 +1,3 @@
-
-/*
-function createToolbar () {
-    let currentDiv = document.getElementById("iconsArea");
-    currentDiv.innerHTML = "";
-    let pickList = document.createElement("select");
-    pickList.className = "custom-select";
-    currentDiv.appendChild(pickList);
-    let options = ["Name", "Ort", "Organisation/Firma/Verein", "Essen", "Bakterium", "Zeit", "Kommunikation", "Beziehung"];
-
-    for (let i = 0; i < options.length; i++) {
-        var option = document.createElement("option");
-        option.value = options[i];
-        option.text = options[i];
-        //option.style.backgroundColor = "#FF6600";
-        pickList.appendChild(option);
-    }
-    currentDiv.appendChild(pickList);
-}
-
- */
-
 function quickAnnoTask() {
     let taskArea = document.getElementById("taskArea");
     taskArea.innerHTML = "";
@@ -52,7 +30,4 @@ function createCheckBox() {
     currentDiv.appendChild(br);
     currentDiv.appendChild(labelTwo);
     currentDiv.appendChild(br);
-}
-
-function createCheckButtons() {
 }
