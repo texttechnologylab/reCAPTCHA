@@ -158,7 +158,6 @@ function taskSelectVerbRelation() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
- //   currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
     addPropButton();
     addRefreshButton("selectVerbRelation");
