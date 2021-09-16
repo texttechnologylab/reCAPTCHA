@@ -9,6 +9,7 @@ function taskCheckNouns() {
     taskDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringNouns());
     addNounButton();
+    addRefreshButton("checkNoun");
 }
 
 function taskAnnotateNouns() {
@@ -23,6 +24,7 @@ function taskAnnotateNouns() {
     taskDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     addAnnoNounsButton();
+    addRefreshButton("annoNoun");
 }
 
 function taskCheckVerbs() {
@@ -36,6 +38,7 @@ function taskCheckVerbs() {
     taskDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
     addVerbButton();
+    addRefreshButton("checkVerb");
 }
 
 function taskAnnotateVerbs() {
@@ -50,6 +53,7 @@ function taskAnnotateVerbs() {
     taskDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     addAnnoVerbsButton();
+    addRefreshButton("annoVerb");
 }
 
 function taskCheckAdjectives() {
@@ -62,9 +66,9 @@ function taskCheckAdjectives() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-    //currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
     addAdjectiveButton();
+    addRefreshButton("checkAdjective");
 }
 
 function taskAnnotateAdjectives() {
@@ -77,9 +81,9 @@ function taskAnnotateAdjectives() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-    //currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     addAnnoAdjectiveButton();
+    addRefreshButton("annoAdjective");
 }
 
 function taskCheckFood() {
@@ -92,9 +96,9 @@ function taskCheckFood() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-    //currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringFood());
     addFoodButton();
+    addRefreshButton("checkFood");
 
 }
 
@@ -108,9 +112,9 @@ function taskAnnotateFood() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-    //currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     addAnnoFoodButton();
+    addRefreshButton("annoFood");
 }
 
 function taskSelectRelation() {
@@ -123,10 +127,10 @@ function taskSelectRelation() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-    //currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     drawLine = true;
     addPropButton();
+    addRefreshButton("propSelection");
 }
 
 function taskSelectAdjectiveRelation() {
@@ -139,9 +143,9 @@ function taskSelectAdjectiveRelation() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-  //  currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
     addPropButton();
+    addRefreshButton("selectAdjectiveRelation");
 }
 
 function taskSelectVerbRelation() {
@@ -157,6 +161,7 @@ function taskSelectVerbRelation() {
  //   currentDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
     addPropButton();
+    addRefreshButton("selectVerbRelation");
 }
 
 function taskMultiToken() {
@@ -165,12 +170,13 @@ function taskMultiToken() {
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
     let text = document.createTextNode("Markiere zusammenhängende Wörter." + "\n" +
-        "Beispiele: Max Mustermann, Frankfurt am Main , Goethe Universität");
+        "Beispiele: Max Mustermann, Frankfurt am Main , Goethe Universität (Multitoken)");
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     addMultiTokenButton();
+    addRefreshButton("multiToken");
 }
 
 function quickAnno() {
@@ -178,14 +184,15 @@ function quickAnno() {
     let selectedToolbar;
     let currentDiv = document.getElementById("taskArea");
     currentDiv.innerHTML = "";
-    currentDiv.innerHTML = "Bestimme Entities Essen/Orte/Location frei: \n wähle erst mal ein Wort aus und bestimme es anschließend mithilfe der Toolbar";
+    currentDiv.innerHTML = "Bestimme Entities Essen/Orte/Location frei: \n wähle erst ein Wort aus und bestimme dann mithilfe der Toolbar. \n" +
+        "Klicke verifizieren, wenn du fertig bist";
     SOCKETANNO.displayTextAsButtons("standard");
-    addQuickAnnoButton();   // kann eine Funktion ausführen
+    addQuickAnnoButton();
+    addRefreshButton("quickAnno");
     createToolbar();
 
     document.querySelector("#selectToolbar").onchange = function () {
         const value = document.querySelector("#selectToolbar").value;
-        //const value = option.value;
         let valueId = "";
         switch(value) {
             case "Verben":
@@ -216,7 +223,7 @@ function quickAnno() {
                 valueId = getToolStringPlantFlora();
                 break;
         }
-        selectedToolbar = valueId; // HIER BRAUCH ICH ID UND NICHT VALUE
+        selectedToolbar = valueId;
         selectedToolbar.option = "---";
     }
 
