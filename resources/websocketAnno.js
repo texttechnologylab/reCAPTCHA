@@ -9,8 +9,6 @@
 
 const webSocketAnno = (function (casId, view, tool, session){
 
-
-    //wss für https, so funktioniert aber lokal nicht
     const url = "ws://textannotator.texttechnologylab.org/uima";
     const webSocket = new WebSocket(url);
 
