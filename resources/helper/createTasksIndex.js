@@ -32,7 +32,7 @@ function taskCheckVerbs() {
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
     currentdiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Verben (Check)");
+    let text = document.createTextNode("Markiere alle Verben");
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
@@ -46,7 +46,7 @@ function taskAnnotateVerbs() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Verben (Anno)");
+    let text = document.createTextNode("Markiere alle Verben");
     text.className = "task-text";
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
@@ -61,7 +61,7 @@ function taskCheckAdjectives() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Adjektive (Check)");
+    let text = document.createTextNode("Markiere alle Adjektive");
     text.className = "task-text";
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
@@ -76,7 +76,7 @@ function taskAnnotateAdjectives() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Adjektive (Anno)");
+    let text = document.createTextNode("Markiere alle Adjektive");
     text.className = "task-text";
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
@@ -91,7 +91,7 @@ function taskCheckFood() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Essen (Check)");
+    let text = document.createTextNode("Markiere Essen");
     text.className = "task-text";
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
@@ -107,7 +107,7 @@ function taskAnnotateFood() {
     selectedTokensId = [];
     let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Essen (Anno)");
+    let text = document.createTextNode("Markiere Essen");
     text.className = "task-text";
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
