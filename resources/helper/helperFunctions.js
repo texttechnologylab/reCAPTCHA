@@ -7,6 +7,7 @@ let drawLine = false;
  * Falls ein Token angegklickt worden ist dann Token färben und die id in Liste speichern.
  * Falls ein angeklickter Token angeklickt wird dann Token wieder standard färben und die id aus
  * der Liste entfernen.
+ * Die Funktione wird aufgerufen sobald ein Token (Wort) angegklickt worden ist.
  * @param buttonId
  */
 function tokenClicked(buttonId) {
@@ -54,7 +55,7 @@ function tokenClicked(buttonId) {
 
 
 /**
- * Hilfsunktion um mit der adresse(id) eines Token dem lemmaBegin zu bekommen
+ * Hilfsunktion um mit der adresse eines Token dem lemmaBegin zu bekommen
  * @param address
  * @returns {number}
  */
@@ -64,7 +65,7 @@ function fromAddressToLemmaBegin(address){
 }
 
 /**
- * Hilfsunktion um mit der adresse(id) eines Token dem lemmaBegin zu bekommen
+ * Hilfsunktion um mit der adresse eines Token dem lemmaBegin zu bekommen
  * @param address
  * @returns {number}
  */
@@ -75,7 +76,7 @@ function fromAddressToLemmaEnd(address){
 
 /**
  * https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math/random
- * Berechnet eine Zufallsahl in range [0-max]
+ * Berechnet eine Zufallszahl im Bereich zwischen [0-max]
  * @param max
  * @returns {number}
  */
@@ -85,7 +86,7 @@ function getRandomIntMax(max) {
 
 /**
  * https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math/random
- * Berechnet eine Zufallsahl in range [min-max]
+ * Berechnet eine Zufallszahl im Bereich zwischen [min-max]
  * @param min
  * @param max
  * @returns {number}

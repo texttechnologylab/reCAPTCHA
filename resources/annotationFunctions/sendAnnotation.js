@@ -188,7 +188,7 @@ function sendAnnotationMultiToken(){
  */
 function closeRecaptchaIfFinished(){
     if (TIMESOFANNOTATION >= TIMESOFANNOTATIONLIMIT){
-        accessEnabled();
+        accessGranted();
     }
     else {
         TIMESOFANNOTATION++;
@@ -196,31 +196,4 @@ function closeRecaptchaIfFinished(){
     }
 }
 
-/**
- * Falls recaptcha richtig gelöst wurde, dann wird die Funktion aufgerufen.
- */
-function accessEnabled () {
-
-    /*  Sendet die Nachricht, dass das reCpatcha erfolgreich gelöst worden ist
-            an die Website wo das reCaptcha aufgerufen worden ist.  */
-    const mainPageURL = window.opener.location.href;
-    var message = "IWAS";
-    window.opener.postMessage(message, mainPageURL); //sending the message
-
-    let currentDiv = document.getElementById("playArea");
-    let correctImage = document.createElement("img");
-    correctImage.src = "resources/frontendResources/assets/img/grünerhaken.png";
-    correctImage.alt = "Verifizierung erfolgreich";
-    correctImage.width = "200";
-    correctImage.height = "200";
-    currentDiv.innerHTML = "";
-    currentDiv.appendChild(correctImage);
-
-    setTimeout(closeWindow, 3000);
-
-}
-
-function closeWindow() {
-    window.close();
-}
 

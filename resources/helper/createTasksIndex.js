@@ -1,3 +1,8 @@
+/*
+    Jede Funktion entspricht einer Aufgabe vom reCaptcha.
+ */
+
+
 function taskCheckNouns() {
     selectedTokensId = [];
     let currentdiv = document.getElementById("playArea");
