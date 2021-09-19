@@ -27,7 +27,7 @@ function checkInputHelper(toolString){
             allLemmaBegin.push(displayedTokenLemmaBegin);
         }
     }
-    const allLemmaBeginOriginalLength = allLemmaBegin.length; // Originalgröße wird gespeichert
+    const allLemmaBeginOriginalLength = allLemmaBegin.length; // Originalanzahl wird gespeichert
 
     // Vergleicht beide Listen miteinander und speichert das Ergebnis in numberOfFalse und numberOfCorrect
     for (let word in selectedTokensId){
@@ -46,8 +46,7 @@ function checkInputHelper(toolString){
 
     const numberOfCorrect = allLemmaBeginOriginalLength - allLemmaBegin.length; // Anzahl der richtig ausgewählten
 
-    // Zum testen
-    alert("Anzahl der korrekt Augewählten: " + numberOfCorrect + "\r\nAnzahl der falsch Augewählten: " + numberOfFalse);
+
     if(numberOfFalse == 0 && allLemmaBegin.length == 0){
         alert("Alles korrekt ausgewählt");
         doRandomTaskForCrowdsourcing();

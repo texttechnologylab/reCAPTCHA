@@ -148,7 +148,7 @@ function taskSelectAdjectiveRelation() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons(getToolStringAdjectives());
+    SOCKETANNO.displayTextAsButtons(getToolStringAdjectives(), true);
     addPropButton();
     addRefreshButton("selectAdjectiveRelation");
 }
@@ -163,7 +163,7 @@ function taskSelectVerbRelation() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
+    SOCKETANNO.displayTextAsButtons(getToolStringVerbs(), true);
     addPropButton();
     addRefreshButton("selectVerbRelation");
 }

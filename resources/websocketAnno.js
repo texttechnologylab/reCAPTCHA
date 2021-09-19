@@ -132,7 +132,7 @@ const webSocketAnno = (function (casId, view, tool, session){
      * ist durch seine addresse(id) im "org.texttechnologylab.annotation.semaf.isobase.Entity" Tool gekennzeichnet
      * @param targetTool
      */
-    function displayTextAsButtons(targetTool) {
+    function displayTextAsButtons(targetTool, colorToken=false) {
         let textAsList = [];
         let allLemmaBegin = [];
         let allLemmaEnd = [];
@@ -209,12 +209,13 @@ const webSocketAnno = (function (casId, view, tool, session){
             // Es wird jedes Token als Button angezeigt
             addToken(textAsList, startTokenIndex);
 
-            // Färbt ein Token: Adjektiv oder Verb für PropAnno Aufgabe
-            colorToken(toolAnnotationsQuickpanel[targetTool], "#A569BD");
+            if (colorToken == true) {
+                // Färbt ein Token: Adjektiv oder Verb für PropAnno Aufgabe
+                colorToken(toolAnnotationsQuickpanel[targetTool], "#A569BD");
+            }
+
+
         }
-
-
-
 
         // Alles definierte Hilfsfunktionen, die in "displayTextAsButtons()" genutzt werden
 
@@ -262,7 +263,7 @@ const webSocketAnno = (function (casId, view, tool, session){
                     const beginDisplayedToken = fromAddressToLemmaBegin(id);
                     if (begin == beginDisplayedToken) {
                         document.getElementById("address" + id).style.background = color;
-                        return;
+                   //     return;
                         //  document.getElementById("address"+id).className = color;
                     }
                 }
