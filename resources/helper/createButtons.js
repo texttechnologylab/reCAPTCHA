@@ -176,7 +176,7 @@ function createToolbar() {
     currentDiv.appendChild(pickList);
     let options = [
         ["---", "optionEmpty"], ["Verben", getToolStringVerbs()], ["Adjektive", getToolStringAdjectives()],
-        ["Name/Personen", getToolStringPersonHumanBeing()], ["Orte", getToolStringLocationPlace()], ["Organisation/Firma/Verein", "optionOrga"],
+        ["Orte", getToolStringLocationPlace()],
         ["Essen", getToolStringFood()], ["Tiere", getToolStringAnimalFauna()], ["Fahrzeuge", getToolStringVehicle()],
         ["Pflanzen", getToolStringPlantFlora()]
     ];

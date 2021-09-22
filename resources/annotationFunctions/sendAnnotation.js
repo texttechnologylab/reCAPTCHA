@@ -13,7 +13,7 @@ function sendAnnotationHelper(type){
     const bPrivate = false;
     const batchIdentifier = "_b1_";
     let cmdQueue = [];
-
+    let features;
     const webSocket = SOCKETANNO.getWebSocketInstance();
 
     // Extrahiert alle Annotierten Token und speichert sie in eine queue
@@ -22,7 +22,12 @@ function sendAnnotationHelper(type){
         const begin = fromAddressToLemmaBegin(selectedTokenId);
         const end =  fromAddressToLemmaEnd(selectedTokenId);
 
-        const features = {begin: begin, end: end, metaphor: false, metonym: false ,specific: false};
+        if (type == "org.texttechnologylab.annotation.type.Person_HumanBeing"){
+            features = {value: "I-PERSON-HUMAN", begin: begin, end: end, metaphor: false, metonym: false ,specific: false};
+        }
+        else {
+            features = {begin: begin, end: end, metaphor: false, metonym: false, specific: false};
+        }
         cmdQueue.push({cmd: 'create', data: {bid: batchIdentifier, _type: type, features: features}});
     }
 

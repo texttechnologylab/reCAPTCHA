@@ -183,7 +183,7 @@ function taskMultiToken() {
     addRefreshButton("multiToken");
 }
 
-function quickAnno() {
+function taskQuickAnno() {
     selectedTokensId = [];
     let selectedToolbar;
     let currentDiv = document.getElementById("taskArea");

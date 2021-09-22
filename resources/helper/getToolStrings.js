@@ -20,7 +20,7 @@ function getToolStringActActionActivity(){
     return "org.texttechnologylab.annotation.type.Act_Action_Activity";
 }
 function getToolStringLocationPlace(){
-    return "org.texttechnologylab.annotation.type.concept.Location_Place";
+    return "org.texttechnologylab.annotation.type.Location_Place";
 }
 function getToolStringPersonHumanBeing(){
     return "org.texttechnologylab.annotation.type.Person_HumanBeing";
@@ -29,5 +29,5 @@ function getToolStringEventHappening(){
     return "org.texttechnologylab.annotation.type.Event_Happening";
 }
 function getToolStringVehicle(){
-    return "org.texttechnologylab.annotation.type.concept.Vehicle";
+    return "org.texttechnologylab.annotation.type.Vehicle";
 }
