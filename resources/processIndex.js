@@ -18,7 +18,9 @@ function processRecaptcha(){
  */
 function doRandomTaskForVerification(){
     // Tasks der Klase Vertrauenstest
-    const tasksVerification = [taskCheckNouns, taskCheckVerbs, taskCheckAdjectives, taskCheckFood];
+    const tasksVerification = [
+        taskCheckNouns, taskCheckVerbs, taskCheckAdjectives, taskCheckFood
+    ];
 
     tasksVerification[getRandomIntMax(tasksVerification.length)]();
 }
@@ -28,7 +30,10 @@ function doRandomTaskForVerification(){
 */
 function doRandomTaskForCrowdsourcing() {
     // Tasks der KLasse Crowdsourcing
-    const tasksCrowdsourcing = [taskSelectAdjectiveRelation, taskSelectVerbRelation, taskSelectRelation, taskMultiToken];
+    const tasksCrowdsourcing = [
+        taskSelectAdjectiveRelation, taskSelectVerbRelation, taskSelectRelation, taskMultiToken,
+        taskQuickAnno
+    ];
 
     tasksCrowdsourcing[getRandomIntMax(tasksCrowdsourcing.length)]();
 }

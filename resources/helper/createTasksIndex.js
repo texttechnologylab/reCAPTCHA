@@ -17,20 +17,6 @@ function taskCheckNouns() {
     addRefreshButton("checkNoun");
 }
 
-function taskAnnotateNouns() {
-    //Annotiere Nomen
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Nomen (Anno)");
-    text.className = "task-text";
-    let taskDiv = document.getElementById("taskArea");
-    taskDiv.innerHTML = "";
-    taskDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons("standard");
-    addAnnoNounsButton();
-    addRefreshButton("annoNoun");
-}
 
 function taskCheckVerbs() {
     //Check Verben
@@ -44,21 +30,6 @@ function taskCheckVerbs() {
     SOCKETANNO.displayTextAsButtons(getToolStringVerbs());
     addVerbButton();
     addRefreshButton("checkVerb");
-}
-
-function taskAnnotateVerbs() {
-    //Annotiere Verben
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Verben");
-    text.className = "task-text";
-    let taskDiv = document.getElementById("taskArea");
-    taskDiv.innerHTML = "";
-    taskDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons("standard");
-    addAnnoVerbsButton();
-    addRefreshButton("annoVerb");
 }
 
 function taskCheckAdjectives() {
@@ -76,20 +47,6 @@ function taskCheckAdjectives() {
     addRefreshButton("checkAdjective");
 }
 
-function taskAnnotateAdjectives() {
-    //Annotiere Adjektive
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere alle Adjektive");
-    text.className = "task-text";
-    let taskDiv = document.getElementById("taskArea");
-    taskDiv.innerHTML = "";
-    taskDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons("standard");
-    addAnnoAdjectiveButton();
-    addRefreshButton("annoAdjective");
-}
 
 function taskCheckFood() {
     //Check Essen
@@ -107,20 +64,6 @@ function taskCheckFood() {
 
 }
 
-function taskAnnotateFood() {
-    //Annotation Food
-    selectedTokensId = [];
-    let currentDiv = document.getElementById("playArea");
-    currentDiv.innerHTML = "";
-    let text = document.createTextNode("Markiere Essen");
-    text.className = "task-text";
-    let taskDiv = document.getElementById("taskArea");
-    taskDiv.innerHTML = "";
-    taskDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons("standard");
-    addAnnoFoodButton();
-    addRefreshButton("annoFood");
-}
 
 function taskSelectRelation() {
     //PropAnno
@@ -238,3 +181,66 @@ function taskQuickAnno() {
         sendAnnotationHelper(selectedToolbar);
     }
 }
+
+/*
+function taskAnnotateNouns() {
+    //Annotiere Nomen
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere alle Nomen (Anno)");
+    text.className = "task-text";
+    let taskDiv = document.getElementById("taskArea");
+    taskDiv.innerHTML = "";
+    taskDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons("standard");
+    addAnnoNounsButton();
+    addRefreshButton("annoNoun");
+}
+
+function taskAnnotateVerbs() {
+    //Annotiere Verben
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere alle Verben");
+    text.className = "task-text";
+    let taskDiv = document.getElementById("taskArea");
+    taskDiv.innerHTML = "";
+    taskDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons("standard");
+    addAnnoVerbsButton();
+    addRefreshButton("annoVerb");
+}
+
+function taskAnnotateAdjectives() {
+    //Annotiere Adjektive
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere alle Adjektive");
+    text.className = "task-text";
+    let taskDiv = document.getElementById("taskArea");
+    taskDiv.innerHTML = "";
+    taskDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons("standard");
+    addAnnoAdjectiveButton();
+    addRefreshButton("annoAdjective");
+}
+
+function taskAnnotateFood() {
+    //Annotation Food
+    selectedTokensId = [];
+    let currentDiv = document.getElementById("playArea");
+    currentDiv.innerHTML = "";
+    let text = document.createTextNode("Markiere Essen");
+    text.className = "task-text";
+    let taskDiv = document.getElementById("taskArea");
+    taskDiv.innerHTML = "";
+    taskDiv.appendChild(text);
+    SOCKETANNO.displayTextAsButtons("standard");
+    addAnnoFoodButton();
+    addRefreshButton("annoFood");
+}
+
+ */
