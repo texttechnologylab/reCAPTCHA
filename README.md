@@ -70,16 +70,15 @@ In der Liste "tasksCrowdsourcing" sind alle Aufgaben der Klasse Crowdsourcing de
 processFinished.js <br />
 In der Datei ist eine Funktion accessGranted definiert, Diese wird aufgerufen sobald das reCaptcha
 erfolgreich gelöst worden ist.
-Sie sorgt dafür, dass eine Nachricht zu
+Sie sorgt dafür, dass eine Nachricht zur Seite geschickt wird, die das reCaptcha aufgerufen hat und vermittelt ihr, dass
+das reCaptcha vom User erfolgreich gelöst worden ist.
 
 Unterverzeichnis: helper <br />
 Darin befinden sich verschiedene Dateien in denen Hilfsfunktionen definiert worden sind.
 * drawLine.js <br />
   In der Datei werden die Funktionen definiert zur grafischen Darstellung einer Linie zwischen Token.
   Die Linie wird bei Aufgaben zu Multitoken und zur Auswahl von Relationen genutzt.
-
-* createImages.js <br />
-In der Datei befindet sich die Funktion die einen 
+  
 
 * createTasksIndex.js <br />
 In der Datei befinden sich Funktionen, die die einzelenen Aufgaben des reCaptcha entsprechen. 
