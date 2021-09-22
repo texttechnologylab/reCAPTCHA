@@ -8,7 +8,7 @@
 function checkInputHelper(toolString){
     const toolAnnotationsInstance = SOCKETANNO.getToolAnnotationsQuickpanel();
     let toolElements = SOCKETANNO.getToolElementsInstance();
-    let entitiesTool = toolElements["org.texttechnologylab.annotation.semaf.isobase.Entity"]
+    let entitiesTool = toolAnnotationsInstance["org.texttechnologylab.annotation.semaf.isobase.Entity"]
     let numberOfFalse = 0; // Anzahl der falsch ausgewählten Token vom User
     const idFromAllDisplayedTokens = getIdFromAllDisplayedTokens();
     let allLemmaBeginFromTool = [];
@@ -46,12 +46,16 @@ function checkInputHelper(toolString){
 
     const numberOfCorrect = allLemmaBeginOriginalLength - allLemmaBegin.length; // Anzahl der richtig ausgewählten
 
+    const percentageCorrect = numberOfCorrect / allLemmaBeginOriginalLength * 100;
 
-    if(numberOfFalse == 0 && allLemmaBegin.length == 0){
-        alert("Alles korrekt ausgewählt");
-        doRandomTaskForCrowdsourcing();
+
+    /*  Die Aufgabe wird als gelöst gewertet, wenn mehr als 75% der Token richtig ausgewählt sind und höchstens
+        ein falsches Token ausgewählt wird.
+    */
+    if(numberOfFalse <= 1 && percentageCorrect >= 75){
+        doRandomTaskForCrowdsourcing(); // Wenn die Aufgabe als richtig gewertet wird, kommt eine Crowdsourcing-Aufgabe.
     } else {
-        doRandomTaskForVerification();
+        doRandomTaskForVerification(); // Wenn die Aufgabe nicht als richtig gewertet wird, kommt eine weitere Vertrauensaufgabe.
     }
 }
 
