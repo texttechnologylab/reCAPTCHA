@@ -12,7 +12,7 @@ Aufgaben werden dem Besucher die Annotationsaufgaben freigeschaltet. Davon werde
 vorgegeben. 
 Nach erfolgreicher Absolvierung erhält der Nutzer eine Bestätigung und gelangt auf die Wunschwebseite.
 
-## Benuztung
+## Benutzung
 
 Achtung: Funktioniert nur bei HTML5 fähigen Browsern, da cross-window-communication angewendet wird.
 
