@@ -1,20 +1,23 @@
 # reCAPTCHA
-Dynamic reCAPTCHA für TextAnnotator
+Dynamisches reCaptcha für den TextAnnotator des TTLabs
 
 ## Allgemeine Info
 
-Das Projekt verfolgt zwei wesentliche Ziele.
-Zum einem soll das recaptcha (Websiten) einen Schutz vor automatisierten Zugriff bieten, indem eine Aufgabe
-abgefragt wird, die zu Zeit nur einem menschlichen Benutzer lösbar ist und zum anderen soll durch Crowdsourcing
-die Annotation von Texten verbessert werden.
+Das reCaptcha schützt Webseiten vor automatisierten Zugriffen, indem Aufgaben vorgegeben werden.
+Diese sind für einen menschlichen Nutzer mit Deutschkenntnissen lösbar. Ein Bot sollte hingegen keine Chance haben.
+Gleichzeitig trägt das Lösen der Aufgaben zur Verbesserung des TextAnnotators bei.
 
-Es wird eine vertrauens Aufgabe gestellt, zur Verifizierung, gefolgt von zwei Crouwsourcing Aufgaben.
+Zu Beginn wird eine zufällige Vertrauensaufgabe aus dem Aufgabensatz gestellt. Erst nach erfolgreichem Lösen der
+Aufgaben werden dem Besucher die Annotationsaufgaben freigeschaltet. Davon werden zwei Zufällige 
+vorgegeben. 
+Nach erfolgreicher Absolvierung erhält der Nutzer eine Bestätigung und gelangt auf die Wunschwebseite.
 
 ## Benuztung
 
-Achtung: Funktioniert nur bei HTML5 fähige Browser, da cross-window Communication genutzt wird.
+Achtung: Funktioniert nur bei HTML5 fähigen Browsern, da cross-window-communication angewendet wird.
 
-Sie können z.B ein Button erstellen der das reCaptcha öffnet.
+Sie können beispielsweise ein Button auf Ihrer Webseite erstellen, wobei sich nach dem Klicken das reCaptcha öffnet. 
+Dieser Button könnte z.B. der Anmeldung auf einer Webseite oder dem Kauf eines Produktes dienen.
 
 ```javascript
 
@@ -23,23 +26,23 @@ Sie können z.B ein Button erstellen der das reCaptcha öffnet.
     // Hier eine Möglichkeit wie das Recaptcha geöffnet werden kann.
     const buttonID = "open"
     document.getElementById(buttonID).addEventListener("click", function(){
-       window.open(recaptchaURL); // Das reCaptcha muss irgenwo von ihrer Seite aus geöffnet werden
+       window.open(recaptchaURL); // Das reCaptcha muss von ihrer Seite aus geöffnet werden
     }, false);
 
 ```
 
 Binden sie in ihrer Seite folgendes Script ein. 
-Sobald das reRaptcha gelöst ist erhält ihre Website eine Nachricht.
+Sobald das reCaptcha gelöst ist, erhält ihre Website eine Nachricht.
 
 ```javascript
 
     const recaptchaURL = "https://vesternesse.hucompute.org/recaptcha/reCAPTCHA";
 
-    // Wird aufgerufen, sobald das Recaptcha gelöst ist.
+    // Reagiert auf erfolgreiches Captcha
     window.addEventListener("message", function(e) {
-        if (e.data == "IWAS"){
+        if (e.data == "msg"){
             console.log("Recaptcha erfolgreich gelöst");
-            // Hier kommt ihr Code für den Fall, dass das reCaptcha erfolgreich gelöst worden ist.
+            // Hier kommt Ihr Code hin
         }
 
     }, false);
@@ -88,7 +91,7 @@ wird.
 
 * helperFunctions.js <br />
   Darin sind jeweils Hilfsfunktionen definiert. 
-  Z.B. sind da Funktionen zur Berechnung von Zufallszahlen definiert worden.
+  z.B. sind Funktionen zur Berechnung von Zufallszahlen implementiert.
 
 * getToolStrings.js <br />
   In der Datei befinden sich die Funktionen, um die Toolstrings der einzelnen Entities des Quickannotators
@@ -102,7 +105,8 @@ Unterverzeichnis: annotationFunctions
 * checkAnnotation.js: Für Vertrauenstest <br />
   In der Datei sind alle Funktionen definiert, um eine Annotation vom Benutzer mit Hilfe des Textannotators 
   zu überprüfen.
-
+  
+  
 
 
 
