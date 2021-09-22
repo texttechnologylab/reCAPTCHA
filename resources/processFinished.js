@@ -8,7 +8,7 @@ function accessGranted(){
     /*  Sendet die Nachricht, dass das reCpatcha erfolgreich gelöst worden ist
            an die Website wo das reCaptcha aufgerufen worden ist.  */
     const mainPageURL = window.opener.location.href;
-    var message = "IWAS";
+    var message = "solved";
     window.opener.postMessage(message, mainPageURL); //sending the message
 
     let currentDiv = document.getElementById("playArea");
