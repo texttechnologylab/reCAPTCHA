@@ -125,14 +125,15 @@ const webSocketAnno = (function (casId, view, tool, session){
     }
 
 
-
     /**
+     *
      * Nimmt aus den quickpanel Tool die Lemma Werte jedes Tokens und speichert damit jeden Token
      * des Satzes in eine Liste ein. Mit der Liste gibt sie jeden Tokon als Button aus und die Id jedes Button
      * ist durch seine addresse(id) im "org.texttechnologylab.annotation.semaf.isobase.Entity" Tool gekennzeichnet
      * @param targetTool
+     * @param shouldColorToken
      */
-    function displayTextAsButtons(targetTool, colorToken=false) {
+    function displayTextAsButtons(targetTool, shouldColorToken=false) {
         let textAsList = [];
         let allLemmaBegin = [];
         let allLemmaEnd = [];
@@ -209,12 +210,11 @@ const webSocketAnno = (function (casId, view, tool, session){
             // Es wird jedes Token als Button angezeigt
             addToken(textAsList, startTokenIndex);
 
-            if (colorToken == true) {
-                // Färbt ein Token: Adjektiv oder Verb für PropAnno Aufgabe
-                colorToken(toolAnnotationsQuickpanel[targetTool], "#A569BD");
-            }
 
-
+        }
+        // Bei PropAnno Taks im Bezug zu Verb oder Adjektiv
+        if (shouldColorToken === true) {
+            colorToken(toolAnnotationsQuickpanel[targetTool], "#A569BD");
         }
 
         // Alles definierte Hilfsfunktionen, die in "displayTextAsButtons()" genutzt werden
@@ -263,7 +263,7 @@ const webSocketAnno = (function (casId, view, tool, session){
                     const beginDisplayedToken = fromAddressToLemmaBegin(id);
                     if (begin == beginDisplayedToken) {
                         document.getElementById("address" + id).style.background = color;
-                   //     return;
+                        return;
                         //  document.getElementById("address"+id).className = color;
                     }
                 }

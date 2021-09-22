@@ -132,7 +132,7 @@ function taskSelectRelation() {
     let taskDiv = document.getElementById("taskArea");
     taskDiv.innerHTML = "";
     taskDiv.appendChild(text);
-    SOCKETANNO.displayTextAsButtons("standard");
+    SOCKETANNO.displayTextAsButtons("standard", true);
     drawLine = true;
     addPropButton();
     addRefreshButton("propSelection");
@@ -186,10 +186,13 @@ function taskMultiToken() {
 function taskQuickAnno() {
     selectedTokensId = [];
     let selectedToolbar;
-    let currentDiv = document.getElementById("taskArea");
+    let currentDiv = document.getElementById("playArea");
     currentDiv.innerHTML = "";
-    currentDiv.innerHTML = "Bestimme Entities Essen/Orte/Location frei: \n wähle erst ein Wort aus und bestimme dann mithilfe der Toolbar. \n" +
-        "Klicke verifizieren, wenn du fertig bist";
+    let text = document.createTextNode("Bestimme Entities Essen/Orte/Location frei: \n wähle erst ein Wort aus und bestimme dann mithilfe der Toolbar. \n" +
+        "Klicke verifizieren, wenn du fertig bist");
+    let taskDiv = document.getElementById("taskArea");
+    taskDiv.innerHTML = "";
+    taskDiv.appendChild(text);
     SOCKETANNO.displayTextAsButtons("standard");
     addQuickAnnoButton();
     addRefreshButton("quickAnno");

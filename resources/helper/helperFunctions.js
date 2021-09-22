@@ -60,8 +60,14 @@ function tokenClicked(buttonId) {
  * @returns {number}
  */
 function fromAddressToLemmaBegin(address){
-    const entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"];
-    return entitiesTool[address]["features"]["begin"];
+    try {
+        const entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+        return entitiesTool[address]["features"]["begin"];
+    }
+    catch (e) {
+        const entitiesTool = SOCKETANNO.getToolAnnotationsQuickpanel()["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+        return entitiesTool[address]["features"]["begin"];
+    }
 }
 
 /**
@@ -70,8 +76,14 @@ function fromAddressToLemmaBegin(address){
  * @returns {number}
  */
 function fromAddressToLemmaEnd(address){
-    const entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"]
-    return entitiesTool[address]["features"]["end"];
+    try {
+        const entitiesTool = SOCKETANNO.getToolElementsInstance()["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+        return entitiesTool[address]["features"]["end"];
+    }
+    catch (e) {
+        const entitiesTool = SOCKETANNO.getToolAnnotationsQuickpanel()["org.texttechnologylab.annotation.semaf.isobase.Entity"];
+        return entitiesTool[address]["features"]["end"];
+    }
 }
 
 /**
