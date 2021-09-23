@@ -16,8 +16,7 @@ Nach erfolgreicher Absolvierung erhält der Nutzer eine Bestätigung und gelangt
 
 Achtung: Funktioniert nur bei HTML5 fähigen Browsern, da cross-window-communication angewendet wird.
 
-Sie können beispielsweise ein Button auf Ihrer Webseite erstellen, wobei sich nach dem Klicken das reCaptcha öffnet. 
-Dieser Button könnte z.B. der Anmeldung auf einer Webseite oder dem Kauf eines Produktes dienen.
+Sie können beispielsweise ein Button mit der id="open" auf Ihrer Webseite erstellen, wobei sich nach dem Klicken das reCaptcha öffnet. 
 
 ```javascript
 
@@ -40,7 +39,7 @@ Sobald das reCaptcha gelöst ist, erhält ihre Website eine Nachricht.
 
     // Reagiert auf erfolgreiches Captcha
     window.addEventListener("message", function(e) {
-        if (e.data == "msg"){
+        if (e.data == "solved"){
             console.log("Recaptcha erfolgreich gelöst");
             // Hier kommt Ihr Code hin
         }
