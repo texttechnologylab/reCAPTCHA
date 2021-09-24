@@ -149,10 +149,10 @@ function addRefreshButton(task) {
             taskFunk = "taskSelectAdjectiveRelation()";
             break;
         case "selectVerbRelation":
-            taskFunk = "taskVerbRelation()";
+            taskFunk = "taskSelectVerbRelation()";
             break;
         case "quickAnno":
-            taskFunk = "quickAnno()";
+            taskFunk = "taskQuickAnno()";
             break;
     }
     let currentDiv = document.getElementById("iconsArea");
@@ -201,6 +201,7 @@ function addQuickAnnoButton() {
     buttonAppend.className = "btn btn-secondary btn-lg btn-block";
     buttonAppend.innerHTML = "Auswählen";
     iconsArea.appendChild(buttonAppend);
+
 
 
 let buttonCheck = document.createElement("button");

@@ -20,7 +20,7 @@ function accessGranted(){
     currentDiv.innerHTML = "";
     currentDiv.appendChild(correctImage);
 
-    setTimeout(closeWindow, 3000);
+    setTimeout(closeWindow, 1500);
 }
 
 
