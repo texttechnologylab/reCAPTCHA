@@ -14,10 +14,11 @@ Nach erfolgreicher Absolvierung erhält der Nutzer eine Bestätigung und gelangt
 
 ## Anleitung
 
-Achtung: Funktioniert nur bei HTML5 fähigen Browsern, da cross-window-communication angewendet wird.
+Achtung:  <br /> 
+Funktioniert nur bei HTML5 fähigen Browsern, da cross-window-communication angewendet wird.
 
-Sie können beispielsweise ein Button mit der id="open" auf Ihrer Webseite erstellen, wobei sich nach dem Klicken das reCaptcha öffnet. 
-
+Sie können beispielsweise ein Button mit der id="open" auf Ihrer Webseite erstellen,  <br />
+wobei sich nach dem Klicken das reCaptcha öffnet.
 ```javascript
 
     const recaptchaURL = "https://vesternesse.hucompute.org/recaptcha/reCAPTCHA";
@@ -30,7 +31,7 @@ Sie können beispielsweise ein Button mit der id="open" auf Ihrer Webseite erste
 
 ```
 
-Binden sie in ihrer Seite folgendes Script ein. 
+Binden sie in ihrer Seite folgendes Script ein.  <br />
 Sobald das reCaptcha gelöst ist, erhält ihre Website eine Nachricht.
 
 ```javascript
