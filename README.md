@@ -83,9 +83,13 @@ Darin befinden sich verschiedene Dateien in denen Hilfsfunktionen definiert word
   In der Datei werden die Funktionen definiert zur grafischen Darstellung einer Linie zwischen Token.
   Die Linie wird bei Aufgaben zu Multitoken und zur Auswahl von Relationen genutzt.
 
-* createTasksIndex.js <br />
-In der Datei befinden sich Funktionen, die den einzelenen Aufgaben des reCaptcha entsprechen. 
+* createTaskForCrowdsourcing.js <br />
+In der Datei befinden sich Funktionen, die den einzelenen Crowdsourcing Aufgaben des reCaptcha entsprechen. 
 Die einzelnen Funktionen verändern den Text und die Aufgabenbeschreibung der dem User angezeigt wird.
+
+* createTaskForVerification.js <br />
+  In der Datei befinden sich Funktionen, die den einzelenen Kontroll Aufgaben des reCaptcha entsprechen.
+  Die einzelnen Funktionen verändern den Text und die Aufgabenbeschreibung der dem User angezeigt wird.
   
 * createButtons.js <br />
   Darin sind Funktionen definiert, um hauptsächlich Buttons in HTML zu erzeugen, die jeweils beim betätigen
