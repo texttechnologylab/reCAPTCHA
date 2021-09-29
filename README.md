@@ -92,7 +92,7 @@ Die einzelnen Funktionen verändern den Text und die Aufgabenbeschreibung der de
   Die einzelnen Funktionen verändern den Text und die Aufgabenbeschreibung der dem User angezeigt wird.
   
 * createButtons.js <br />
-  Darin sind Funktionen definiert, um hauptsächlich Buttons in HTML zu erzeugen, die jeweils beim betätigen
+  Darin sind Funktionen definiert, um hauptsächlich Buttons in HTML zu erzeugen, die jeweils beim klicken
   des Buttons eine Funktion aufrufen.
 
 * helperFunctions.js <br />
