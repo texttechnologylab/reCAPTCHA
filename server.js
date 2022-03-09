@@ -1,4 +1,4 @@
-function runWebsite(text) {
+function runWebsite() {
 
     console.log('Server-side code running');
     const express = require('express');
@@ -13,7 +13,7 @@ function runWebsite(text) {
        res.sendFile(__dirname + '/index.html');
     })
 
-// start the express web server listening on 8080
+// start the express web server listening on 808
     app.listen(808, () => {
         console.log('listening on 808');
     });
@@ -21,7 +21,7 @@ function runWebsite(text) {
 }
 
 
-runWebsite("214aef");
+runWebsite();
 
 module.exports = {
     runWebsite
