@@ -74,3 +74,38 @@ Sobald das reCaptcha gelöst ist, erhält ihre Website eine Nachricht.
     }, false);
 
 ```
+# Cite
+Wenn Sie das Projekt verwenden, zitieren Sie es bitte auf folgende Weise:
+
+G. Abrami, M. Stoeckel, and A. Mehler, “TextAnnotator: A UIMA Based Tool for the Simultaneous and Collaborative Annotation of Texts,” in Proceedings of The 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 891-900. 
+[PDF](http://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.112.pdf)
+notator.pdf)
+
+R. Bayval, V. Yildiz, G. Abrami and A. Mehler, "Dynamic reCaptcha for TextAnnotator", Practical course in winter semester 2021, Frankfurt, Germany, 2021
+
+
+# BibTeX
+```
+
+@InProceedings{Abrami:Stoeckel:Mehler:2020,
+  author    = {Abrami, Giuseppe  and  Stoeckel, Manuel  and  Mehler, Alexander},
+  title     = {TextAnnotator: A UIMA Based Tool for the Simultaneous and Collaborative Annotation of Texts},
+  booktitle = {Proceedings of The 12th Language Resources and Evaluation Conference},
+  month     = {May},
+  year      = {2020},
+  address   = {Marseille, France},
+  publisher = {European Language Resources Association},
+  pages     = {891--900},
+  ISBN = "979-10-95546-34-4"
+}
+
+
+
+@Misc{Bayval:Yildiz:Abrami:Mehler:2021,
+  author    = {Bayval, Robin, and Yildiz, Vedat and Abrami, Giuseppe  and  Mehler, Alexander},
+  title     = {Dynamic reCaptcha for TextAnnotator},
+  year      = 2021,
+  note      = {Practical course in winter semester 2021}
+}
+
+```
