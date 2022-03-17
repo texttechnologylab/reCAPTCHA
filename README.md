@@ -1,7 +1,7 @@
 # reCAPTCHA
 Dynamisches reCaptcha für den TextAnnotator des TTLabs
 
-## Allgemeine Info
+# Allgemeine Info
 
 Inspiriert von Luis von Ahn seine Idee haben wir ein reCaptcha entwickelt, dass auf beliebigen Webseiten eingebaut werden kann und eine
 Crowdsourcing Lösung für die Annotation von Texten bietet.
@@ -12,7 +12,7 @@ So können zum einem Webseiten vor automatisierten Zugriff geschützt werden und
 
 Für mehr Informationen siehe Dokumentation.pdf
 
-## Einige Aufgabenstellungen 
+# Einige Aufgabenstellungen 
 
 ##### Beispiel einer Aufgabe bei der Nomen ausgewählt werden sollen
 
@@ -31,14 +31,13 @@ Für mehr Informationen siehe Dokumentation.pdf
 
 <div>
     <img width="552" alt="image" src="https://user-images.githubusercontent.com/49447893/158685168-6027c711-f79f-47be-a116-5eaa01863b9f.png">
-<img width="552" alt="image" src="https://user-images.githubusercontent.com/49447893/158685222-649e805c-6365-4257-98eb-1b7a5872fba7.png">
-
+    <img width="552" alt="image" src="https://user-images.githubusercontent.com/49447893/158685222-649e805c-6365-4257-98eb-1b7a5872fba7.png">
 </div>
 
 
 
 
-## Anleitung
+# Anleitung
 
 Achtung:  <br /> 
 Funktioniert nur bei HTML5 fähigen Browsern, da cross-window-communication angewendet wird.
@@ -74,6 +73,14 @@ Sobald das reCaptcha gelöst ist, erhält ihre Website eine Nachricht.
     }, false);
 
 ```
+
+# Autoren
+
+- Robin Bayval
+- Vedat Yildiz
+
+
+
 # Cite
 Wenn Sie das Projekt verwenden, zitieren Sie es bitte auf folgende Weise:
 
