@@ -1,3 +1,6 @@
+[![version](https://img.shields.io/github/license/texttechnologylab/reCAPTCHA)]()
+
+
 # reCAPTCHA
 Dynamisches reCaptcha für den TextAnnotator des TTLabs
 
